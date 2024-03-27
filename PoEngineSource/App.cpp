@@ -9,7 +9,7 @@ Po::App::~App()
 {
 }
 
-void Po::App::Init(HWND _hWnd)
+void Po::App::Init(HWND _hWnd) 
 {
 	hWnd = _hWnd;
 	hDC = GetDC(hWnd);

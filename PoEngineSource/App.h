@@ -1,5 +1,5 @@
 #pragma once 
-#include "CommonInclude.h" 
+#include "GameObject.h" 
 
 namespace Po
 {
@@ -17,8 +17,8 @@ namespace Po
 	private:
 		HWND	hWnd;
 		HDC		hDC;
-		float	speed;
-		float	x, y;
+
+		GameObject player;
 	};
 }
 

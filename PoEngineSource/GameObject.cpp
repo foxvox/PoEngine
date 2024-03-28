@@ -3,31 +3,28 @@
 namespace Po
 {
 	GameObject::GameObject()
-	{
-	}
+		: x(0.0f), y(0.0f)
+	{}	
 
-	GameObject::~GameObject()
-	{
-	}
+	GameObject::~GameObject() {}
 
 	void GameObject::Update()
-	{
-		// 인자로 받은 Key가 눌렸으면 8000 return, 아니면 0 return 
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+	{		
+		if (Input::GetKey(KeyCode::A))
 		{
 			x -= 0.01f;
 		}
 
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+		if (Input::GetKey(KeyCode::D))
 		{
 			x += 0.01f;
 		}
 
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
+		if (Input::GetKey(KeyCode::W))
 		{
 			y -= 0.01f;
 		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		if (Input::GetKey(KeyCode::S))
 		{
 			y += 0.01f;
 		}

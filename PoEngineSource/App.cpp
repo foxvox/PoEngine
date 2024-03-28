@@ -15,12 +15,14 @@ namespace Po
 	{
 		hWnd = _hWnd;
 		hDC = GetDC(hWnd);
+		Input::Init(); 
 		player.SetPos(0.0f, 0.0f);
 	}
 
 	void App::Update()
 	{
-		player.Update();
+		Input::Update();
+		player.Update();		
 	}
 
 	void App::LateUpdate()

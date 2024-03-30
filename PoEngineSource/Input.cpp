@@ -62,7 +62,10 @@ namespace Po
 		반환형(return type), 몸통(body)로 이루어져 있습니다.
 		*/
 		for_each(keys.begin(), keys.end(), 
-			[](Key& key) -> void { UpdateKey(key); });
+			[](Key& key) -> void 
+			{ 
+				UpdateKey(key); 
+			});
 	}
 
 	void Input::UpdateKeyDown(Input::Key& key)

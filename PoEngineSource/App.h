@@ -1,6 +1,5 @@
 #pragma once 
 #include "GameObject.h" 
-#include "Input.h" 
 
 namespace Po
 {
@@ -16,10 +15,15 @@ namespace Po
 		void Render();
 
 	private:
-		HWND	hWnd;
-		HDC		hDC;
+		HWND		hWnd;
+		HDC			hDC;
+		HDC			backHDC; 
+		HBITMAP		backBuf; 
 
-		GameObject player;
+		UINT		width; 
+		UINT		height; 
+
+		GameObject	player;
 	};
 }
 

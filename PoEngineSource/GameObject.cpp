@@ -1,4 +1,5 @@
 #include "GameObject.h" 
+#include "Time.h" 
 
 namespace Po
 {
@@ -9,24 +10,27 @@ namespace Po
 	GameObject::~GameObject() {}
 
 	void GameObject::Update()
-	{		
-		if (Input::GetKey(KeyCode::A))
+	{
+		const float speed = 100.0f;
+		const float deltaTime = float(Time::GetDeltaTime());
+
+		if (Input::GetKey(KeyCode::Left))
 		{
-			x -= 0.01f;
+			x -= speed * deltaTime;
 		}
 
-		if (Input::GetKey(KeyCode::D))
+		if (Input::GetKey(KeyCode::Right))
 		{
-			x += 0.01f;
+			x += speed * deltaTime;
 		}
 
-		if (Input::GetKey(KeyCode::W))
+		if (Input::GetKey(KeyCode::Up))
 		{
-			y -= 0.01f;
+			y -= speed * deltaTime;
 		}
-		if (Input::GetKey(KeyCode::S))
+		if (Input::GetKey(KeyCode::Down))
 		{
-			y += 0.01f;
+			y += speed * deltaTime;
 		}
 	}
 

@@ -32,7 +32,7 @@ namespace Po
 		double fps = 1.0 / deltaTime;
 
 		wchar_t str[50] = L""; 
-		swprintf_s(str, 50, L"Time: %.2lf", fps); 
+		swprintf_s(str, 50, L"fps: %.2lf", fps); 
 		int len = wcsnlen_s(str, 50); 
 		TextOut(hDC, 0, 0, str, len);
 	}

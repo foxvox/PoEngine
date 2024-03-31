@@ -1,9 +1,9 @@
 ﻿#include "framework.h"
 #include "PoEngineEditor.h" 
 #include "../PoEngineSource/App.h"  
+#include "../PoEngineLib/LoadScenes.h" 
 
 using namespace Po;
-
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -92,7 +92,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr); 
 
-   app.Init(hWnd);
+   app.Init(hWnd); 
 
    if (!hWnd)
    {
@@ -101,6 +101,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   // Load Scenes... 
+   LoadScenes(); 
 
    return TRUE;
 }

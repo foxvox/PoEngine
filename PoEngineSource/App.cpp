@@ -1,12 +1,13 @@
 #include "App.h" 
 #include "Input.h" 
 #include "Time.h"  
+#include "SceneMgr.h" 
 
 namespace Po
 {
 	App::App()
 		: hwnd(nullptr), hdc(nullptr), width(1600), height(900), 
-		backhdc(nullptr), backBuf(nullptr), gameObjects{}  
+		backhdc(nullptr), backBuf(nullptr) 
 	{}
 
 	App::~App()
@@ -19,14 +20,7 @@ namespace Po
 
 		Input::Init(); 
 		Time::Init(); 	
-
-		for (int i = 0; i < 100; i++)
-		{
-			GameObject* pGameObj = new GameObject();
-			pGameObj->SetPos(rand() % 1600, rand() % 900); 
-			gameObjects.push_back(pGameObj);			
-		} 
-
+		SceneMgr::Init(); 
 	} 
 
 	void App::GetWindow(HWND _hwnd, UINT _width, UINT _height)
@@ -65,12 +59,8 @@ namespace Po
 	void App::Update()
 	{
 		Input::Update();
-		Time::Update(); 
-		
-		for (int i = 0; i < gameObjects.size(); i++)
-		{
-			gameObjects[i]->Update(); 
-		}
+		Time::Update();
+		SceneMgr::Update(); 
 	}
 
 	void App::LateUpdate()
@@ -93,11 +83,7 @@ namespace Po
 		ClearBackBuf(); 
 		 
 		Time::Render(backhdc);
-
-		for (int i = 0; i < gameObjects.size(); i++)
-		{
-			gameObjects[i]->Render(backhdc);
-		}
+		SceneMgr::Render(backhdc);
 		
 		SwapChain(hdc, backhdc); 
 	}

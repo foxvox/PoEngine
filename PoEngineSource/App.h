@@ -15,6 +15,7 @@ namespace Po
 		void Update();
 		void LateUpdate();
 		void Render();
+
 		void ClearBackBuf(); 
 		void SwapChain(HDC disp, HDC back); 
 		void CreateBackBuf(UINT _width, UINT _height); 
@@ -28,8 +29,6 @@ namespace Po
 
 		UINT		width; 
 		UINT		height; 
-
-		vector<GameObject*>	gameObjects;
 	};
 }
 

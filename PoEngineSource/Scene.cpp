@@ -9,14 +9,7 @@ namespace Po
 	{}
 
 	void Scene::Init()
-	{
-		for (int i = 0; i < 1; i++)
-		{
-			GameObject* pGameObj = new GameObject();
-			pGameObj->SetPos(rand() % 1600, rand() % 900);
-			gameObjects.push_back(pGameObj);
-		}
-	}
+	{}
 
 	void Scene::Update()
 	{

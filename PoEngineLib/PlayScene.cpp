@@ -1,23 +1,43 @@
 #include "PlayScene.h" 
 #include "../PoEngineSource/GameObject.h" 
+#include "../PoEngineSource/Player.h" 
+#include "../PoEngineSource/Transform.h" 
+#include "../PoEngineSource/SpriteRenderer.h"  
+
 
 namespace Po
 {
 	PlayScene::PlayScene()
-	{
-	}
+	{}
 
 	PlayScene::~PlayScene()
-	{
-	}
+	{}
 
 	void PlayScene::Init()
 	{
-		for (int i = 0; i < 7; i++)
 		{
-			GameObject* obj = new GameObject();
-			obj->SetPos(rand() % 1600, rand() % 900); 
-			AddGameObject(obj);
+			Player* p = new Player();
+			Transform* tr = p->AddComponent<Transform>(); 
+			tr->SetPos(300, 450); 
+			tr->SetName(L"TR"); 
+
+			SpriteRenderer* sr = p->AddComponent<SpriteRenderer>();
+			sr->SetName(L"SR");  
+
+			AddGameObject(p);
+
+		}
+
+		{
+			Player* p = new Player();
+			Transform* tr = p->AddComponent<Transform>();
+			tr->SetPos(100, 650);
+			tr->SetName(L"TR");
+
+			SpriteRenderer* sr = p->AddComponent<SpriteRenderer>();
+			sr->SetName(L"SR");
+
+			AddGameObject(p);
 		}
 	}
 

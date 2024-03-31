@@ -1,39 +1,26 @@
+#include "SpriteRenderer.h" 
+#include "Transform.h" 
 #include "GameObject.h" 
 #include "Time.h" 
 
 namespace Po
 {
-	GameObject::GameObject()
-		: x(0.0f), y(0.0f)
-	{}	
+	SpriteRenderer::SpriteRenderer()
+	{}
+	SpriteRenderer::~SpriteRenderer()
+	{}
 
-	GameObject::~GameObject() 
+	void SpriteRenderer::Init()
+	{}
+
+	void SpriteRenderer::Update()
 	{
-		for (Component* comp : components)
-		{
-			delete comp;
-			comp = nullptr;
-		}
-	}
-
-	void GameObject::Init()
-	{
-		for (Component* comp : components)
-		{
-			comp->Init(); 
-		}
-	}
-
-	void GameObject::Update()
-	{
-		for (Component* comp : components)
-		{
-			comp->Update(); 
-		}
-
-		/*
 		const float speed = 100.0f;
 		const float deltaTime = float(Time::GetDeltaTime());
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		float x = tr->GetX(); 
+		float y = tr->GetY(); 
 
 		if (Input::GetKey(KeyCode::Left))
 		{
@@ -49,48 +36,39 @@ namespace Po
 		{
 			y -= speed * deltaTime;
 		}
+
 		if (Input::GetKey(KeyCode::Down))
 		{
 			y += speed * deltaTime;
 		}
-		*/
+
+		tr->SetPos(x, y); 
 	}
 
-	void GameObject::LateUpdate()
+	void SpriteRenderer::LateUpdate()
+	{}
+
+	void SpriteRenderer::Render(HDC _hdc) 
 	{
-		for (Component* comp : components)
-		{
-			comp->LateUpdate();
-		}
-	}
+		BYTE red, green, blue;
 
-	void GameObject::Render(HDC _hdc)
-	{
-		for (Component* comp : components)
-		{
-			comp->Render(_hdc);
-		}
-
-		/*
-		BYTE red, green, blue; 
-
-		red = rand() % 255; 
-		green = rand() % 255; 
-		blue = rand() % 255; 
+		red = rand() % 255;
+		green = rand() % 255;
+		blue = rand() % 255;
 
 		HBRUSH blueBrush = CreateSolidBrush(RGB(red, green, blue));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, blueBrush);
 		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(red, green, blue));
 		HPEN oldPen = (HPEN)SelectObject(_hdc, redPen);
 
-		Rectangle(_hdc, x, y, x + 100, y + 100);
+		Transform* tr = GetOwner()->GetComponent<Transform>();  
+
+		Rectangle(_hdc, tr->GetX(), tr->GetY(), tr->GetX() + 100, tr->GetY() + 100);
 
 		SelectObject(_hdc, oldBrush);
 		DeleteObject(blueBrush);
 
 		SelectObject(_hdc, oldPen);
-		DeleteObject(redPen); 
-		*/
-		
+		DeleteObject(redPen);
 	}
 }

@@ -38,19 +38,25 @@ namespace Po
 	{
 	}
 
-	void GameObject::Render(HDC _hDC)
+	void GameObject::Render(HDC _hdc)
 	{
-		HBRUSH blueBrush = CreateSolidBrush(RGB(0, 0, 255));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(_hDC, blueBrush);
-		/*HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-		HPEN oldPen = (HPEN)SelectObject(hDC, redPen);*/
+		BYTE red, green, blue; 
 
-		Rectangle(_hDC, 100 + x, 100 + y, 200 + x, 200 + y);
+		red = rand() % 255; 
+		green = rand() % 255; 
+		blue = rand() % 255; 
 
-		SelectObject(_hDC, oldBrush);
+		HBRUSH blueBrush = CreateSolidBrush(RGB(red, green, blue));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, blueBrush);
+		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(red, green, blue));
+		HPEN oldPen = (HPEN)SelectObject(_hdc, redPen);
+
+		Rectangle(_hdc, x, y, x + 100, y + 100);
+
+		SelectObject(_hdc, oldBrush);
 		DeleteObject(blueBrush);
 
-		/*SelectObject(hDC, oldPen);
-		DeleteObject(redPen);*/
+		SelectObject(_hdc, oldPen);
+		DeleteObject(redPen); 
 	}
 }

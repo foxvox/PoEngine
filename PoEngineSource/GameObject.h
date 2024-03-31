@@ -11,7 +11,7 @@ namespace Po
 
 		void Update();
 		void LateUpdate(); 
-		void Render(HDC _hDC); 
+		void Render(HDC _hdc); 
 
 		void SetPos(float _x, float _y)
 		{

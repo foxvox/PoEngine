@@ -13,8 +13,12 @@ namespace Po
 
 	void PlayScene::Init()
 	{
-		GameObject* obj = new GameObject(); 
-		AddGameObject(obj); 
+		for (int i = 0; i < 7; i++)
+		{
+			GameObject* obj = new GameObject();
+			obj->SetPos(rand() % 1600, rand() % 900); 
+			AddGameObject(obj);
+		}
 	}
 
 	void PlayScene::Update()

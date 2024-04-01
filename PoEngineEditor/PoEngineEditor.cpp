@@ -1,6 +1,6 @@
 ﻿#include "framework.h"
 #include "PoEngineEditor.h" 
-#include "../PoEngineSource/App.h"  
+#include "App.h"  
 #include "../PoEngineLib/LoadScenes.h" 
 
 using namespace Po;
@@ -12,6 +12,8 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다. 
 
 App app; 
+ULONG_PTR token; 
+Gdiplus::GdiplusStartupInput input; 
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -61,6 +63,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    Gdiplus::GdiplusShutdown(token); 
+
     return (int) msg.wParam;
 }
 
@@ -87,10 +91,13 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다. 
+
+   const UINT width = 1600; 
+   const UINT height = 900; 
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr); 
+      CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr); 
 
    app.Init(hWnd); 
 
@@ -101,6 +108,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   Gdiplus::GdiplusStartup(&token, &input, NULL); 
 
    // Load Scenes... 
    LoadScenes(); 

@@ -65,6 +65,7 @@ namespace Po
 
 	void App::LateUpdate()
 	{
+		SceneMgr::LateUpdate();
 	}
 
 	void App::ClearBackBuf()

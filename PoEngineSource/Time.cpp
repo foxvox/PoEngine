@@ -25,16 +25,14 @@ namespace Po
 		prevFreq.QuadPart = curFreq.QuadPart; 
 	}
 
-	void Time::Render(HDC hDC)
+	void Time::Render(HDC _hdc)
 	{
-		//static double time = 0.0f; 
-		//time += deltaTime; 
 		double fps = 1.0 / deltaTime;
 
 		wchar_t str[50] = L""; 
 		swprintf_s(str, 50, L"fps: %.2lf", fps); 
 		int len = wcsnlen_s(str, 50); 
-		TextOut(hDC, 0, 0, str, len);
+		TextOut(_hdc, 0, 0, str, len);
 	}
 }
 

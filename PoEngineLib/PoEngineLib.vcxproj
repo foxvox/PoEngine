@@ -132,13 +132,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\PoEngineSource\Player.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\PoEngineSource\Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="PoEngineLib.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

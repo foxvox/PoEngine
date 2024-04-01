@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h" 
+#include "../PoEngineSource/GameObject.h" 
 
 namespace Po
 {

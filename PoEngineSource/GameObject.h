@@ -19,6 +19,7 @@ namespace Po
 		T* AddComponent()
 		{
 			T* comp = new T();
+			comp->Init(); 
 			comp->SetOwner(this); 
 			components.push_back(comp); 
 

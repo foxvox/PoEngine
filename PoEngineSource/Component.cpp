@@ -4,12 +4,10 @@ namespace Po
 {
 	Component::Component() 
 		: owner(nullptr) 
-	{
-	}
+	{}
 
 	Component::~Component()
-	{
-	}
+	{}
 
 	void Component::Init()
 	{

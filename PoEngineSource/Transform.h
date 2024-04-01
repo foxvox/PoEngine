@@ -1,8 +1,10 @@
 #pragma once 
+#include "Entity.h" 
 #include "Component.h" 
+#include "PoMath.h" 
 
 namespace Po
-{
+{	 
 	class Transform :public Component
 	{
 	public:
@@ -14,13 +16,11 @@ namespace Po
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-		void SetPos(float _x, float _y) { x = _x; y = _y; } 
-		float GetX() { return x; } 
-		float GetY() { return y; } 
+		void SetPos(Vector2 _pos) { position.x = _pos.x; position.y = _pos.y; } 
+		Vector2 GetPos() const { return position; } 
 
-	private:
-		float x; 
-		float y; 
+	private: 
+		Vector2 position; 
 	};
 }
 

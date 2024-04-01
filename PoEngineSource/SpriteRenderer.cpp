@@ -2,10 +2,12 @@
 #include "Transform.h" 
 #include "GameObject.h" 
 #include "Time.h" 
+#include "PoMath.h" 
 
 namespace Po
 {
-	SpriteRenderer::SpriteRenderer()
+	SpriteRenderer::SpriteRenderer() 
+		: image(nullptr), width(0), height(0) 
 	{}
 	SpriteRenderer::~SpriteRenderer()
 	{}
@@ -19,8 +21,8 @@ namespace Po
 		const float deltaTime = float(Time::GetDeltaTime());
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		float x = tr->GetX(); 
-		float y = tr->GetY(); 
+		float x = tr->GetPos().x; 
+		float y = tr->GetPos().y; 
 
 		if (Input::GetKey(KeyCode::Left))
 		{
@@ -42,7 +44,7 @@ namespace Po
 			y += speed * deltaTime;
 		}
 
-		tr->SetPos(x, y); 
+		tr->SetPos(Vector2(x, y));  
 	}
 
 	void SpriteRenderer::LateUpdate()
@@ -50,25 +52,18 @@ namespace Po
 
 	void SpriteRenderer::Render(HDC _hdc) 
 	{
-		BYTE red, green, blue;
-
-		red = rand() % 255;
-		green = rand() % 255;
-		blue = rand() % 255;
-
-		HBRUSH blueBrush = CreateSolidBrush(RGB(red, green, blue));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, blueBrush);
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(red, green, blue));
-		HPEN oldPen = (HPEN)SelectObject(_hdc, redPen);
-
 		Transform* tr = GetOwner()->GetComponent<Transform>();  
+		Vector2 pos = tr->GetPos(); 
 
-		Rectangle(_hdc, tr->GetX(), tr->GetY(), tr->GetX() + 100, tr->GetY() + 100);
-
-		SelectObject(_hdc, oldBrush);
-		DeleteObject(blueBrush);
-
-		SelectObject(_hdc, oldPen);
-		DeleteObject(redPen);
+		Gdiplus::Graphics graphics(_hdc); 
+		graphics.DrawImage(image, Gdiplus::Rect(pos.x, pos.y, width, height)); 
 	}
+
+	void SpriteRenderer::ImageLoad(const std::wstring& path)
+	{
+		image = Gdiplus::Image::FromFile(path.c_str()); 
+		width = image->GetWidth(); 
+		height = image->GetHeight(); 
+	}
+
 }

@@ -40,7 +40,7 @@ namespace Po
 	}
 
 	void Scene::OnExit()
-	{
+	{		
 	}
 
 	void Scene::AddGameObject(GameObject* _gameObject)

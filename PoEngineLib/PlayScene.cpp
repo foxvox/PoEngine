@@ -12,6 +12,7 @@
 namespace Po
 {
 	PlayScene::PlayScene()
+		: bg(nullptr) 
 	{}
 
 	PlayScene::~PlayScene()
@@ -22,7 +23,7 @@ namespace Po
 		{
 			bg = new Player();
 			Transform* tr = bg->AddComponent<Transform>(); 
-			tr->SetPos(Vector2(50.0f, 50.0f));  
+			tr->SetPos(Vector2(50.f, 50.f));  
 			tr->SetName(L"TR"); 
 
 			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
@@ -52,14 +53,16 @@ namespace Po
 	{
 		Scene::Render(_hdc); 
 		wchar_t str[50] = L"Play Scene";
-		TextOut(_hdc, 100, 100, str, 10);
+		TextOutW(_hdc, 100, 100, str, 10);
 	}
+
 	void PlayScene::OnEnter()
 	{
 	}
+
 	void PlayScene::OnExit()
 	{
-		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPos(Vector2(0.0f, 0.0f));
+		Transform* tr = bg->GetComponent<Transform>();
+		tr->SetPos(Vector2(50.f, 50.f));
 	}
 }

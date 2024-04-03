@@ -1,8 +1,10 @@
 #pragma once
-#include "../PoEngineSource/Scene.h" 
+#include "Scene.h" 
 
 namespace Po
 {
+	class Player;
+
 	class PlayScene : public Scene 
 	{
 	public: 
@@ -17,7 +19,7 @@ namespace Po
 		void OnEnter() override;
 		void OnExit() override; 
 	private: 
-		class Player* bg; 
+		Player* bg; 
 	};
 }
 

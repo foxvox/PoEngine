@@ -1,4 +1,7 @@
 #include "Player.h" 
+#include "Input.h" 
+#include "Transform.h" 
+#include "Time.h" 
 
 namespace Po
 {
@@ -21,6 +24,14 @@ namespace Po
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate(); 
+
+		if (Input::GetKey(KeyCode::Right))
+		{
+			Transform* tr = GetComponent<Transform>(); 
+			Vector2 pos = tr->GetPos(); 
+			pos.x += 100.0f * Time::GetDeltaTime(); 
+			tr->SetPos(pos); 
+		}
 	}
 
 	void Player::Render(HDC _hdc)

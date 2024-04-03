@@ -40,20 +40,25 @@ namespace Po
 			return component; 
 		}		
 
+		/*
 		void SetPos(float _x, float _y)
 		{
 			x = _x; 
 			y = _y; 
 		}
+		
 
 		float GetPosX() const { return x; } 
 		float GetPosY() const { return y; }
+		*/
 
 	private: 
 		std::vector<Component*> components; 
 
+		/*
 		float x; 
 		float y; 
+		*/
 	};
 }
 

@@ -35,6 +35,14 @@ namespace Po
 		}
 	}
 
+	void Scene::OnEnter()
+	{
+	}
+
+	void Scene::OnExit()
+	{
+	}
+
 	void Scene::AddGameObject(GameObject* _gameObject)
 	{
 		gameObjects.push_back(_gameObject); 

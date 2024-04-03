@@ -16,6 +16,9 @@ namespace Po
 		virtual void LateUpdate();
 		virtual void Render(HDC _hdc);
 
+		virtual void OnEnter();
+		virtual void OnExit(); 
+
 		void AddGameObject(GameObject* _gameObject); 
 
 	private:

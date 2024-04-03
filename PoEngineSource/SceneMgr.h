@@ -19,13 +19,17 @@ namespace Po
 		}
 
 		static Scene* LoadScene(const std::wstring& _name)
-		{			
+		{
+			if (activeScene)
+				activeScene->OnExit();
+			
 			std::map<std::wstring, Scene*>::iterator iter = scenes.find(_name);
 
 			if (iter == scenes.end())
 				return nullptr; 
 
 			activeScene = iter->second; 
+			activeScene->OnEnter(); 
 
 			return activeScene;
 		}

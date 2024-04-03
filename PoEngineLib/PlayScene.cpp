@@ -20,7 +20,7 @@ namespace Po
 	void PlayScene::Init()
 	{
 		{
-			Player* bg = new Player();
+			bg = new Player();
 			Transform* tr = bg->AddComponent<Transform>(); 
 			tr->SetPos(Vector2(50.0f, 50.0f));  
 			tr->SetName(L"TR"); 
@@ -53,5 +53,13 @@ namespace Po
 		Scene::Render(_hdc); 
 		wchar_t str[50] = L"Play Scene";
 		TextOut(_hdc, 100, 100, str, 10);
+	}
+	void PlayScene::OnEnter()
+	{
+	}
+	void PlayScene::OnExit()
+	{
+		Transform* tr = bg->AddComponent<Transform>();
+		tr->SetPos(Vector2(0.0f, 0.0f));
 	}
 }

@@ -8,7 +8,7 @@ namespace Po
 		float y;
 
 		Vector2()
-			: x(0.0f), y(0.0f)
+			: x(0.f), y(0.f)
 		{}
 
 		Vector2(float _x, float _y)

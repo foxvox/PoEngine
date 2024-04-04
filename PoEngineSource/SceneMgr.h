@@ -11,6 +11,7 @@ namespace Po
 		{
 			T* scene = new T(); 
 			scene->SetName(_name); 
+			activeScene = scene; 
 			scene->Init(); 
 
 			scenes.insert(std::make_pair(_name, scene)); 
@@ -18,21 +19,8 @@ namespace Po
 			return scene; 
 		}
 
-		static Scene* LoadScene(const std::wstring& _name)
-		{
-			if (activeScene)
-				activeScene->OnExit();
-			
-			std::map<std::wstring, Scene*>::iterator iter = scenes.find(_name);
-
-			if (iter == scenes.end())
-				return nullptr; 
-
-			activeScene = iter->second; 
-			activeScene->OnEnter(); 
-
-			return activeScene;
-		}
+		static Scene* LoadScene(const std::wstring& _name);	
+		static Scene* GetActiveScene() { return activeScene; } 
 
 		static void Init();		
 		static void Update();

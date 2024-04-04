@@ -5,6 +5,7 @@
 #include "Input.h" 
 #include "TitleScene.h" 
 #include "SceneMgr.h" 
+#include "Object.h" 
 
 
 namespace Po
@@ -19,7 +20,7 @@ namespace Po
 	void PlayScene::Init()
 	{
 		{
-			bg = new Player();
+			/*bg = new Player();
 			Transform* tr = bg->AddComponent<Transform>(); 
 			tr->SetPos(Vector2(50.f, 50.f));  
 			tr->SetName(L"TR"); 
@@ -28,7 +29,11 @@ namespace Po
 			sr->SetName(L"SR"); 
 			sr->ImageLoad(L"C:/DevCpp/img/girl.png"); 
 
-			AddGameObject(bg, LayerType::BG); 
+			AddGameObject(bg, LayerType::BG); */
+
+			bg = Instantiate<Player>(LayerType::BG, Vector2(100.f, 100.f)); 
+			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();		
+			sr->ImageLoad(L"C:/DevCpp/img/girl.png");			
 		}
 	}
 
@@ -60,7 +65,7 @@ namespace Po
 
 	void PlayScene::OnExit()
 	{
-		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(50.f, 50.f));
+		/*Transform* tr = bg->GetComponent<Transform>();
+		tr->SetPos(Vector2(50.f, 50.f));*/
 	}
 }

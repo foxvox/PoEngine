@@ -5,12 +5,7 @@ namespace Po
 	Scene::Scene()
 		: layers{} 
 	{
-		layers.resize((size_t)LayerType::Max);
-		for (size_t i = 0; i < (size_t)LayerType::Max; i++)
-		{
-			layers[i] = new Layer(); 
-		}
-
+		CreateLayers(); 
 	}
 
 	Scene::~Scene()
@@ -73,5 +68,12 @@ namespace Po
 		layers[(size_t)_type]->AddGameObject(_gameObj); 
 	}
 
-
+	void Scene::CreateLayers()
+	{
+		layers.resize((size_t)LayerType::Max);
+		for (size_t i = 0; i < (size_t)LayerType::Max; i++)
+		{
+			layers[i] = new Layer();
+		}
+	}
 }

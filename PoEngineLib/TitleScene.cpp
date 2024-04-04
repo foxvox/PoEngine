@@ -1,5 +1,6 @@
 #include "TitleScene.h" 
 #include "SceneMgr.h" 
+#include "Input.h" 
 
 namespace Po
 {

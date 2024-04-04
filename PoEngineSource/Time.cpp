@@ -5,7 +5,7 @@ namespace Po
 	LARGE_INTEGER Time::cpuFreq = {};
 	LARGE_INTEGER Time::prevFreq = {};
 	LARGE_INTEGER Time::curFreq = {};
-	double		  Time::deltaTime = 0.0;
+	double		  Time::deltaTime = 0; 
 
 	void Time::Init()
 	{
@@ -32,7 +32,7 @@ namespace Po
 		wchar_t str[50] = L""; 
 		swprintf_s(str, 50, L"fps: %.2lf", fps); 
 		int len = wcsnlen_s(str, 50); 
-		TextOut(_hdc, 0, 0, str, len);
+		TextOutW(_hdc, 0, 0, str, len);
 	}
 }
 

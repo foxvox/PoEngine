@@ -1,5 +1,4 @@
 #pragma once 
-#include "Input.h" 
 #include "Component.h" 
 
 namespace Po
@@ -38,7 +37,9 @@ namespace Po
 			}
 
 			return component; 
-		}		
+		}	
+
+		void InitTransform(); 
 
 	private: 
 		std::vector<Component*> components; 

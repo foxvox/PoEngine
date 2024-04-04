@@ -1,10 +1,13 @@
 #include "GameObject.h" 
 #include "Time.h" 
+#include "Transform.h" 
 
 namespace Po
 {
 	GameObject::GameObject()		
-	{}	
+	{
+		InitTransform(); 
+	}	
 
 	GameObject::~GameObject() 
 	{
@@ -13,6 +16,11 @@ namespace Po
 			delete comp;
 			comp = nullptr;
 		}
+	} 
+
+	void GameObject::InitTransform()
+	{
+		AddComponent<Transform>();
 	}
 
 	void GameObject::Init()
@@ -46,4 +54,5 @@ namespace Po
 			comp->Render(_hdc);
 		}		
 	}
+
 }

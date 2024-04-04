@@ -5,6 +5,22 @@ namespace Po
 	std::map<std::wstring, Scene*> SceneMgr::scenes = {}; 
 	Scene* SceneMgr::activeScene = nullptr; 
 
+	Scene* SceneMgr::LoadScene(const std::wstring& _name)
+	{
+		if (activeScene)
+			activeScene->OnExit();
+
+		std::map<std::wstring, Scene*>::iterator iter = scenes.find(_name);
+
+		if (iter == scenes.end())
+			return nullptr;
+
+		activeScene = iter->second;
+		activeScene->OnEnter();
+
+		return activeScene;
+	}
+
 	void SceneMgr::Init()
 	{		
 	}

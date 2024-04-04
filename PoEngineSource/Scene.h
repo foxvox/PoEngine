@@ -15,13 +15,15 @@ namespace Po
 		virtual void Init();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(HDC _hdc);
+		virtual void Render(HDC _hdc);		
 
 		virtual void OnEnter();
 		virtual void OnExit(); 
 
-		void AddGameObject(GameObject* _gameObj, LayerType _type); 
+		void AddGameObject(GameObject* _gameObj, LayerType _type); 		
+		Layer* GetLayer(const LayerType _type) { return layers[(size_t)_type]; }
 
+		void CreateLayers(); 
 	private:
 		//std::wstring name; »ó¼Ó 
 		std::vector<Layer*> layers; 

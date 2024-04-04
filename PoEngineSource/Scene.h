@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h" 
 #include "GameObject.h" 
+#include "Layer.h" 
 
 namespace Po
 {
@@ -8,7 +9,7 @@ namespace Po
 	{
 	public:
 		Scene();
-		~Scene(); 
+		~Scene();
 
 		//void SetName(const std::wstring& _name) 상속
 		virtual void Init();
@@ -19,11 +20,11 @@ namespace Po
 		virtual void OnEnter();
 		virtual void OnExit(); 
 
-		void AddGameObject(GameObject* _gameObject); 
+		void AddGameObject(GameObject* _gameObj, LayerType _type); 
 
 	private:
 		//std::wstring name; 상속 
-		std::vector<GameObject*> gameObjects; 
+		std::vector<Layer*> layers; 
 	};
 }
 

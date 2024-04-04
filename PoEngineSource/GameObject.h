@@ -30,7 +30,7 @@ namespace Po
 		T* GetComponent()
 		{
 			T* component = nullptr; 
-			for (Component* comp : components)
+			for (Component* comp : components) 
 			{
 				component = dynamic_cast<T*>(comp); 
 				if (component)
@@ -40,25 +40,8 @@ namespace Po
 			return component; 
 		}		
 
-		/*
-		void SetPos(float _x, float _y)
-		{
-			x = _x; 
-			y = _y; 
-		}
-		
-
-		float GetPosX() const { return x; } 
-		float GetPosY() const { return y; }
-		*/
-
 	private: 
 		std::vector<Component*> components; 
-
-		/*
-		float x; 
-		float y; 
-		*/
 	};
 }
 

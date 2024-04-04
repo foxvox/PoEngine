@@ -8,7 +8,7 @@ namespace Po
 	
 	Input::~Input() {}
 
-	int ASCII[(UINT)KeyCode::END] =
+	int ASCII[(size_t)KeyCode::END] =
 	{
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
@@ -28,7 +28,7 @@ namespace Po
 
 	void Input::CreateKeys()
 	{		
-		for (size_t i = 0; i < (UINT)KeyCode::END; i++)
+		for (size_t i = 0; i < (size_t)KeyCode::END; i++)
 		{
 			Key key = {};
 			key.isPressed = false;
@@ -90,7 +90,7 @@ namespace Po
 
 	bool Input::IsKeyDown(KeyCode _keyCode)
 	{
-		return GetAsyncKeyState(ASCII[(UINT)_keyCode]) & 0x8000;
+		return GetAsyncKeyState(ASCII[(size_t)_keyCode]) & 0x8000;
 	}
 
 }

@@ -37,17 +37,17 @@ namespace Po
 
 		static bool GetKeyDown(KeyCode _keyCode)
 		{
-			return keys[(UINT)_keyCode].keyState == KeyState::Down; 
+			return keys[(size_t)_keyCode].keyState == KeyState::Down;
 		}
 
 		static bool GetKeyUp(KeyCode _keyCode)
 		{
-			return keys[(UINT)_keyCode].keyState == KeyState::Up; 
+			return keys[(size_t)_keyCode].keyState == KeyState::Up;
 		}
 
 		static bool GetKey(KeyCode _keyCode)
 		{
-			return keys[(UINT)_keyCode].keyState == KeyState::Pressed;
+			return keys[(size_t)_keyCode].keyState == KeyState::Pressed;
 		}
 
 	private:

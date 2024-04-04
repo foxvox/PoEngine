@@ -3,35 +3,60 @@
 namespace Po
 {
 	Scene::Scene()
-		: gameObjects{} 
-	{}
+		: layers{} 
+	{
+		layers.resize((size_t)LayerType::Max);
+		for (size_t i = 0; i < (size_t)LayerType::Max; i++)
+		{
+			layers[i] = new Layer(); 
+		}
+
+	}
+
 	Scene::~Scene()
 	{}
 
 	void Scene::Init()
-	{}
-
-	void Scene::Update()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (Layer* layer : layers)
 		{
-			gameObj->Update(); 
+			if (layer == nullptr)
+				continue;
+
+			layer->Init();
+		}
+	}
+
+	void Scene::Update() 
+	{
+		for (Layer* layer : layers)
+		{
+			if (layer == nullptr)
+				continue;
+
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (Layer* layer : layers)
 		{
-			gameObj->LateUpdate();
+			if (layer == nullptr)
+				continue;
+
+			layer->LateUpdate();
 		}
 	}
 
 	void Scene::Render(HDC _hdc)
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (Layer* layer : layers)
 		{
-			gameObj->Render(_hdc);
+			if (layer == nullptr)
+				continue;
+
+			layer->Render(_hdc);
 		}
 	}
 
@@ -43,8 +68,10 @@ namespace Po
 	{		
 	}
 
-	void Scene::AddGameObject(GameObject* _gameObject)
+	void Scene::AddGameObject(GameObject* _gameObj, LayerType _type)
 	{
-		gameObjects.push_back(_gameObject); 
+		layers[(size_t)_type]->AddGameObject(_gameObj); 
 	}
+
+
 }

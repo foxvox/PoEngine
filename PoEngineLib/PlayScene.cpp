@@ -1,9 +1,7 @@
 #include "PlayScene.h" 
-#include "GameObject.h" 
 #include "Player.h" 
 #include "Transform.h" 
 #include "SpriteRenderer.h"  
-#include "PoMath.h" 
 #include "Input.h" 
 #include "TitleScene.h" 
 #include "SceneMgr.h" 
@@ -30,7 +28,7 @@ namespace Po
 			sr->SetName(L"SR"); 
 			sr->ImageLoad(L"C:/DevCpp/img/girl.png"); 
 
-			AddGameObject(bg);
+			AddGameObject(bg, LayerType::BG); 
 		}
 	}
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h" 
 
-namespace Po
+namespace Bx
 {
 	class Entity
 	{

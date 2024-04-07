@@ -1,13 +1,13 @@
 #pragma once
 #include "GameObject.h" 
 
-namespace Po
+namespace Bx
 {
 	class Player : public GameObject
 	{
 	public: 
 		Player();
-		~Player(); 
+		virtual ~Player(); 
 
 		void Init() override;
 		void Update() override;

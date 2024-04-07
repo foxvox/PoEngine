@@ -4,7 +4,7 @@
 #include "Input.h" 
 #include "Time.h" 
 
-namespace Po
+namespace Bx
 {
 	SpriteRenderer::SpriteRenderer() 
 		: image(nullptr), width(0), height(0) 

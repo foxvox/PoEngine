@@ -1,7 +1,7 @@
 #pragma once 
 #include "Scene.h" 
 
-namespace Po 
+namespace Bx 
 {
 	class TitleScene : public Scene 
 	{

@@ -5,7 +5,7 @@
 #include "SceneMgr.h" 
 #include "Scene.h" 
 
-namespace Po  
+namespace Bx  
 {
 	template<typename T> 
 	static T* Instantiate(LayerType _type)   

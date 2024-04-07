@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h" 
 
-namespace Po
+namespace Bx
 {
 	class Player;
 
@@ -9,7 +9,7 @@ namespace Po
 	{
 	public: 
 		PlayScene();
-		~PlayScene();
+		virtual ~PlayScene();
 
 		void Init() override;
 		void Update() override;

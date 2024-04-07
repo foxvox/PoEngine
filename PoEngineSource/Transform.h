@@ -3,13 +3,13 @@
 #include "Component.h" 
 #include "PoMath.h" 
 
-namespace Po
+namespace Bx
 {	 
-	class Transform :public Component
+	class Transform : public Component
 	{
 	public:
 		Transform();
-		~Transform();
+		virtual ~Transform();
 
 		void Init() override;
 		void Update() override;

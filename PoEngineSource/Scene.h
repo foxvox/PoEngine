@@ -3,7 +3,7 @@
 #include "GameObject.h" 
 #include "Layer.h" 
 
-namespace Po
+namespace Bx
 {
 	class Scene : public Entity 
 	{

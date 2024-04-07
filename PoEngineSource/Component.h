@@ -1,7 +1,7 @@
 #pragma once
 #include "Entity.h" 
 
-namespace Po
+namespace Bx
 {
 	class GameObject; 
 
@@ -9,7 +9,7 @@ namespace Po
 	{
 	public:
 		Component(); 
-		~Component(); 
+		virtual ~Component(); 
 
 		virtual void Init();
 		virtual void Update();

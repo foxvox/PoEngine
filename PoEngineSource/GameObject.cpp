@@ -2,7 +2,7 @@
 #include "Time.h" 
 #include "Transform.h" 
 
-namespace Po
+namespace Bx
 {
 	GameObject::GameObject()		
 	{

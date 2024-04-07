@@ -30,6 +30,9 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Layer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
@@ -73,6 +76,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Object.h">
       <Filter>Util</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -86,6 +92,9 @@
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{7916df68-4096-466b-bbd9-0e5ebebd5a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{940aba7a-b90f-4c0e-a10f-5202cae1e2e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

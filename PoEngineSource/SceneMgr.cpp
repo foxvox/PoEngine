@@ -1,6 +1,6 @@
 #include "SceneMgr.h"
 
-namespace Po
+namespace Bx
 {
 	std::map<std::wstring, Scene*> SceneMgr::scenes = {}; 
 	Scene* SceneMgr::activeScene = nullptr; 

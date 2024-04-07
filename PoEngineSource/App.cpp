@@ -3,7 +3,7 @@
 #include "Time.h"  
 #include "SceneMgr.h" 
 
-namespace Po
+namespace Bx
 {
 	App::App()
 		: hwnd(nullptr), hdc(nullptr), width(1600), height(900), 

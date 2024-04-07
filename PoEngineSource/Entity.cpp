@@ -1,6 +1,6 @@
 #include "Entity.h" 
 
-namespace Po
+namespace Bx
 {
 	Entity::Entity() 
 		: name(L"")

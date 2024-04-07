@@ -1,7 +1,7 @@
 #pragma once 
 #include "Component.h" 
 
-namespace Po
+namespace Bx
 {
 	class GameObject
 	{

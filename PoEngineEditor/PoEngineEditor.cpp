@@ -3,7 +3,7 @@
 #include "App.h"  
 #include "../PoEngineLib/LoadScenes.h" 
 
-using namespace Po;
+using namespace Bx;
 #define MAX_LOADSTRING 100
 
 // 전역 변수:

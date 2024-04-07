@@ -3,7 +3,7 @@
 #include "PlayScene.h" 
 #include "TitleScene.h" 
 
-namespace Po
+namespace Bx
 {
 	void LoadScenes()
 	{

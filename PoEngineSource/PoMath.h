@@ -1,6 +1,6 @@
 #pragma once 
 
-namespace Po
+namespace Bx
 {
 	struct Vector2
 	{

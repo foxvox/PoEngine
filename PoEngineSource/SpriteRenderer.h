@@ -1,13 +1,13 @@
 #pragma once
 #include "Component.h" 
 
-namespace Po
+namespace Bx
 {
 	class SpriteRenderer : public Component
 	{
 	public:
 		SpriteRenderer();
-		~SpriteRenderer(); 
+		virtual ~SpriteRenderer(); 
 
 		void Init() override;
 		void Update() override;

@@ -2,7 +2,7 @@
 #include "SceneMgr.h" 
 #include "Input.h" 
 
-namespace Po
+namespace Bx
 {
 	TitleScene::TitleScene()
 	{}

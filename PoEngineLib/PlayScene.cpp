@@ -8,7 +8,7 @@
 #include "Object.h" 
 
 
-namespace Po
+namespace Bx
 {
 	PlayScene::PlayScene()
 		: bg(nullptr) 

@@ -1,6 +1,6 @@
 #include "Component.h" 
 
-namespace Po
+namespace Bx
 {
 	Component::Component() 
 		: owner(nullptr) 

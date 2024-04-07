@@ -3,7 +3,7 @@
 #include "CommonInclude.h" 
 #include "GameObject.h" 
  
-namespace Po  
+namespace Bx  
 {
 	class Layer : public Entity 
 	{

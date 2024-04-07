@@ -1,6 +1,6 @@
 #include "Time.h" 
 
-namespace Po
+namespace Bx
 {
 	LARGE_INTEGER Time::cpuFreq = {};
 	LARGE_INTEGER Time::prevFreq = {};

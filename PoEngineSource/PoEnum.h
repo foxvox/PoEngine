@@ -1,6 +1,6 @@
 #pragma once 
 
-namespace Po
+namespace Bx
 {
 	enum class LayerType
 	{
@@ -8,5 +8,13 @@ namespace Po
 		BG,		
 		Player,  
 		Max = 10, 
+	};
+
+	enum class ResrcType
+	{
+		Texture,
+		AudioClip,
+		Prefab, 
+		End, 
 	};
 }

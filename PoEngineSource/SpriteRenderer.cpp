@@ -3,10 +3,12 @@
 #include "GameObject.h" 
 #include "Input.h" 
 #include "Time.h" 
+#include "Texture.h"
 
 namespace Bx
 {
-	SpriteRenderer::SpriteRenderer() 		
+	SpriteRenderer::SpriteRenderer()
+		: Component(CompType::SR), texture(nullptr), size(Vector2::one)
 	{}
 
 	SpriteRenderer::~SpriteRenderer()
@@ -15,9 +17,9 @@ namespace Bx
 	void SpriteRenderer::Init()
 	{}
 
-	void SpriteRenderer::Update()
+	void SpriteRenderer::Update() 
 	{
-		const float speed = 100.0f;
+		const float speed = 100.f;
 		const float deltaTime = float(Time::GetDeltaTime());
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -52,11 +54,26 @@ namespace Bx
 
 	void SpriteRenderer::Render(HDC _hdc) 
 	{
-		/*Transform* tr = GetOwner()->GetComponent<Transform>();  
+		if (texture == nullptr)
+			assert(false); 
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();  
 		Vector2 pos = tr->GetPos(); 
 
-		Gdiplus::Graphics graphics(_hdc); 
-		graphics.DrawImage(image, Gdiplus::Rect(pos.x, pos.y, width, height)); */
+		if (texture->GetTextureType() == Texture::TextureType::Png) 
+		{
+			Gdiplus::Graphics graphics(_hdc);
+			graphics.DrawImage(texture->GetImage(), 
+				Gdiplus::Rect(pos.x, pos.y, texture->GetWidth() * size.x, texture->GetHeight() * size.y));
+		}
+		else if (texture->GetTextureType() == Texture::TextureType::Bmp)
+		{
+			//dest먼저 src나중에 
+			TransparentBlt(_hdc, pos.x, pos.y, texture->GetWidth() * size.x, texture->GetHeight() * size.y,
+				texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255)); 
+		}
+
+		
 	}
 
 }

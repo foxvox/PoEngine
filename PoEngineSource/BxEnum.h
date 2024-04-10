@@ -2,6 +2,14 @@
 
 namespace Bx
 {
+	enum class CompType
+	{
+		SCRIPT, 
+		TRANS, 
+		SR, 
+		END,
+	};
+
 	enum class LayerType
 	{
 		//None, 

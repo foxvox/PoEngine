@@ -2,8 +2,8 @@
 
 namespace Bx
 {
-	Component::Component() 
-		: owner(nullptr) 
+	Component::Component(CompType _compType) 
+		: compType(_compType), owner(nullptr) 
 	{}
 
 	Component::~Component()

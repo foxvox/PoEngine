@@ -20,6 +20,8 @@ namespace Bx
 			T* comp = new T();
 			comp->Init(); 
 			comp->SetOwner(this); 
+
+			components[(size_t)comp->GetType()] = comp; 
 			components.push_back(comp); 
 
 			return comp; 

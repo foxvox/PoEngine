@@ -3,7 +3,7 @@
 namespace Bx
 {
 	Transform::Transform()
-		: position{} 
+		: Component(CompType::TRANS), position{} 
 	{}
 
 	Transform::~Transform()

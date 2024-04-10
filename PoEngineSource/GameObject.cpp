@@ -6,6 +6,7 @@ namespace Bx
 {
 	GameObject::GameObject()		
 	{
+		components.resize((size_t)CompType::END); 
 		InitTransform(); 
 	}	
 
@@ -27,6 +28,9 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
+			if (comp == nullptr)
+				continue; 
+
 			comp->Init(); 
 		}
 	}
@@ -35,6 +39,9 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
+			if (comp == nullptr)
+				continue;
+
 			comp->Update(); 
 		}
 	}
@@ -43,6 +50,9 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
+			if (comp == nullptr)
+				continue;
+
 			comp->LateUpdate();
 		}
 	}
@@ -51,6 +61,9 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
+			if (comp == nullptr)
+				continue;
+
 			comp->Render(_hdc);
 		}		
 	}

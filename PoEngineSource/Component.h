@@ -8,7 +8,7 @@ namespace Bx
 	class Component : public Entity
 	{
 	public:
-		Component(); 
+		Component(CompType _compType); 
 		virtual ~Component(); 
 
 		virtual void Init();
@@ -18,9 +18,11 @@ namespace Bx
 
 		void SetOwner(GameObject* _owner) {	owner = _owner; }
 		GameObject* GetOwner() const { return owner; } 
+		CompType GetType() const { return compType; } 
 
 	private:
 		GameObject* owner; 
+		CompType	compType; 
 	};
 }
 

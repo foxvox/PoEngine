@@ -25,10 +25,12 @@ namespace Bx
 
 		
 		bg = Instantiate<Player>(LayerType::BG, Vector2(100.f, 100.f)); 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();		
-		//sr->ImageLoad(L"C:/DevCpp/img/girl.png");			
-		Texture* tx = new Texture(); 
-		tx->Load(L"C:/DevCpp/img/girl.png"); 
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>(); 
+		Texture* bg = Resources::Find<Texture>(L"BG"); 
+		sr->SetTexture(bg); 
+				
+		//Texture* tx = new Texture(); 
+		//tx->Load(L"C:/DevCpp/img/girl.png"); 
 
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출 
 		Scene::Init(); 		

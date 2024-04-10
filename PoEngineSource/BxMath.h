@@ -7,6 +7,9 @@ namespace Bx
 		float x;
 		float y;
 
+		static Vector2 one; 
+		static Vector2 zero; 
+
 		Vector2()
 			: x(0.f), y(0.f)
 		{}

@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PoEngineSource/PoEnum.h
+/PoEngineSource/PoMath.h
+/PoEngineSource/PoEnum.h
+/PoEngineSource/PoMath.h

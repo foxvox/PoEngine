@@ -2,7 +2,7 @@
 
 namespace Bx
 {
-	std::map<std::wstring, Scene*> SceneMgr::scenes = {}; 
+	std::map<std::wstring, Scene*> SceneMgr::scenes{}; 
 	Scene* SceneMgr::activeScene = nullptr; 
 
 	Scene* SceneMgr::LoadScene(const std::wstring& _name)

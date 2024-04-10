@@ -1,7 +1,6 @@
 #pragma once 
 #include "Entity.h" 
 #include "Component.h" 
-#include "PoMath.h" 
 
 namespace Bx
 {	 

@@ -2,8 +2,8 @@
 
 namespace Bx
 {
-	Resource::Resource(ResrcType _type) 
-		: type(_type)
+	Resource::Resource(ResrcType _rcType) 
+		: rcType(_rcType)
 	{
 	}
 

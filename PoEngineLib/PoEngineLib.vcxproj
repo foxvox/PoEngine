@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="..\PoEngineSource\Player.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="TitleScene.h" />

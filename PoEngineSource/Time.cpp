@@ -2,9 +2,9 @@
 
 namespace Bx
 {
-	LARGE_INTEGER Time::cpuFreq = {};
-	LARGE_INTEGER Time::prevFreq = {};
-	LARGE_INTEGER Time::curFreq = {};
+	LARGE_INTEGER Time::cpuFreq{};
+	LARGE_INTEGER Time::prevFreq{};
+	LARGE_INTEGER Time::curFreq{};
 	double		  Time::deltaTime = 0; 
 
 	void Time::Init()

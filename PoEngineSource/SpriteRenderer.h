@@ -14,12 +14,9 @@ namespace Bx
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 		
-		void ImageLoad(const std::wstring& path); 
+		//void ImageLoad(const std::wstring& _path); 
 
 	private:
-		Gdiplus::Image* image; 
-		UINT			width;
-		UINT			height; 
 	};
 }
 

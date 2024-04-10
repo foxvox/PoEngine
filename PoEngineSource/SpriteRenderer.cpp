@@ -6,9 +6,9 @@
 
 namespace Bx
 {
-	SpriteRenderer::SpriteRenderer() 
-		: image(nullptr), width(0), height(0) 
+	SpriteRenderer::SpriteRenderer() 		
 	{}
+
 	SpriteRenderer::~SpriteRenderer()
 	{}
 
@@ -52,18 +52,11 @@ namespace Bx
 
 	void SpriteRenderer::Render(HDC _hdc) 
 	{
-		Transform* tr = GetOwner()->GetComponent<Transform>();  
+		/*Transform* tr = GetOwner()->GetComponent<Transform>();  
 		Vector2 pos = tr->GetPos(); 
 
 		Gdiplus::Graphics graphics(_hdc); 
-		graphics.DrawImage(image, Gdiplus::Rect(pos.x, pos.y, width, height)); 
-	}
-
-	void SpriteRenderer::ImageLoad(const std::wstring& path)
-	{
-		image = Gdiplus::Image::FromFile(path.c_str()); 
-		width = image->GetWidth(); 
-		height = image->GetHeight(); 
+		graphics.DrawImage(image, Gdiplus::Rect(pos.x, pos.y, width, height)); */
 	}
 
 }

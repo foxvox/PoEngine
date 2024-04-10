@@ -2,7 +2,7 @@
 
 namespace Bx
 {	
-	vector<Input::Key> Input::keys = {};
+	vector<Input::Key> Input::keys{};
 
 	Input::Input() {}
 	
@@ -30,7 +30,7 @@ namespace Bx
 	{		
 		for (size_t i = 0; i < (size_t)KeyCode::END; i++)
 		{
-			Key key = {};
+			Key key{};
 			key.isPressed = false;
 			key.keyState = KeyState::None;
 			key.keyCode = (KeyCode)i;

@@ -24,6 +24,7 @@
     <ClInclude Include="framework.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="LoadResources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">

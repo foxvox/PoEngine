@@ -1,6 +1,7 @@
 ﻿#include "framework.h"
 #include "PoEngineEditor.h" 
 #include "App.h"  
+#include "../PoEngineLib/LoadResources.h"  
 #include "../PoEngineLib/LoadScenes.h" 
 
 using namespace Bx;
@@ -13,7 +14,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름�
 
 App app; 
 ULONG_PTR token; 
-Gdiplus::GdiplusStartupInput input; 
+Gdiplus::GdiplusStartupInput gpsi; 
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -70,7 +71,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex{};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -109,9 +110,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-   Gdiplus::GdiplusStartup(&token, &input, NULL); 
+   Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
 
    // Load Scenes... 
+   LoadResources(); 
    LoadScenes(); 
 
    return TRUE;

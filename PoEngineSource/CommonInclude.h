@@ -1,5 +1,7 @@
 #pragma once
 #include <Windows.h> 
+#include <assert.h> 
+
 #include <algorithm> 
 #include <vector>
 #include <string>
@@ -13,7 +15,7 @@
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")  
 
-#include "PoMath.h" 
-#include "PoEnum.h" 
+#include "BxMath.h" 
+#include "BxEnum.h" 
 
 

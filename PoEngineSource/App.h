@@ -16,6 +16,7 @@ namespace Bx
 		void LateUpdate();
 		void Render();
 
+		HDC  GetHDC() const { return hdc; } 
 		void ClearBackBuf(); 
 		void SwapChain(HDC disp, HDC back); 
 		void CreateBackBuf(UINT _width, UINT _height); 

@@ -6,6 +6,8 @@
 #include "TitleScene.h" 
 #include "SceneMgr.h" 
 #include "Object.h" 
+#include "Texture.h" 
+#include "Resources.h" 
 
 
 namespace Bx
@@ -19,22 +21,17 @@ namespace Bx
 
 	void PlayScene::Init()
 	{
-		{
-			/*bg = new Player();
-			Transform* tr = bg->AddComponent<Transform>(); 
-			tr->SetPos(Vector2(50.f, 50.f));  
-			tr->SetName(L"TR"); 
+		//게임오브젝트 만들기 전에 전부 Load 해 두면 좋다. 
 
-			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-			sr->SetName(L"SR"); 
-			sr->ImageLoad(L"C:/DevCpp/img/girl.png"); 
+		
+		bg = Instantiate<Player>(LayerType::BG, Vector2(100.f, 100.f)); 
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();		
+		//sr->ImageLoad(L"C:/DevCpp/img/girl.png");			
+		Texture* tx = new Texture(); 
+		tx->Load(L"C:/DevCpp/img/girl.png"); 
 
-			AddGameObject(bg, LayerType::BG); */
-
-			bg = Instantiate<Player>(LayerType::BG, Vector2(100.f, 100.f)); 
-			SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();		
-			sr->ImageLoad(L"C:/DevCpp/img/girl.png");			
-		}
+		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출 
+		Scene::Init(); 		
 	}
 
 	void PlayScene::Update()

@@ -136,11 +136,13 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="PlayerScript.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PoEngineSource\Player.cpp" />
+    <ClCompile Include="PlayerScript.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="PoEngineLib.cpp" />
     <ClCompile Include="TitleScene.cpp" />

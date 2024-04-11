@@ -25,13 +25,13 @@ namespace Bx
 	{
 		GameObject::LateUpdate(); 
 
-		if (Input::GetKey(KeyCode::Right))
+		/*if (Input::GetKey(KeyCode::Right))
 		{
 			Transform* tr = GetComponent<Transform>(); 
 			Vector2 pos = tr->GetPos(); 
 			pos.x += 100.0f * Time::GetDeltaTime(); 
 			tr->SetPos(pos); 
-		}
+		}*/
 	}
 
 	void Player::Render(HDC _hdc)

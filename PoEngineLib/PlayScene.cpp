@@ -7,7 +7,8 @@
 #include "SceneMgr.h" 
 #include "Object.h" 
 #include "Texture.h" 
-#include "Resources.h" 
+#include "Resources.h"
+#include "PlayerScript.h" 
 
 
 namespace Bx
@@ -24,10 +25,12 @@ namespace Bx
 		//게임오브젝트 만들기 전에 전부 Load 해 두면 좋다. 
 
 		
-		bg = Instantiate<Player>(LayerType::BG, Vector2(100.f, 100.f)); 
+		bg = Instantiate<Player>(LayerType::BG/*, Vector2(100.f, 100.f)*/);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>(); 
-		Texture* bg = Resources::Find<Texture>(L"BG"); 
-		sr->SetTexture(bg); 
+		bg->AddComponent<PlayerScript>(); 
+
+		Texture* bgtx = Resources::Find<Texture>(L"BG");
+		sr->SetTexture(bgtx);
 				
 		//Texture* tx = new Texture(); 
 		//tx->Load(L"C:/DevCpp/img/girl.png"); 

@@ -9,6 +9,7 @@
 #include "Texture.h" 
 #include "Resources.h"
 #include "PlayerScript.h" 
+#include "Camera.h" 
 
 
 namespace Bx
@@ -22,19 +23,18 @@ namespace Bx
 
 	void PlayScene::Init()
 	{
-		//게임오브젝트 만들기 전에 전부 Load 해 두면 좋다. 
+		//Camera 
+		GameObject* camera = Instantiate<GameObject>(LayerType::None); 
+		camera->AddComponent<Camera>(); 
 
-		
+		//게임오브젝트 만들기 전에 전부 Load 해 두면 좋다. 		
 		bg = Instantiate<Player>(LayerType::BG/*, Vector2(100.f, 100.f)*/);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>(); 
 		bg->AddComponent<PlayerScript>(); 
 
 		Texture* bgtx = Resources::Find<Texture>(L"BG");
-		sr->SetTexture(bgtx);
-				
-		//Texture* tx = new Texture(); 
-		//tx->Load(L"C:/DevCpp/img/girl.png"); 
-
+		sr->SetTexture(bgtx);				
+		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출 
 		Scene::Init(); 		
 	}

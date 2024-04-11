@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h" 
+//#include "GameObject.h" 
 
 namespace Bx
 {

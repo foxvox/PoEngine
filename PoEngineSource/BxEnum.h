@@ -4,15 +4,16 @@ namespace Bx
 {
 	enum class CompType
 	{
+		CAMERA, 
 		SCRIPT, 
 		TRANS, 
-		SR, 
-		END,
+		SR,		
+		END, 
 	};
 
 	enum class LayerType
 	{
-		//None, 
+		None, 
 		BG,		
 		Player,  
 		Max = 10, 

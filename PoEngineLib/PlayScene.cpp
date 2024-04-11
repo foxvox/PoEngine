@@ -26,11 +26,12 @@ namespace Bx
 		//Camera 
 		GameObject* camera = Instantiate<GameObject>(LayerType::None); 
 		camera->AddComponent<Camera>(); 
+		camera->AddComponent<PlayerScript>(); 
 
 		//게임오브젝트 만들기 전에 전부 Load 해 두면 좋다. 		
 		bg = Instantiate<Player>(LayerType::BG/*, Vector2(100.f, 100.f)*/);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>(); 
-		bg->AddComponent<PlayerScript>(); 
+		//bg->AddComponent<PlayerScript>(); 
 
 		Texture* bgtx = Resources::Find<Texture>(L"BG");
 		sr->SetTexture(bgtx);				

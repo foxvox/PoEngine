@@ -24,7 +24,11 @@ namespace Bx
 			destPos = tr->GetPos(); 
 		}
 
-		relativePos = destPos - (resolution / 2.0); 
+		//GetOwner를 통해 게임오브젝트 인스턴스를 가져온다. 
+		Transform* camTr = GetOwner()->GetComponent<Transform>();
+		destPos = camTr->GetPos();
+
+		relativePos = destPos - (resolution / 2.f); 
 	}
 	void Camera::LateUpdate()
 	{

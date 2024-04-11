@@ -6,7 +6,7 @@ namespace Bx
 	class Camera : public Component 
 	{
 	public: 
-		Vector2 CalPos(Vector2 _pos) { return _pos - relativePos; }  
+		Vector2 CalPos(Vector2 _pos) const { return _pos - relativePos; }  
 
 		Camera();
 		~Camera();

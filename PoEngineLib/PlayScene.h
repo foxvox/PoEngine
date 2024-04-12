@@ -18,8 +18,8 @@ namespace Bx
 
 		void OnEnter() override;
 		void OnExit() override; 
-	private: 		
-		Player* bg; 
+	private:
+		Player*	player; 
 	};
 }
 

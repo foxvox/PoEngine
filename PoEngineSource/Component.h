@@ -18,8 +18,8 @@ namespace Bx
 		virtual void Render(HDC _hdc);
 
 		void SetOwner(GameObject* _owner) {	owner = _owner; }
-		GameObject* GetOwner() const { return owner; } 
-		CompType GetType() const { return compType; } 
+		GameObject* GetOwner() { return owner; } 
+		CompType GetType() { return compType; } 
 
 	private:
 		GameObject* owner; 

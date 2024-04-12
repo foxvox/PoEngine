@@ -6,7 +6,11 @@ namespace Bx
 	class Camera : public Component 
 	{
 	public: 
-		Vector2 CalPos(Vector2 _pos) const { return _pos - relativePos; }  
+		Vector2 CalPos(Vector2& _pos)
+		{
+			Vector2 calPos = _pos - relativePos;
+			return calPos; 
+		}  
 
 		Camera();
 		~Camera();
@@ -17,7 +21,6 @@ namespace Bx
 		void Render(HDC _hdc) override; 
 
 	private:		
-		//std::vector<GameObject*> gameObjects; 
 		Vector2		relativePos; 
 		Vector2		resolution; 
 		Vector2		destPos;

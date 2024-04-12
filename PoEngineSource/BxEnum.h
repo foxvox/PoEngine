@@ -15,8 +15,9 @@ namespace Bx
 	{
 		None, 
 		BG,		
-		Player,  
-		Max = 10, 
+		PLAYER, 
+		MAP, 
+		MAX = 10, 
 	};
 
 	enum class ResrcType

@@ -16,11 +16,11 @@ namespace Bx
 
 		virtual HRESULT Load(const std::wstring& _path); 
 
-		UINT GetWidth() const { return width; }
-		UINT GetHeight() const { return height; } 
-		HDC GetHDC() const { return hdc; } 
-		TextureType GetTextureType() const { return txType; } 
-		Gdiplus::Image* GetImage() const { return image; }
+		UINT GetWidth() { return width; }
+		UINT GetHeight() { return height; } 
+		HDC GetHDC() { return hdc; } 
+		TextureType GetTextureType() { return txType; } 
+		Gdiplus::Image* GetImage() { return image; }
 
 	private:
 		TextureType		 txType; 

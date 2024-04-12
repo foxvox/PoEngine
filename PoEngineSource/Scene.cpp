@@ -70,8 +70,8 @@ namespace Bx
 
 	void Scene::CreateLayers()
 	{
-		layers.resize((size_t)LayerType::Max);
-		for (size_t i = 0; i < (size_t)LayerType::Max; i++)
+		layers.resize((size_t)LayerType::MAX);
+		for (size_t i = 0; i < (size_t)LayerType::MAX; i++)
 		{
 			layers[i] = new Layer();
 		}

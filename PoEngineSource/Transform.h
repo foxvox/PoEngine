@@ -16,7 +16,7 @@ namespace Bx
 		void Render(HDC _hdc) override;
 
 		void SetPos(Vector2 _pos) { position.x = _pos.x; position.y = _pos.y; } 
-		Vector2 GetPos() const { return position; } 
+		Vector2 GetPos() { return position; } 
 
 	private: 
 		Vector2 position; 

@@ -6,7 +6,7 @@
 namespace Bx
 {
 	App::App()
-		: hwnd(nullptr), hdc(nullptr), width(1600), height(900), 
+		: hwnd(nullptr), hdc(nullptr), width(672), height(846), 
 		backhdc(nullptr), backBuf(nullptr) 
 	{}
 
@@ -73,10 +73,10 @@ namespace Bx
 		Rectangle(backhdc, -1, -1, width + 1, height + 1);
 	}
 
-	void App::SwapChain(HDC disp, HDC back)
+	void App::SwapChain(HDC _disp, HDC _back)
 	{
 		//백버퍼에 있는 것을 원본 버퍼에 그려준다.
-		BitBlt(disp, 0, 0, width, height, back, 0, 0, SRCCOPY);
+		BitBlt(_disp, 0, 0, width, height, _back, 0, 0, SRCCOPY);
 	}
 
 	void App::Render()

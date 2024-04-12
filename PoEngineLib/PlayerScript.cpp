@@ -16,7 +16,7 @@ namespace Bx
 	{
 	}
 	void PlayerScript::Update()
-	{
+	{		
 		if (Input::GetKey(KeyCode::Right))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -32,10 +32,28 @@ namespace Bx
 			pos.x -= 100.0f * Time::GetDeltaTime();
 			tr->SetPos(pos);
 		}
+
+		if (Input::GetKey(KeyCode::Up))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			Vector2 pos = tr->GetPos();
+			pos.y -= 100.0f * Time::GetDeltaTime();
+			tr->SetPos(pos);
+		}
+
+		if (Input::GetKey(KeyCode::Down))
+		{
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			Vector2 pos = tr->GetPos();
+			pos.y += 100.0f * Time::GetDeltaTime();
+			tr->SetPos(pos);
+		}	
 	}
+
 	void PlayerScript::LateUpdate()
 	{
 	}
+
 	void PlayerScript::Render(HDC _hdc)
 	{
 	}

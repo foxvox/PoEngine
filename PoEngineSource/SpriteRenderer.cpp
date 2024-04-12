@@ -3,7 +3,9 @@
 #include "GameObject.h" 
 #include "Input.h" 
 #include "Time.h" 
-#include "Texture.h"
+#include "Texture.h" 
+#include "Camera.h" 
+#include "Renderer.h" 
 
 namespace Bx
 {
@@ -18,7 +20,7 @@ namespace Bx
 	{}
 
 	void SpriteRenderer::Update() 
-	{
+	{		
 		const float speed = 100.f;
 		const float deltaTime = float(Time::GetDeltaTime());
 
@@ -46,7 +48,7 @@ namespace Bx
 			y += speed * deltaTime;
 		}
 
-		tr->SetPos(Vector2(x, y));  
+		tr->SetPos(Vector2(x, y));  	
 	}
 
 	void SpriteRenderer::LateUpdate()
@@ -59,6 +61,10 @@ namespace Bx
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();  
 		Vector2 pos = tr->GetPos(); 
+		Vector2 camPos = camera->CalPos(pos); 
+
+		//캠위치를 게임오브젝트 위치에 할당
+		//pos = camPos; 
 
 		if (texture->GetTextureType() == Texture::TextureType::Png) 
 		{

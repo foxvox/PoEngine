@@ -1,21 +1,24 @@
 #include "Camera.h" 
 #include "Transform.h" 
+#include "App.h" 
+
+extern Bx::App app; 
 
 namespace Bx
 {
 	Camera::Camera() 
-		: Component(CompType::CAMERA), 
-		relativePos(Vector2::zero), 
-		destPos(Vector2::zero),
-		resolution(Vector2(1600.f, 900.f)), 		
-		target(nullptr) 
+		: Component(CompType::CAMERA), target(nullptr) 
 	{}
+
 	Camera::~Camera()
-	{
-	}
+	{}
+
 	void Camera::Init()
 	{
+		resolution.x = (float)app.GetWidth(); 
+		resolution.y = (float)app.GetHeight(); 
 	}
+
 	void Camera::Update()
 	{
 		if (target)
@@ -27,8 +30,8 @@ namespace Bx
 		//GetOwner를 통해 게임오브젝트 인스턴스를 가져온다. 
 		Transform* camTr = GetOwner()->GetComponent<Transform>();
 		destPos = camTr->GetPos();
-
-		relativePos = destPos - (resolution / 2.f); 
+		Vector2 halfResolution = resolution / 2.f; 
+		relativePos = destPos - halfResolution; 
 	}
 	void Camera::LateUpdate()
 	{

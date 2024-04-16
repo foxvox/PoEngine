@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bx::Player" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAABACAQAAABA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::PlayScene" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAAAAAAAAIAAACAAQAAABAJACAAAAAAA=</HashCode>
+      <FileName>PlayScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::TitleScene" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAIIAAAAAAAIAAABACAAAAAAA=</HashCode>
+      <FileName>TitleScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::PlayerScript" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAAAAAAAAIAAAAAAAgAAAABACAAAAAAA=</HashCode>
+      <FileName>PlayerScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::App" Collapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAgAAQAQAAgYQBAAAACAAAAAhACAEigBAI=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\App.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Camera" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAAAAYAAAICAAAACAAAAAABACAAAkAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::GameObject" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAABAAAIAAAAAACAJAAAAAAAAAAAABACAAIAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Component" Collapsed="true">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAIAIAAoAAAAAAAIAAAAAAAAAEAABBCAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Entity" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAQAAABAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Input" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAoIAAAAAAAIAAQAMAAAAAAgAEACQAgAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Layer" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAQAAAAABAAAAAAAIAAAAAAAAAAEABACAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Layer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Resource" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAACAAAAAAACIAAAAAAAEAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Resource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Resources" Collapsed="true">
+    <Position X="23" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAACAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Resources.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Scene" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAAAAAAgAAAIAAAQAAQAAAAAJACRAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::SceneMgr" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAABAKIAAAAAEAAgAABACAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\SceneMgr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Script" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAABACAAAhAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Script.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::SpriteRenderer" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAAAAAAAAIAIIAAAACAAAgAAABACAAAAIAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\SpriteRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Texture" Collapsed="true">
+    <Position X="17" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Bx::Texture::TextureType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\DevCpp\PoEngine\PoEngineSource\Texture.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAgAQAQAAAQABYEBAAAgAAAAIAAEAABAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Time" Collapsed="true">
+    <Position X="21.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEAAQAAIAAAAAAQAAAAAAAAABACAEAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Time.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bx::Transform" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAAAIAwAAAAAAAAAABACAAAAAIA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Transform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Bx::Vector2" Collapsed="true">
+    <Position X="19.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAABAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\BxMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Bx::KeyState" Collapsed="true">
+    <Position X="23" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAI=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Bx::KeyCode" Collapsed="true">
+    <Position X="21.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAgAAAAAAACACAvv//YQM=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Bx::CompType" Collapsed="true">
+    <Position X="19.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAggAAAAAAAAIAAAAAACAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\BxEnum.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Bx::LayerType" Collapsed="true">
+    <Position X="19.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\BxEnum.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Bx::ResrcType" Collapsed="true">
+    <Position X="21.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAIIAAAAAAAA=</HashCode>
+      <FileName>C:\DevCpp\PoEngine\PoEngineSource\BxEnum.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

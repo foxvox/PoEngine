@@ -28,12 +28,12 @@ namespace Bx
 		GameObject* cam = Instantiate<GameObject>(LayerType::None, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
 		camera = camComp; 
-		cam->AddComponent<PlayerScript>(); 
+		//cam->AddComponent<PlayerScript>(); 
 
 		GameObject* bg = Instantiate<GameObject>(LayerType::BG);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetSize(Vector2(3.0f, 3.0f));
-		bg->AddComponent<PlayerScript>();
+		//bg->AddComponent<PlayerScript>();
 
 		Texture* bgtx = Resources::Find<Texture>(L"Map");
 		bgsr->SetTexture(bgtx);
@@ -41,12 +41,12 @@ namespace Bx
 		player = Instantiate<Player>(LayerType::PLAYER);
 		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		sr->SetSize(Vector2(3.0f, 3.0f));
-		bg->AddComponent<PlayerScript>();
+		player->AddComponent<PlayerScript>();
 
 		Texture* pmtx = Resources::Find<Texture>(L"Pacman");
 		sr->SetTexture(pmtx);
 		
-		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출 
+		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		
 	}
 
@@ -67,9 +67,11 @@ namespace Bx
 
 	void PlayScene::Render(HDC _hdc)
 	{
-		Scene::Render(_hdc); 
-		wchar_t str[50] = L"Play Scene";
-		TextOutW(_hdc, 100, 100, str, 10);
+		Scene::Render(_hdc);
+
+		//Scene 전환 확인용 코드		
+		/*wchar_t str[50] = L"Play Scene";
+		TextOutW(_hdc, 100, 100, str, 10);*/
 	}
 
 	void PlayScene::OnEnter()

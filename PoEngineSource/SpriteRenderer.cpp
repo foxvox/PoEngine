@@ -20,7 +20,8 @@ namespace Bx
 	{}
 
 	void SpriteRenderer::Update() 
-	{		
+	{
+		/* PlayerScript에서 처리하기로 함 deprecated 
 		const float speed = 100.f;
 		const float deltaTime = float(Time::GetDeltaTime());
 
@@ -48,7 +49,8 @@ namespace Bx
 			y += speed * deltaTime;
 		}
 
-		tr->SetPos(Vector2(x, y));  	
+		tr->SetPos(Vector2(x, y)); 
+		*/
 	}
 
 	void SpriteRenderer::LateUpdate()

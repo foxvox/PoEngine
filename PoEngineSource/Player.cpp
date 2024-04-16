@@ -13,7 +13,7 @@ namespace Bx
 
 	void Player::Init()
 	{
-		GameObject::Init(); 
+		GameObject::Init();  
 	}
 
 	void Player::Update()
@@ -24,14 +24,6 @@ namespace Bx
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate(); 
-
-		/*if (Input::GetKey(KeyCode::Right))
-		{
-			Transform* tr = GetComponent<Transform>(); 
-			Vector2 pos = tr->GetPos(); 
-			pos.x += 100.0f * Time::GetDeltaTime(); 
-			tr->SetPos(pos); 
-		}*/
 	}
 
 	void Player::Render(HDC _hdc)

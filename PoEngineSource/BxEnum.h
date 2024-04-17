@@ -7,24 +7,26 @@ namespace Bx
 		CAMERA, 
 		SCRIPT, 
 		TRANS, 
-		SR,		
+		SR,
+		ANI, 
 		END, 
 	};
 
 	enum class LayerType
 	{
-		None, 
+		NONE, 
 		BG,		
 		PLAYER, 
 		MAP, 
 		MAX = 10, 
 	};
 
-	enum class ResrcType
+	enum class ResrcType 
 	{
-		Texture,
-		AudioClip,
-		Prefab, 
-		End, 
+		TEXTURE,
+		AUDIOCLIP,
+		ANI, 
+		PREFAB, 
+		END, 
 	};
 }

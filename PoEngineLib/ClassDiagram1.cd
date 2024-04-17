@@ -56,13 +56,6 @@
       <FileName>C:\DevCpp\PoEngine\PoEngineSource\Component.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Bx::Entity" Collapsed="true">
-    <Position X="9" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAQAAABAA=</HashCode>
-      <FileName>C:\DevCpp\PoEngine\PoEngineSource\Entity.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Bx::Input" Collapsed="true">
     <Position X="21.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -121,13 +114,6 @@
   </Class>
   <Class Name="Bx::Texture" Collapsed="true">
     <Position X="17" Y="3.25" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Bx::Texture::TextureType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>C:\DevCpp\PoEngine\PoEngineSource\Texture.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAgAQAQAAAQABYEBAAAgAAAAIAAEAABAA=</HashCode>
       <FileName>C:\DevCpp\PoEngine\PoEngineSource\Texture.h</FileName>
@@ -171,7 +157,7 @@
   <Enum Name="Bx::CompType" Collapsed="true">
     <Position X="19.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAggAAAAAAAAIAAAAAACAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAggAgAAAAAAIAAAAAACAA=</HashCode>
       <FileName>C:\DevCpp\PoEngine\PoEngineSource\BxEnum.h</FileName>
     </TypeIdentifier>
   </Enum>

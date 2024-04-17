@@ -8,7 +8,7 @@ namespace Bx
 	public: 
 		enum class TextureType
 		{
-			Bmp, Png, None,
+			BMP, PNG, NONE,
 		};
 
 		Texture(); 

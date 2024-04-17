@@ -6,7 +6,7 @@ extern Bx::App app;  // 외부 파일에 있는 전역변수를 사용하겠다고 전방선언
 namespace Bx
 {
 	Texture::Texture() 
-		: Resource(ResrcType::Texture), txType(TextureType::None), width(0), height(0) 
+		: Resource(ResrcType::TEXTURE), txType(TextureType::NONE), width(0), height(0) 
 	{}								
 
 	Texture::~Texture()			
@@ -25,7 +25,7 @@ namespace Bx
 
 			width = image->GetWidth();
 			height = image->GetHeight();
-			txType = TextureType::Png; 
+			txType = TextureType::PNG; 
 		}
 		else if (ext == L"bmp") 
 		{
@@ -40,7 +40,7 @@ namespace Bx
 
 			width = info.bmWidth; 
 			height = info.bmHeight; 
-			txType = TextureType::Bmp; 
+			txType = TextureType::BMP; 
 
 			HDC mainDC = app.GetHDC(); 
 			hdc = CreateCompatibleDC(mainDC); 

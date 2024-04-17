@@ -75,7 +75,7 @@ namespace Bx
 
 	void App::SwapChain(HDC _disp, HDC _back)
 	{
-		//백버퍼에 있는 것을 원본 버퍼에 그려준다.
+		//백버퍼에 있는 것을 원본버퍼에 그려준다.
 		BitBlt(_disp, 0, 0, width, height, _back, 0, 0, SRCCOPY);
 	}
 
@@ -86,6 +86,7 @@ namespace Bx
 		Time::Render(backhdc);
 		SceneMgr::Render(backhdc);
 		
+		//백버퍼와 원본버퍼를 Swap
 		SwapChain(hdc, backhdc); 
 	}
 

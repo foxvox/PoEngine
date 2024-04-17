@@ -65,16 +65,16 @@ namespace Bx
 		Vector2 pos = tr->GetPos(); 
 		Vector2 camPos = camera->CalPos(pos); 
 
-		//캠위치를 게임오브젝트 위치에 할당
-		//pos = camPos; 
+		//캠위치를 게임오브젝트 위치에 할당, 카메라 오작동시 할당 취소
+		pos = camPos; 
 
-		if (texture->GetTextureType() == Texture::TextureType::Png) 
+		if (texture->GetTextureType() == Texture::TextureType::PNG) 
 		{
 			Gdiplus::Graphics graphics(_hdc);
 			graphics.DrawImage(texture->GetImage(), 
 				Gdiplus::Rect(pos.x, pos.y, texture->GetWidth() * size.x, texture->GetHeight() * size.y));
 		}
-		else if (texture->GetTextureType() == Texture::TextureType::Bmp)
+		else if (texture->GetTextureType() == Texture::TextureType::BMP) 
 		{
 			//dest먼저 src나중에 
 			TransparentBlt(_hdc, pos.x, pos.y, texture->GetWidth() * size.x, texture->GetHeight() * size.y,

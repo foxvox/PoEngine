@@ -25,7 +25,7 @@ namespace Bx
 	void PlayScene::Init()
 	{
 		//Camera 
-		GameObject* cam = Instantiate<GameObject>(LayerType::None, Vector2(336.f, 423.f)); 
+		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
 		camera = camComp; 
 		//cam->AddComponent<PlayerScript>(); 

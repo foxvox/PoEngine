@@ -10,12 +10,13 @@ namespace Bx
 		struct Sprite
 		{
 			Vector2 tLeftTop; 
-			Vector2 tSize; 
+			Vector2 tSpan; 
 			Vector2 tOffSet; 
 			float	tTimeLag; 
 
 			Sprite()
-			: tLeftTop(Vector2::zero), tSize(Vector2::zero), tOffSet(Vector2::zero)
+			: tLeftTop(Vector2::zero), tSpan(Vector2::zero), 
+				tOffSet(Vector2::zero), tTimeLag(0.f) 
 			{}
 		};
 
@@ -24,8 +25,11 @@ namespace Bx
 
 		HRESULT Load(const std::wstring& _path) override;
 
+		void Update();
+		void Render(HDC _hdc); 
+
 		void CreateAnimation(const std::wstring& _name, Texture* _spriteSheet,
-			Vector2 _leftTop, Vector2 _size, Vector2 _offSet,
+			Vector2 _leftTop, Vector2 _span, Vector2 _offSet,
 			UINT _spriteNum, float _timeLag); 
 
 		void Reset(); 

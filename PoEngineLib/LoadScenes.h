@@ -9,8 +9,7 @@ namespace Bx
 	{
 		SceneMgr::CreateScene<TitleScene>(L"TitleScene");
 		SceneMgr::CreateScene<PlayScene>(L"PlayScene");
-		//SceneMgr::CreateScene<EndScene>(L"EndScene");		 
-
+		//SceneMgr::CreateScene<EndScene>(L"EndScene");	
 		SceneMgr::LoadScene(L"PlayScene");
 	}
 }

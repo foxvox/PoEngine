@@ -17,7 +17,7 @@ namespace Bx
 		void Render(HDC _hdc) override; 
 
 		void CreateAnimation(const std::wstring& _name, Texture* _spriteSheet,
-			Vector2 _leftTop, Vector2 _size, Vector2 _offSet, 
+			Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
 			UINT _spriteNum, float _timeLag); 
 
 		Animation* FindAnimation(const std::wstring& _name); 

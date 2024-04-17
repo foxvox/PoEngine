@@ -11,6 +11,7 @@
 #include "PlayerScript.h" 
 #include "Camera.h" 
 #include "Renderer.h" 
+#include "Animator.h" 
 
 
 namespace Bx
@@ -28,13 +29,11 @@ namespace Bx
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
 		camera = camComp; 
-		//cam->AddComponent<PlayerScript>(); 
-
+	
 		GameObject* bg = Instantiate<GameObject>(LayerType::BG);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
 		bgsr->SetSize(Vector2(3.0f, 3.0f));
-		//bg->AddComponent<PlayerScript>();
-
+		
 		Texture* bgtx = Resources::Find<Texture>(L"Map");
 		bgsr->SetTexture(bgtx);
 
@@ -43,8 +42,11 @@ namespace Bx
 		sr->SetSize(Vector2(3.0f, 3.0f));
 		player->AddComponent<PlayerScript>();
 
-		Texture* pmtx = Resources::Find<Texture>(L"Pacman");
-		sr->SetTexture(pmtx);
+		//Texture* pmtx = Resources::Find<Texture>(L"Pacman"); 
+		//sr->SetTexture(pmtx);
+
+		Texture* chickentx = Resources::Find<Texture>(L"Cat");
+		sr->SetTexture(chickentx);
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

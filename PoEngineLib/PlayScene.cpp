@@ -28,24 +28,28 @@ namespace Bx
 		//Camera 
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
-		camera = camComp; 
-	
+		camera = camComp;
+
+		//배경	
 		GameObject* bg = Instantiate<GameObject>(LayerType::BG);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetSize(Vector2(3.0f, 3.0f));		
-		Texture* bgtx = Resources::Find<Texture>(L"Map");
+		//bgsr->SetSize(Vector2(3.0f, 3.0f));		
+		Texture* bgtx = Resources::Find<Texture>(L"Bubble");
 		bgsr->SetTexture(bgtx);
 
+		//플레이어
 		player = Instantiate<Player>(LayerType::PLAYER);
 		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		//sr->SetSize(Vector2(3.0f, 3.0f));
 		player->AddComponent<PlayerScript>();
-		//Texture* pmtx = Resources::Find<Texture>(L"Pacman"); 
-		//sr->SetTexture(pmtx);
-		Texture* cattx = Resources::Find<Texture>(L"Cat");
+		Texture* cattx = Resources::Find<Texture>(L"Effect");
 		Animator* animator = player->AddComponent<Animator>(); 
-		animator->CreateAnimation(L"CatFrontMove", cattx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.4f); 
+		animator->CreateAnimation(L"CatFrontMove", cattx, Vector2(0.f, 0.f), Vector2(386.f, 246.f), Vector2::zero, 8, 0.1f); 
 		animator->PlayAnimation(L"CatFrontMove", true); 
+		
+		player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
+		player->GetComponent<Transform>()->SetRot(30.f);		
+		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 200.f));
 		//sr->SetTexture(cattx);
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  

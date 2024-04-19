@@ -26,15 +26,13 @@ namespace Bx
 	}
 
 	void Time::Render(HDC _hdc)
-	{
-		/*
+	{		
 		double fps = 1.0 / deltaTime;
 
 		wchar_t str[50] = L""; 
 		swprintf_s(str, 50, L"fps: %.2lf", fps); 
 		int len = wcsnlen_s(str, 50); 
 		TextOutW(_hdc, 0, 0, str, len);
-		*/
 	}
 }
 

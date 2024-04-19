@@ -14,12 +14,18 @@ namespace Bx
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
-
-		void SetPos(Vector2 _pos) { position.x = _pos.x; position.y = _pos.y; } 
+		
 		Vector2 GetPos() { return position; } 
+		void	SetPos(Vector2 _pos) { position.x = _pos.x; position.y = _pos.y; }
+		float	GetRot() { return rotation; } 
+		void	SetRot(float _rot) { rotation = _rot; }
+		Vector2 GetScale() { return scale; } 
+		void	SetScale(Vector2 _scale) { scale = _scale; } 
 
 	private: 
 		Vector2 position; 
+		Vector2 scale; 
+		float	rotation; 
 	};
 }
 

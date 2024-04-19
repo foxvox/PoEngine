@@ -34,6 +34,6 @@ namespace Bx
 	{
 		Scene::Render(_hdc);
 		wchar_t str[50] = L"Title Scene";
-		TextOut(_hdc, 100, 100, str, 11);
+		TextOutW(_hdc, 100, 100, str, 11);
 	}
 }

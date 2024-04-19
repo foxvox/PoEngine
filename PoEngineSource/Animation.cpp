@@ -52,31 +52,43 @@ namespace Bx
 		GameObject* gameObj = animator->GetOwner();
 		Transform* tr = gameObj->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
-		Vector2 camPos{}; 
-
+		float rot = tr->GetRot();
+		Vector2 scale = tr->GetScale();
+		
+		//Vector2 camPos{}; 
 		/*
 		if (camera)
 		{
 			camPos = camera->CalPos(pos); 
 			pos = camPos; 
 		}
-		*/
+		*/ 
 
 		Sprite sprite = aniSheet[index];
 
 		Texture::TextureType tt = texture->GetTextureType(); 
 		if (tt == Texture::TextureType::PNG)
 		{
+			//내가 원하는 픽셀을 투명화 시킬 때 
 			Gdiplus::ImageAttributes imgAttrib{}; 
-			imgAttrib.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255)); 
+			//투명화 시킬 픽셀의 색 범위
+			imgAttrib.SetColorKey(Gdiplus::Color(240, 240, 240), Gdiplus::Color(255, 255, 255)); 
+
 			Gdiplus::Graphics graphics(_hdc);
-			graphics.DrawImage(texture->GetImage(), Gdiplus::Rect(pos.x, pos.y, sprite.tSpan.x, sprite.tSpan.y), 
+
+			//회전 
+			graphics.TranslateTransform(pos.x, pos.y);
+			graphics.RotateTransform(rot); 
+			graphics.TranslateTransform(-pos.x, -pos.y);
+
+			graphics.DrawImage(texture->GetImage(), 
+				Gdiplus::Rect(pos.x - (sprite.tSpan.x / 2.f), pos.y - (sprite.tSpan.y / 2.f), 
+					sprite.tSpan.x * scale.x, sprite.tSpan.y * scale.y),
 				sprite.tLeftTop.x, sprite.tLeftTop.y,
-				sprite.tLeftTop.x + sprite.tSpan.x, sprite.tLeftTop.y + sprite.tSpan.y, 
-				Gdiplus::UnitPixel, nullptr
-				);
+				sprite.tSpan.x, sprite.tSpan.y, 
+				Gdiplus::UnitPixel, &imgAttrib);
 		}
-		else if (tt == Texture::TextureType::BMP)
+		else if (tt == Texture::TextureType::BMP) 
 		{
 			//알파블렌드를 쓰려면 해당 이미지에 알파채널이 있어야 한다. 
 			BLENDFUNCTION func{};
@@ -87,8 +99,9 @@ namespace Bx
 			
 			HDC imghdc = texture->GetHDC();
 
-			AlphaBlend(_hdc, pos.x, pos.y,
-				sprite.tSpan.x * 3, sprite.tSpan.y * 3, imghdc,
+			AlphaBlend(_hdc, 
+				pos.x - (sprite.tSpan.x / 2.f), pos.y - (sprite.tSpan.y / 2.f), 
+				sprite.tSpan.x * scale.x, sprite.tSpan.y * scale.y, imghdc,
 				sprite.tLeftTop.x, sprite.tLeftTop.y,
 				sprite.tSpan.x, sprite.tSpan.y, func);
 		}

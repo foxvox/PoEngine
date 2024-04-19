@@ -3,12 +3,12 @@
 namespace Bx
 {
 	enum class CompType
-	{
-		CAMERA, 
-		SCRIPT, 
+	{		 
 		TRANS, 
 		SR,
 		ANI, 
+		SCRIPT,
+		CAMERA,	
 		END, 
 	};
 
@@ -17,7 +17,7 @@ namespace Bx
 		NONE, 
 		BG,		
 		PLAYER, 
-		MAP, 
+		PARTICLE, 
 		MAX = 10, 
 	};
 

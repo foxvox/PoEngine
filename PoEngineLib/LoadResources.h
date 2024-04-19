@@ -10,6 +10,8 @@ namespace Bx
 		Resources::Load<Texture>(L"Pacman", L"../Resources/img/pacman/0.png");  
 		//Resources::Load<Texture>(L"Chicken", L"../Resources/chicken.bmp"); 
 		Resources::Load<Texture>(L"Cat", L"../Resources/alpha_cat.bmp");
+		Resources::Load<Texture>(L"Bubble", L"../Resources/bubble.png");
+		Resources::Load<Texture>(L"Effect", L"../Resources/effect.png");
 	}
 }
 

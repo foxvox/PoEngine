@@ -66,7 +66,7 @@ namespace Bx
 		Vector2 camPos = camera->CalPos(pos); 
 
 		//캠위치를 게임오브젝트 위치에 할당, 카메라 오작동시 할당 취소
-		pos = camPos; 
+		//pos = camPos; 
 
 		if (texture->GetTextureType() == Texture::TextureType::PNG) 
 		{

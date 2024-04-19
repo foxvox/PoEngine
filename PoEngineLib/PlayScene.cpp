@@ -32,21 +32,21 @@ namespace Bx
 	
 		GameObject* bg = Instantiate<GameObject>(LayerType::BG);
 		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		bgsr->SetSize(Vector2(3.0f, 3.0f));
-		
+		bgsr->SetSize(Vector2(3.0f, 3.0f));		
 		Texture* bgtx = Resources::Find<Texture>(L"Map");
 		bgsr->SetTexture(bgtx);
 
 		player = Instantiate<Player>(LayerType::PLAYER);
-		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		sr->SetSize(Vector2(3.0f, 3.0f));
+		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+		//sr->SetSize(Vector2(3.0f, 3.0f));
 		player->AddComponent<PlayerScript>();
-
 		//Texture* pmtx = Resources::Find<Texture>(L"Pacman"); 
 		//sr->SetTexture(pmtx);
-
-		Texture* chickentx = Resources::Find<Texture>(L"Cat");
-		sr->SetTexture(chickentx);
+		Texture* cattx = Resources::Find<Texture>(L"Cat");
+		Animator* animator = player->AddComponent<Animator>(); 
+		animator->CreateAnimation(L"CatFrontMove", cattx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.4f); 
+		animator->PlayAnimation(L"CatFrontMove", true); 
+		//sr->SetTexture(cattx);
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

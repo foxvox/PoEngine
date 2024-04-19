@@ -11,7 +11,7 @@ namespace Bx
 	Animation::Animation() 
 		: Resource(ResrcType::ANI), 
 		animator(nullptr), texture(nullptr), 
-		aniSheet{}, index(-1), 
+		aniSheet{}, index(0), 
 		timeLag(0.f), isComplete(false) 
 	{
 	}
@@ -34,6 +34,8 @@ namespace Bx
 
 		if (aniSheet[index].tTimeLag < timeLag)
 		{
+			timeLag = 0.f; 
+
 			if (index < aniSheet.size() - 1)
 				index++; 			
 			else 
@@ -51,11 +53,13 @@ namespace Bx
 		Vector2 pos = tr->GetPos(); 
 		Vector2 camPos{}; 
 
+		/*
 		if (camera)
 		{
 			camPos = camera->CalPos(pos); 
 			pos = camPos; 
 		}
+		*/
 
 		//알파블렌드를 쓰려면 해당 이미지에 알파채널이 있어야 한다. 
 		BLENDFUNCTION func{}; 
@@ -67,8 +71,10 @@ namespace Bx
 		Sprite sprite = aniSheet[index]; 
 		HDC imghdc = texture->GetHDC(); 
 
-		AlphaBlend(_hdc, pos.x, pos.y, sprite.tSpan.x, sprite.tSpan.y, imghdc, 
-			sprite.tLeftTop.x, sprite.tLeftTop.y, sprite.tSpan.x, sprite.tSpan.y, func);
+		AlphaBlend(_hdc, pos.x, pos.y, 
+			sprite.tSpan.x * 3, sprite.tSpan.y * 3, imghdc, 
+			sprite.tLeftTop.x, sprite.tLeftTop.y, 
+			sprite.tSpan.x, sprite.tSpan.y, func);
 	}
 
 	void Animation::CreateAnimation(const std::wstring& _name, Texture* _spriteSheet, 

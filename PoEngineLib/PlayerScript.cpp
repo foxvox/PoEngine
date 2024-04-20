@@ -3,21 +3,47 @@
 #include "Transform.h" 
 #include "Time.h" 
 #include "GameObject.h" 
+#include "Animator.h"
 
 namespace Bx
 {
-	PlayerScript::PlayerScript()
+	PlayerScript::PlayerScript() 
+		: state(PlayerScript::State::SIT), animator(nullptr)
 	{
 	}
+
 	PlayerScript::~PlayerScript()
 	{
 	}
+
 	void PlayerScript::Init()
-	{
-	}
-	void PlayerScript::Update()
 	{		
-		if (Input::GetKey(KeyCode::Right))
+	}
+
+	void PlayerScript::Update()
+	{
+		if (animator == nullptr)
+		{
+			animator = GetOwner()->GetComponent<Animator>(); 
+		}
+
+		switch (state)
+		{
+		case PlayerScript::State::SIT:
+			Sit(); 
+			break;
+		case PlayerScript::State::MOVE:
+			Move(); 
+			break;
+		case PlayerScript::State::SLEEP:
+			break;
+		case PlayerScript::State::ATTACK:
+			break;
+		default:
+			break;
+		}
+
+		/*if (Input::GetKey(KeyCode::Right))
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector2 pos = tr->GetPos();
@@ -47,7 +73,7 @@ namespace Bx
 			Vector2 pos = tr->GetPos();
 			pos.y += 100.0f * Time::GetDeltaTime();
 			tr->SetPos(pos);
-		}	
+		}*/	
 	}
 
 	void PlayerScript::LateUpdate()
@@ -56,5 +82,62 @@ namespace Bx
 
 	void PlayerScript::Render(HDC _hdc)
 	{
+	}
+
+	void PlayerScript::Sit()
+	{
+		if (Input::GetKey(KeyCode::Right))
+		{
+			state = PlayerScript::State::MOVE; 
+			animator->PlayAnimation(L"RMove"); 
+		}
+		else if (Input::GetKey(KeyCode::Left))
+		{
+			state = PlayerScript::State::MOVE;
+			animator->PlayAnimation(L"LMove");
+		}
+		else if (Input::GetKey(KeyCode::Up))
+		{
+			state = PlayerScript::State::MOVE;
+			animator->PlayAnimation(L"UMove");
+		}
+		else if (Input::GetKey(KeyCode::Down))
+		{
+			state = PlayerScript::State::MOVE;
+			animator->PlayAnimation(L"DMove");
+		}
+	}
+
+	void PlayerScript::Move()
+	{
+		Transform* tr = GetOwner()->GetComponent<Transform>(); 
+		Vector2 pos = tr->GetPos(); 
+
+		if (Input::GetKey(KeyCode::Right))
+		{
+			pos.x += 100.f * Time::GetDeltaTime(); 
+		}		
+		else if (Input::GetKey(KeyCode::Left))
+		{
+			pos.x -= 100.f * Time::GetDeltaTime();
+		}		
+		else if (Input::GetKey(KeyCode::Up))
+		{
+			pos.y -= 100.f * Time::GetDeltaTime();
+		}		
+		else if (Input::GetKey(KeyCode::Down))
+		{
+			pos.y += 100.f * Time::GetDeltaTime();
+		}
+
+		tr->SetPos(pos); 
+
+
+		if (Input::GetKeyUp(KeyCode::Right) || Input::GetKeyUp(KeyCode::Left) || 
+			Input::GetKeyUp(KeyCode::Up) || Input::GetKeyUp(KeyCode::Down))
+		{
+			state = PlayerScript::State::SIT;
+			animator->PlayAnimation(L"Sit", false); 
+		}
 	}
 }

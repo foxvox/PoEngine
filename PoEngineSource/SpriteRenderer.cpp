@@ -53,7 +53,7 @@ namespace Bx
 		*/
 	}
 
-	void SpriteRenderer::LateUpdate()
+	void SpriteRenderer::LateUpdate() 
 	{}
 
 	void SpriteRenderer::Render(HDC _hdc) 
@@ -97,9 +97,6 @@ namespace Bx
 			TransparentBlt(_hdc, pos.x, pos.y, 
 				texture->GetWidth() * size.x * scale.x, texture->GetHeight() * size.y * scale.y, 
 				texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255)); 
-		}
-
-		
+		}		
 	}
-
 }

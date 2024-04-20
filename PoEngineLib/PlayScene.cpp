@@ -42,14 +42,21 @@ namespace Bx
 		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
 		//sr->SetSize(Vector2(3.0f, 3.0f));
 		player->AddComponent<PlayerScript>();
-		Texture* cattx = Resources::Find<Texture>(L"Effect");
+		Texture* cattx = Resources::Find<Texture>(L"Cat");
 		Animator* animator = player->AddComponent<Animator>(); 
-		animator->CreateAnimation(L"CatFrontMove", cattx, Vector2(0.f, 0.f), Vector2(386.f, 246.f), Vector2::zero, 8, 0.1f); 
-		animator->PlayAnimation(L"CatFrontMove", true); 
+
+		animator->CreateAnimation(L"DMove",    cattx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f); 
+		animator->CreateAnimation(L"RMove",    cattx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"UMove",    cattx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"LMove",    cattx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"Sit"  ,	   cattx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"Grooming", cattx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		
-		player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
-		player->GetComponent<Transform>()->SetRot(30.f);		
-		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 200.f));
+		animator->PlayAnimation(L"Sit", false); 
+		
+		player->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
+		player->GetComponent<Transform>()->SetRot(0.f);		
+		player->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
 		//sr->SetTexture(cattx);
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  

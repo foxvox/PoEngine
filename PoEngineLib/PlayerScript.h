@@ -6,6 +6,14 @@ namespace Bx
 	class PlayerScript : public Script 
 	{
 	public:
+		enum class State
+		{
+			SIT, 
+			MOVE,  
+			SLEEP, 
+			ATTACK,
+		};
+
 		PlayerScript();
 		~PlayerScript();
 
@@ -13,6 +21,13 @@ namespace Bx
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
+
+		void Sit(); 
+		void Move(); 
+
+	private:
+		State state; 
+		class Animator* animator; 
 	};
 }
 

@@ -2,13 +2,13 @@
 #include "CommonInclude.h" 
 namespace Bx
 {
-	class Time
+	class BxTime
 	{
 	public:
 		static void Init();
 		static void Update();
 		static void Render(HDC hDC);
-		static double GetDeltaTime()
+		static double DeltaTime()
 		{
 			return deltaTime; 
 		}
@@ -17,7 +17,7 @@ namespace Bx
 		static LARGE_INTEGER cpuFreq;
 		static LARGE_INTEGER prevFreq;
 		static LARGE_INTEGER curFreq;
-		static double		 deltaTime;
+		static float		 deltaTime;
 	};
 }
 

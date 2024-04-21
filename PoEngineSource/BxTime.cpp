@@ -1,13 +1,13 @@
-#include "Time.h" 
+#include "BxTime.h" 
 
 namespace Bx
 {
-	LARGE_INTEGER Time::cpuFreq{};
-	LARGE_INTEGER Time::prevFreq{};
-	LARGE_INTEGER Time::curFreq{};
-	double		  Time::deltaTime = 0; 
+	LARGE_INTEGER BxTime::cpuFreq{};
+	LARGE_INTEGER BxTime::prevFreq{};
+	LARGE_INTEGER BxTime::curFreq{};
+	float		  BxTime::deltaTime = 0.f; 
 
-	void Time::Init()
+	void BxTime::Init()
 	{
 		//cpu 고유진동수 
 		QueryPerformanceFrequency(&cpuFreq); 
@@ -16,16 +16,21 @@ namespace Bx
 		QueryPerformanceCounter(&curFreq); 
 	}
 
-	void Time::Update()
+	void BxTime::Update()
 	{
 		QueryPerformanceCounter(&curFreq);
 		double diffOfFreq = static_cast<double>(curFreq.QuadPart - prevFreq.QuadPart); 
 
-		deltaTime = diffOfFreq / static_cast<double>(cpuFreq.QuadPart);
+		deltaTime = diffOfFreq / static_cast<double>(cpuFreq.QuadPart); 
+
+		//첫번째 시도는 pass하고 두번째 시도부터 deltaTime 사용
+		if (deltaTime > 1.f)
+			deltaTime = 0.f; 					
+		
 		prevFreq.QuadPart = curFreq.QuadPart; 
 	}
 
-	void Time::Render(HDC _hdc)
+	void BxTime::Render(HDC _hdc)
 	{		
 		double fps = 1.0 / deltaTime;
 

@@ -1,5 +1,5 @@
 #include "Animation.h" 
-#include "Time.h" 
+#include "BxTime.h" 
 #include "Transform.h"
 #include "GameObject.h" 
 #include "Animator.h" 
@@ -31,7 +31,7 @@ namespace Bx
 		if (isComplete)
 			return; 
 
-		timeLag += Time::GetDeltaTime();
+		timeLag += BxTime::DeltaTime();
 
 		if (aniSheet[index].tTimeLag < timeLag)
 		{

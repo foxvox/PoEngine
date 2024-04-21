@@ -113,6 +113,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
 
    // Load Scenes... 
+   int a = 0; 
+   srand(unsigned int(&a)); 
    LoadResources(); 
    LoadScenes(); 
 

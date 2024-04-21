@@ -1,7 +1,7 @@
 #include "PlayerScript.h" 
 #include "Input.h" 
 #include "Transform.h" 
-#include "Time.h" 
+#include "BxTime.h" 
 #include "GameObject.h" 
 #include "Animator.h"
 
@@ -47,7 +47,7 @@ namespace Bx
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector2 pos = tr->GetPos();
-			pos.x += 100.0f * Time::GetDeltaTime();
+			pos.x += 100.f * Time::DeltaTime();
 			tr->SetPos(pos);
 		}
 
@@ -55,7 +55,7 @@ namespace Bx
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector2 pos = tr->GetPos();
-			pos.x -= 100.0f * Time::GetDeltaTime();
+			pos.x -= 100.f * Time::DeltaTime();
 			tr->SetPos(pos);
 		}
 
@@ -63,7 +63,7 @@ namespace Bx
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector2 pos = tr->GetPos();
-			pos.y -= 100.0f * Time::GetDeltaTime();
+			pos.y -= 100.f * Time::DeltaTime();
 			tr->SetPos(pos);
 		}
 
@@ -71,7 +71,7 @@ namespace Bx
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector2 pos = tr->GetPos();
-			pos.y += 100.0f * Time::GetDeltaTime();
+			pos.y += 100.f * Time::DeltaTime();
 			tr->SetPos(pos);
 		}*/	
 	}
@@ -116,24 +116,27 @@ namespace Bx
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
 
+		const float speed = 100.f;
+		const float deltaTime = BxTime::DeltaTime();
+
 		if (Input::GetKey(KeyCode::Right))
 		{
-			pos.x += 100.f * Time::GetDeltaTime(); 
+			pos.x += speed * deltaTime;
 		}		
 		
 		if (Input::GetKey(KeyCode::Left))
 		{
-			pos.x -= 100.f * Time::GetDeltaTime();
+			pos.x -= speed * deltaTime;
 		}		
 		
 		if (Input::GetKey(KeyCode::Up))
 		{
-			pos.y -= 100.f * Time::GetDeltaTime();
+			pos.y -= speed * deltaTime;
 		}		
 		
 		if (Input::GetKey(KeyCode::Down))
 		{
-			pos.y += 100.f * Time::GetDeltaTime();
+			pos.y += speed * deltaTime;
 		}
 
 		tr->SetPos(pos); 

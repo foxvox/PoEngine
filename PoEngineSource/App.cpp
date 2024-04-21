@@ -1,6 +1,6 @@
 #include "App.h" 
 #include "Input.h" 
-#include "Time.h"  
+#include "BxTime.h"  
 #include "SceneMgr.h" 
 
 namespace Bx
@@ -8,7 +8,11 @@ namespace Bx
 	App::App()
 		: hwnd(nullptr), hdc(nullptr), width(672), height(846), 
 		backhdc(nullptr), backBuf(nullptr) 
-	{}
+	{
+		BxTime::Init();
+		Input::Init();
+		SceneMgr::Init();
+	}
 
 	App::~App()
 	{}
@@ -17,10 +21,6 @@ namespace Bx
 	{
 		GetWindow(_hwnd, width, height); 
 		CreateBackBuf(width, height); 		
-
-		Input::Init(); 
-		Time::Init(); 	
-		SceneMgr::Init(); 
 	} 
 
 	void App::GetWindow(HWND _hwnd, UINT _width, UINT _height)
@@ -59,7 +59,7 @@ namespace Bx
 	void App::Update()
 	{
 		Input::Update();
-		Time::Update();
+		BxTime::Update();
 		SceneMgr::Update(); 
 	}
 
@@ -83,7 +83,7 @@ namespace Bx
 	{
 		ClearBackBuf(); 
 		 
-		Time::Render(backhdc);
+		BxTime::Render(backhdc);
 		SceneMgr::Render(backhdc);
 		
 		//백버퍼와 원본버퍼를 Swap

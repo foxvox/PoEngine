@@ -1,5 +1,6 @@
 #pragma once 
 #include "Script.h" 
+#include "Transform.h"
 
 namespace Bx
 {
@@ -12,6 +13,15 @@ namespace Bx
 			MOVE,
 			SLEEP,
 			ATTACK,
+		}; 
+
+		enum class Dir
+		{
+			LEFT, 
+			RIGHT, 
+			UP, 
+			DOWN, 
+			END, 
 		};
 
 		CatScript();
@@ -24,10 +34,14 @@ namespace Bx
 
 		void Sit();
 		void Move();
+		void AniByMovingDir(Dir _dir); 
+		void CatMoving(Transform* _tr); 
 
 	private:
 		State state;
 		class Animator* animator;
+		float catTime; 
+		Dir   direction; 
 	};
 }
 

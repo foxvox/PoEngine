@@ -13,7 +13,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp">
       <Filter>Util</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Time.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)BxTime.cpp">
       <Filter>Util</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)App.cpp">
@@ -78,7 +78,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Input.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Time.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)BxTime.h">
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entity.h">

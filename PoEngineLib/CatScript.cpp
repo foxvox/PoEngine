@@ -1,24 +1,21 @@
 #include "CatScript.h" 
 #include "Input.h" 
-#include "Transform.h" 
-#include "Time.h" 
+#include "BxTime.h" 
 #include "GameObject.h" 
 #include "Animator.h"
 
 namespace Bx
 {
 	CatScript::CatScript()
-		: state(CatScript::State::SIT), animator(nullptr)
-	{
-	}
+		: state(CatScript::State::SIT), animator(nullptr), 
+		catTime(0.f), direction(CatScript::Dir::DOWN)
+	{}
 
 	CatScript::~CatScript()
-	{
-	}
+	{}
 
 	void CatScript::Init()
-	{
-	}
+	{}
 
 	void CatScript::Update()
 	{
@@ -45,73 +42,86 @@ namespace Bx
 	}
 
 	void CatScript::LateUpdate()
-	{
-	}
+	{}
 
 	void CatScript::Render(HDC _hdc)
-	{
-	}
+	{}
 
 	void CatScript::Sit()
 	{
-		if (Input::GetKey(KeyCode::Right))
+		catTime += BxTime::DeltaTime(); 
+		if (catTime > 4.f)
 		{
-			state = CatScript::State::MOVE;
-			animator->PlayAnimation(L"RMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Left))
-		{
-			state = CatScript::State::MOVE;
-			animator->PlayAnimation(L"LMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Up))
-		{
-			state = CatScript::State::MOVE;
-			animator->PlayAnimation(L"UMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Down))
-		{
-			state = CatScript::State::MOVE;
-			animator->PlayAnimation(L"DMove");
-		}
+			state = CatScript::State::MOVE; 			
+			direction = (Dir)(rand() % 4); 
+			AniByMovingDir(direction); 
+			catTime = 0.f;
+		}	
 	}
 
 	void CatScript::Move()
 	{
+		catTime += BxTime::DeltaTime(); 
+		if (catTime > 2.f)
+		{
+			state = State::SIT; 
+			animator->PlayAnimation(L"Sit", false); 
+		}
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPos();
+		CatMoving(tr); 			
+	}
 
-		if (Input::GetKey(KeyCode::Right))
+	void CatScript::AniByMovingDir(Dir _dir)
+	{
+		switch (_dir)
 		{
-			pos.x += 100.f * Time::GetDeltaTime();
+		case CatScript::Dir::LEFT:
+			animator->PlayAnimation(L"LMove");
+			break;
+		case CatScript::Dir::RIGHT:
+			animator->PlayAnimation(L"RMove");
+			break;
+		case CatScript::Dir::UP:
+			animator->PlayAnimation(L"UMove");
+			break;
+		case CatScript::Dir::DOWN:
+			animator->PlayAnimation(L"DMove");
+			break;
+		default:
+			assert(false);
+			break;
 		}
+	}
+
+	void CatScript::CatMoving(Transform* _tr)
+	{
+		Vector2 pos = _tr->GetPos();
+
+		const float speed = 50.f;
+
+		/*if (BxTime::DeltaTime() > 1.f)
+			return;*/ 
 		
-		if (Input::GetKey(KeyCode::Left))
+		switch (direction)
 		{
-			pos.x -= 100.f * Time::GetDeltaTime();
-		}
-		
-		if (Input::GetKey(KeyCode::Up))
-		{
-			pos.y -= 100.f * Time::GetDeltaTime();
-		}
-		
-		if (Input::GetKey(KeyCode::Down))
-		{
-			pos.y += 100.f * Time::GetDeltaTime();
+		case CatScript::Dir::LEFT:
+			pos.x -= speed * BxTime::DeltaTime();
+			break;
+		case CatScript::Dir::RIGHT:
+			pos.x += speed * BxTime::DeltaTime();
+			break;
+		case CatScript::Dir::UP:
+			pos.y -= speed * BxTime::DeltaTime();
+			break;
+		case CatScript::Dir::DOWN:
+			pos.y += speed * BxTime::DeltaTime();
+			break;
+		default:
+			assert(false); 
+			break;
 		}
 
-		tr->SetPos(pos);
-
-
-		if (Input::GetKeyUp(KeyCode::Right) || Input::GetKeyUp(KeyCode::Left) ||
-			Input::GetKeyUp(KeyCode::Up) || Input::GetKeyUp(KeyCode::Down))
-		{
-			state = CatScript::State::SIT;
-			animator->PlayAnimation(L"Sit", false);
-		}
+		_tr->SetPos(pos);
 	}
 }

@@ -1,5 +1,5 @@
 #include "GameObject.h" 
-#include "Time.h" 
+#include "BxTime.h" 
 #include "Transform.h" 
 
 namespace Bx

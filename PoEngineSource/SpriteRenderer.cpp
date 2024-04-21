@@ -2,7 +2,7 @@
 #include "Transform.h" 
 #include "GameObject.h" 
 #include "Input.h" 
-#include "Time.h" 
+#include "BxTime.h" 
 #include "Texture.h" 
 #include "Camera.h" 
 #include "Renderer.h" 
@@ -23,7 +23,7 @@ namespace Bx
 	{
 		/* PlayerScript에서 처리하기로 함 deprecated 
 		const float speed = 100.f;
-		const float deltaTime = float(Time::GetDeltaTime());
+		const float deltaTime = float(Time::DeltaTime());
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		float x = tr->GetPos().x; 

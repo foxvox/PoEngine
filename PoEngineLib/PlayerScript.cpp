@@ -91,17 +91,20 @@ namespace Bx
 			state = PlayerScript::State::MOVE; 
 			animator->PlayAnimation(L"RMove"); 
 		}
-		else if (Input::GetKey(KeyCode::Left))
+		
+		if (Input::GetKey(KeyCode::Left))
 		{
 			state = PlayerScript::State::MOVE;
 			animator->PlayAnimation(L"LMove");
 		}
-		else if (Input::GetKey(KeyCode::Up))
+		
+		if (Input::GetKey(KeyCode::Up))
 		{
 			state = PlayerScript::State::MOVE;
 			animator->PlayAnimation(L"UMove");
 		}
-		else if (Input::GetKey(KeyCode::Down))
+		
+		if (Input::GetKey(KeyCode::Down))
 		{
 			state = PlayerScript::State::MOVE;
 			animator->PlayAnimation(L"DMove");
@@ -117,15 +120,18 @@ namespace Bx
 		{
 			pos.x += 100.f * Time::GetDeltaTime(); 
 		}		
-		else if (Input::GetKey(KeyCode::Left))
+		
+		if (Input::GetKey(KeyCode::Left))
 		{
 			pos.x -= 100.f * Time::GetDeltaTime();
 		}		
-		else if (Input::GetKey(KeyCode::Up))
+		
+		if (Input::GetKey(KeyCode::Up))
 		{
 			pos.y -= 100.f * Time::GetDeltaTime();
 		}		
-		else if (Input::GetKey(KeyCode::Down))
+		
+		if (Input::GetKey(KeyCode::Down))
 		{
 			pos.y += 100.f * Time::GetDeltaTime();
 		}

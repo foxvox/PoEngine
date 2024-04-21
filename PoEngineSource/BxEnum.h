@@ -15,7 +15,8 @@ namespace Bx
 	enum class LayerType
 	{
 		NONE, 
-		BG,		
+		BG,	
+		ANIMAL, 
 		PLAYER, 
 		PARTICLE, 
 		MAX = 10, 

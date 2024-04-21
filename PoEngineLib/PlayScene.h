@@ -4,6 +4,7 @@
 namespace Bx
 {
 	class Player;
+	class Cat; 
 
 	class PlayScene : public Scene 
 	{
@@ -20,6 +21,7 @@ namespace Bx
 		void OnExit() override; 
 	private:
 		Player*	player; 
+		Cat*	cat; 
 	};
 }
 

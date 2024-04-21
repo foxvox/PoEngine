@@ -1,5 +1,4 @@
 #include "PlayScene.h" 
-#include "Player.h" 
 #include "Transform.h" 
 #include "SpriteRenderer.h"  
 #include "Input.h" 
@@ -8,16 +7,19 @@
 #include "Object.h" 
 #include "Texture.h" 
 #include "Resources.h"
+#include "Player.h" 
 #include "PlayerScript.h" 
 #include "Camera.h" 
 #include "Renderer.h" 
 #include "Animator.h" 
+#include "Cat.h"
+#include "CatScript.h" 
 
 
 namespace Bx
 {
 	PlayScene::PlayScene()
-		: player(nullptr) 
+		: player(nullptr), cat(nullptr)
 	{}
 
 	PlayScene::~PlayScene()
@@ -30,34 +32,52 @@ namespace Bx
 		Camera* camComp = cam->AddComponent<Camera>(); 
 		camera = camComp;
 
-		//배경	
-		GameObject* bg = Instantiate<GameObject>(LayerType::BG);
-		SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
-		//bgsr->SetSize(Vector2(3.0f, 3.0f));		
-		Texture* bgtx = Resources::Find<Texture>(L"Bubble");
-		bgsr->SetTexture(bgtx);
+		//BG	
+		//GameObject* bg = Instantiate<GameObject>(LayerType::BG);
+		//SpriteRenderer* bgsr = bg->AddComponent<SpriteRenderer>();
+		////bgsr->SetSize(Vector2(3.0f, 3.0f));		
+		//Texture* bgtx = Resources::Find<Texture>(L"Bubble");
+		//bgsr->SetTexture(bgtx);
 
-		//플레이어
+		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
-		//SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
-		//sr->SetSize(Vector2(3.0f, 3.0f));
 		player->AddComponent<PlayerScript>();
-		Texture* cattx = Resources::Find<Texture>(L"Cat");
+
+		Texture* pltx = Resources::Find<Texture>(L"Cat");
 		Animator* animator = player->AddComponent<Animator>(); 
 
-		animator->CreateAnimation(L"DMove",    cattx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f); 
-		animator->CreateAnimation(L"RMove",    cattx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"UMove",    cattx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"LMove",    cattx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"Sit"  ,	   cattx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"Grooming", cattx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"DMove",    pltx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"RMove",    pltx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"UMove",    pltx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"LMove",    pltx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"Sit"  ,	   pltx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		animator->CreateAnimation(L"Grooming", pltx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		
 		animator->PlayAnimation(L"Sit", false); 
 		
 		player->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
 		player->GetComponent<Transform>()->SetRot(0.f);		
-		player->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
-		//sr->SetTexture(cattx);
+		player->GetComponent<Transform>()->SetPos(Vector2(100.f, 100.f));
+
+		//Cat
+		cat = Instantiate<Cat>(LayerType::ANIMAL);
+		cat->AddComponent<CatScript>();
+
+		Texture* catx = Resources::Find<Texture>(L"Cat");
+		Animator* catAnimator = cat->AddComponent<Animator>();
+
+		catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+
+		catAnimator->PlayAnimation(L"Sit", false);
+
+		cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
+		cat->GetComponent<Transform>()->SetRot(0.f);
+		cat->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

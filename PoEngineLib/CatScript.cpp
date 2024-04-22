@@ -64,8 +64,17 @@ namespace Bx
 		catTime += BxTime::DeltaTime(); 
 		if (catTime > 2.f)
 		{
-			state = State::SIT; 
-			animator->PlayAnimation(L"Sit", false); 
+			int isLayDown = rand() % 2; 
+			if (isLayDown)
+			{
+				state = State::LAYDOWN;
+				animator->PlayAnimation(L"LayDown", false);
+			}
+			else
+			{
+				state = State::SIT;
+				animator->PlayAnimation(L"Sit", false);
+			}			
 		}
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -124,4 +133,7 @@ namespace Bx
 
 		_tr->SetPos(pos);
 	}
+
+	void CatScript::LayDown()
+	{}
 }

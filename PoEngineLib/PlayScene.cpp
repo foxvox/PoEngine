@@ -43,20 +43,14 @@ namespace Bx
 		player = Instantiate<Player>(LayerType::PLAYER);
 		player->AddComponent<PlayerScript>();
 
-		Texture* pltx = Resources::Find<Texture>(L"Cat");
-		Animator* animator = player->AddComponent<Animator>(); 
+		Texture* pltx = Resources::Find<Texture>(L"Player");
+		Animator* playerAnimator = player->AddComponent<Animator>(); 
 
-		animator->CreateAnimation(L"DMove",    pltx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"RMove",    pltx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"UMove",    pltx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"LMove",    pltx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"Sit"  ,	   pltx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		animator->CreateAnimation(L"Grooming", pltx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		playerAnimator->CreateAnimation(L"Idle", pltx, Vector2(2000.f, 250.f), Vector2(250.f, 250.f), Vector2::zero, 1, 0.4f);
+		playerAnimator->PlayAnimation(L"Idle", false);
 		
-		animator->PlayAnimation(L"Sit", false); 
-		
-		player->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
-		player->GetComponent<Transform>()->SetRot(0.f);		
+		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
+		player->GetComponent<Transform>()->SetRot(0.f);	*/	
 		player->GetComponent<Transform>()->SetPos(Vector2(100.f, 100.f));
 
 		//Cat
@@ -72,7 +66,7 @@ namespace Bx
 		catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-
+		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->PlayAnimation(L"Sit", false);
 
 		cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));

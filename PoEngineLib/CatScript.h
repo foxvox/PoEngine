@@ -12,6 +12,7 @@ namespace Bx
 			SIT,
 			MOVE,
 			SLEEP,
+			LAYDOWN, 
 			ATTACK,
 		}; 
 
@@ -36,6 +37,7 @@ namespace Bx
 		void Move();
 		void AniByMovingDir(Dir _dir); 
 		void CatMoving(Transform* _tr); 
+		void LayDown(); 
 
 	private:
 		State state;

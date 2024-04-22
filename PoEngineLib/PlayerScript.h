@@ -8,9 +8,10 @@ namespace Bx
 	public:
 		enum class State
 		{
-			SIT, 
-			MOVE,  
-			SLEEP, 
+			SIT,
+			MOVE,
+			SLEEP,
+			GIVEWATER, 
 			ATTACK,
 		};
 

@@ -35,45 +35,16 @@ namespace Bx
 		case PlayerScript::State::MOVE:
 			Move(); 
 			break;
+		case PlayerScript::State::GIVEWATER:
+			//GiveWater();
+			break;
 		case PlayerScript::State::SLEEP:
 			break;
 		case PlayerScript::State::ATTACK:
 			break;
 		default:
 			break;
-		}
-
-		/*if (Input::GetKey(KeyCode::Right))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			Vector2 pos = tr->GetPos();
-			pos.x += 100.f * Time::DeltaTime();
-			tr->SetPos(pos);
-		}
-
-		if (Input::GetKey(KeyCode::Left))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			Vector2 pos = tr->GetPos();
-			pos.x -= 100.f * Time::DeltaTime();
-			tr->SetPos(pos);
-		}
-
-		if (Input::GetKey(KeyCode::Up))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			Vector2 pos = tr->GetPos();
-			pos.y -= 100.f * Time::DeltaTime();
-			tr->SetPos(pos);
-		}
-
-		if (Input::GetKey(KeyCode::Down))
-		{
-			Transform* tr = GetOwner()->GetComponent<Transform>();
-			Vector2 pos = tr->GetPos();
-			pos.y += 100.f * Time::DeltaTime();
-			tr->SetPos(pos);
-		}*/	
+		}		
 	}
 
 	void PlayerScript::LateUpdate()

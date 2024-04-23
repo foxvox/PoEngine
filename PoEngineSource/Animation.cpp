@@ -31,7 +31,7 @@ namespace Bx
 		if (isComplete)
 			return; 
 
-		timeLag += BxTime::DeltaTime();
+		timeLag += float(BxTime::DeltaTime());
 
 		if (aniSheet[index].tTimeLag < timeLag)
 		{
@@ -82,10 +82,10 @@ namespace Bx
 			graphics.TranslateTransform(-pos.x, -pos.y);
 
 			graphics.DrawImage(texture->GetImage(), 
-				Gdiplus::Rect(pos.x - (sprite.tSpan.x / 2.f), pos.y - (sprite.tSpan.y / 2.f), 
-					sprite.tSpan.x * scale.x, sprite.tSpan.y * scale.y),
-				sprite.tLeftTop.x, sprite.tLeftTop.y,
-				sprite.tSpan.x, sprite.tSpan.y, 
+				Gdiplus::Rect(int(pos.x - (sprite.tSpan.x / 2.f)), int(pos.y - (sprite.tSpan.y / 2.f)), 
+					int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y)),
+				int(sprite.tLeftTop.x), int(sprite.tLeftTop.y),
+				int(sprite.tSpan.x), int(sprite.tSpan.y), 
 				Gdiplus::UnitPixel, &imgAttrib);
 		}
 		else if (tt == Texture::TextureType::BMP) 
@@ -100,10 +100,9 @@ namespace Bx
 			HDC imghdc = texture->GetHDC();
 
 			AlphaBlend(_hdc, 
-				pos.x - (sprite.tSpan.x / 2.f), pos.y - (sprite.tSpan.y / 2.f), 
-				sprite.tSpan.x * scale.x, sprite.tSpan.y * scale.y, imghdc,
-				sprite.tLeftTop.x, sprite.tLeftTop.y,
-				sprite.tSpan.x, sprite.tSpan.y, func);
+				int(pos.x - (sprite.tSpan.x / 2.f)), int(pos.y - (sprite.tSpan.y / 2.f)), 
+				int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y), imghdc,
+				int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), func);
 		}
 	}
 

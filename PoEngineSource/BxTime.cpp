@@ -21,7 +21,7 @@ namespace Bx
 		QueryPerformanceCounter(&curFreq);
 		double diffOfFreq = static_cast<double>(curFreq.QuadPart - prevFreq.QuadPart); 
 
-		deltaTime = diffOfFreq / static_cast<double>(cpuFreq.QuadPart); 
+		deltaTime = float(diffOfFreq / static_cast<double>(cpuFreq.QuadPart)); 
 
 		//첫번째 시도는 pass하고 두번째 시도부터 deltaTime 사용
 		if (deltaTime > 1.f)
@@ -36,7 +36,7 @@ namespace Bx
 
 		wchar_t str[50] = L""; 
 		swprintf_s(str, 50, L"fps: %.2lf", fps); 
-		int len = wcsnlen_s(str, 50); 
+		int len = int(wcsnlen_s(str, 50)); 
 		TextOutW(_hdc, 0, 0, str, len);
 	}
 }

@@ -85,17 +85,15 @@ namespace Bx
 			graphics.RotateTransform(rot);
 			graphics.TranslateTransform(-pos.x, -pos.y);
 
-			graphics.DrawImage(texture->GetImage(), 
-				Gdiplus::Rect(pos.x, pos.y, 
-					texture->GetWidth() * size.x * scale.x, texture->GetHeight() * size.y * scale.y), 
-				0, 0, texture->GetWidth(), texture->GetHeight(),
-				Gdiplus::UnitPixel, &imgAttrib);
+			graphics.DrawImage(texture->GetImage(), Gdiplus::Rect(INT(pos.x), INT(pos.y), 
+				INT(texture->GetWidth() * size.x * scale.x), INT(texture->GetHeight() * size.y * scale.y)), 
+				0, 0, texture->GetWidth(), texture->GetHeight(), Gdiplus::UnitPixel, &imgAttrib); 
 		}
 		else if (texture->GetTextureType() == Texture::TextureType::BMP) 
 		{
 			//dest먼저 src나중 순서로 사용됨  
-			TransparentBlt(_hdc, pos.x, pos.y, 
-				texture->GetWidth() * size.x * scale.x, texture->GetHeight() * size.y * scale.y, 
+			TransparentBlt(_hdc, int(pos.x), int(pos.y), 
+				int(texture->GetWidth() * size.x * scale.x), int(texture->GetHeight() * size.y * scale.y), 
 				texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255)); 
 		}		
 	}

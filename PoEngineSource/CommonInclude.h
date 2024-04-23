@@ -1,11 +1,15 @@
 #pragma once
+
+#define DIRECTINPUT_VERSION 0x0800
+
 #include <Windows.h> 
 #include <assert.h> 
 
 #include <algorithm> 
 #include <vector>
 #include <string>
-#include <map> 
+#include <map>
+#include <dinput.h>
 
 #include <mmsystem.h>
 #include <dinput.h>  

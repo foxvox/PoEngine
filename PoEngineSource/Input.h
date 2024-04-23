@@ -16,6 +16,7 @@ namespace Bx
 		A, S, D, F, G, H, J, K, L, 
 		Z, X, C, V, B, N, M, 
 		Left, Right, Down, Up, 
+		LButton, MButton, RButton, 
 		END,
 	};
 
@@ -50,16 +51,20 @@ namespace Bx
 			return keys[(size_t)_keyCode].keyState == KeyState::Pressed;
 		}
 
-	private:
-		static void CreateKeys();
-		static void UpdateKeys();
-		static void UpdateKey(Input::Key& key);
-		static bool IsKeyDown(KeyCode _keyCode);
-		static void UpdateKeyDown(Input::Key& key); 
-		static void UpdateKeyUp(Input::Key& key);
+		static Vector2  GetMousePos() { return mousePos; } 
+
+		static bool	IsKeyDown(KeyCode _keyCode);
+		static void SetFocusWndPos(); 
+		static void	CreateKeys();
+		static void	UpdateKeys();
+		static void	UpdateKey(Input::Key& _key);		
+		static void	UpdateKeyDown(Input::Key& _key); 
+		static void	UpdateKeyUp(Input::Key& _key);
+		static void ClearKeys(); 
 
 	private:		
 		static vector<Key> keys; 
+		static Vector2	   mousePos; 
 	};
 }
 

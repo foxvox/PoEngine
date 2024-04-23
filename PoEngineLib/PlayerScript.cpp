@@ -8,7 +8,7 @@
 namespace Bx
 {
 	PlayerScript::PlayerScript() 
-		: state(PlayerScript::State::SIT), animator(nullptr)
+		: state(PlayerScript::State::IDLE), animator(nullptr)
 	{
 	}
 
@@ -29,8 +29,8 @@ namespace Bx
 
 		switch (state)
 		{
-		case PlayerScript::State::SIT:
-			Sit(); 
+		case PlayerScript::State::IDLE:
+			Idle(); 
 			break;
 		case PlayerScript::State::MOVE:
 			Move(); 
@@ -55,9 +55,18 @@ namespace Bx
 	{
 	}
 
-	void PlayerScript::Sit()
+	void PlayerScript::Idle()
 	{
-		if (Input::GetKey(KeyCode::Right))
+		if (Input::GetKey(KeyCode::LButton))
+		{
+			state = PlayerScript::State::MOVE;
+			animator->PlayAnimation(L"RMove");
+
+			Vector2 mousePos = Input::GetMousePos(); 
+		}
+
+
+		/*if (Input::GetKey(KeyCode::Right))
 		{
 			state = PlayerScript::State::MOVE; 
 			animator->PlayAnimation(L"RMove"); 
@@ -79,7 +88,7 @@ namespace Bx
 		{
 			state = PlayerScript::State::MOVE;
 			animator->PlayAnimation(L"DMove");
-		}
+		}*/
 	}
 
 	void PlayerScript::Move()
@@ -116,7 +125,7 @@ namespace Bx
 		if (Input::GetKeyUp(KeyCode::Right) || Input::GetKeyUp(KeyCode::Left) || 
 			Input::GetKeyUp(KeyCode::Up) || Input::GetKeyUp(KeyCode::Down))
 		{
-			state = PlayerScript::State::SIT;
+			state = PlayerScript::State::IDLE;
 			animator->PlayAnimation(L"Sit", false); 
 		}
 	}

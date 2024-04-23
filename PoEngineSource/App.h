@@ -18,8 +18,9 @@ namespace Bx
 
 		UINT GetWidth() { return width; } 
 		UINT GetHeight() { return height; } 
-
+		HWND GetHWND() { return hwnd; }
 		HDC  GetHDC() { return hdc; } 
+
 		void ClearBackBuf(); 
 		void SwapChain(HDC _disp, HDC _back); 
 		void CreateBackBuf(UINT _width, UINT _height); 

@@ -8,7 +8,7 @@ namespace Bx
 	public:
 		enum class State
 		{
-			SIT,
+			IDLE,
 			MOVE,
 			SLEEP,
 			GIVEWATER, 
@@ -23,7 +23,7 @@ namespace Bx
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-		void Sit(); 
+		void Idle(); 
 		void Move(); 
 
 	private:

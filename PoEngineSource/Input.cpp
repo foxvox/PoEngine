@@ -1,8 +1,12 @@
 #include "Input.h" 
+#include "App.h" 
+
+extern Bx::App app;  // 외부 파일에 있는 전역변수를 사용하겠다고 전방선언
 
 namespace Bx
 {	
 	vector<Input::Key> Input::keys{};
+	Vector2 Input::mousePos{}; 
 
 	Input::Input() {}
 	
@@ -14,7 +18,7 @@ namespace Bx
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP, 
-
+		VK_LBUTTON, VK_MBUTTON, VK_RBUTTON, 
 	};
 
 	void Input::Init()
@@ -40,15 +44,25 @@ namespace Bx
 		}
 	}
 
-	void Input::UpdateKey(Input::Key& key)
+	void Input::UpdateKey(Input::Key& _key)
 	{
-		if (IsKeyDown(key.keyCode))
+		//게임 윈도우 이외의 윈도우가 눌린 경우 키처리를 무효화시킨다. 
+		if (GetFocus())
 		{
-			UpdateKeyDown(key);
-		}
+			if (IsKeyDown(_key.keyCode))
+			{
+				UpdateKeyDown(_key);
+			}
+			else
+			{
+				UpdateKeyUp(_key);
+			}
+
+			SetFocusWndPos(); 
+		} 
 		else
 		{
-			UpdateKeyUp(key); 
+			ClearKeys(); 
 		}
 	}
 
@@ -69,24 +83,40 @@ namespace Bx
 			});
 	}
 
-	void Input::UpdateKeyDown(Input::Key& key)
+	void Input::UpdateKeyDown(Input::Key& _key)
 	{
-		if (key.isPressed == true)
-			key.keyState = KeyState::Pressed;
+		if (_key.isPressed == true)
+			_key.keyState = KeyState::Pressed;
 		else
-			key.keyState = KeyState::Down; 
+			_key.keyState = KeyState::Down; 
 
-		key.isPressed = true; 
+		_key.isPressed = true; 
 	}
 
-	void Input::UpdateKeyUp(Input::Key& key)
+	void Input::UpdateKeyUp(Input::Key& _key)
 	{
-		if (key.isPressed == true)
-			key.keyState = KeyState::Up;
+		if (_key.isPressed == true)
+			_key.keyState = KeyState::Up;
 		else
-			key.keyState = KeyState::None;
+			_key.keyState = KeyState::None;
 
-		key.isPressed = false;
+		_key.isPressed = false;
+	}
+
+	void Input::ClearKeys()
+	{
+		for (Key& key : keys)
+		{
+			if (key.keyState == KeyState::Down || key.keyState == KeyState::Pressed)
+			{
+				key.keyState = KeyState::Up;
+			}
+			else if (key.keyState == KeyState::Up)
+			{
+				key.keyState = KeyState::None;
+			}
+			key.isPressed = false;
+		}
 	}
 
 	bool Input::IsKeyDown(KeyCode _keyCode)
@@ -94,4 +124,13 @@ namespace Bx
 		return GetAsyncKeyState(ASCII[(size_t)_keyCode]) & 0x8000;
 	}
 
+	void Input::SetFocusWndPos()
+	{
+		POINT mousePoint{};
+		GetCursorPos(&mousePoint);
+		ScreenToClient(app.GetHWND(), &mousePoint);
+
+		mousePos.x = float(mousePoint.x);
+		mousePos.y = float(mousePoint.y);
+	}
 }

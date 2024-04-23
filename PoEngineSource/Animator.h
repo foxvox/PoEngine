@@ -23,9 +23,12 @@ namespace Bx
 		Animation* FindAnimation(const std::wstring& _name); 
 		void PlayAnimation(const std::wstring& _name, bool _isLoop = true); 
 
+		bool IsCompleteAnimation() { return activeAnimation->IsComplete(); } 
+		Animation* GetActiveAnimation() { return activeAnimation; } 
+
 	private:
 		std::map<std::wstring, Animation*> animations; 
-		Animation* activeAnimaition; 
+		Animation* activeAnimation; 
 		bool isLoop;  
 	};
 }

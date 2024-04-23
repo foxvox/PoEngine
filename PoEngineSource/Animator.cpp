@@ -3,7 +3,7 @@
 namespace Bx
 {
 	Animator::Animator() 
-		: Component(CompType::ANI), animations{}, activeAnimaition(nullptr), isLoop(true) 
+		: Component(CompType::ANI), animations{}, activeAnimation(nullptr), isLoop(true) 
 	{
 	}
 
@@ -17,12 +17,12 @@ namespace Bx
 
 	void Animator::Update()
 	{
-		if (activeAnimaition)
+		if (activeAnimation)
 		{
-			activeAnimaition->Update(); 
-			if (activeAnimaition->IsComplete() == true && isLoop == true)
+			activeAnimation->Update(); 
+			if (activeAnimation->IsComplete() == true && isLoop == true)
 			{
-				activeAnimaition->Reset(); 
+				activeAnimation->Reset(); 
 			}
 		}
 	}
@@ -33,8 +33,8 @@ namespace Bx
 
 	void Animator::Render(HDC _hdc)
 	{
-		if (activeAnimaition)
-			activeAnimaition->Render(_hdc); 
+		if (activeAnimation)
+			activeAnimation->Render(_hdc); 
 	}
 
 	void Animator::CreateAnimation(const std::wstring& _name, Texture* _spriteSheet, 
@@ -68,8 +68,8 @@ namespace Bx
 		if (ani == nullptr)
 			return; 
 
-		activeAnimaition = ani; 
-		activeAnimaition->Reset(); 
+		activeAnimation = ani; 
+		activeAnimation->Reset(); 
 		isLoop = _isLoop; 
 	}
 }

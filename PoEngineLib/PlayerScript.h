@@ -25,6 +25,7 @@ namespace Bx
 
 		void Idle(); 
 		void Move(); 
+		void GiveWater(); 
 
 	private:
 		State state; 

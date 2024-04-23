@@ -36,7 +36,7 @@ namespace Bx
 			Move(); 
 			break;
 		case PlayerScript::State::GIVEWATER:
-			//GiveWater();
+			GiveWater();
 			break;
 		case PlayerScript::State::SLEEP:
 			break;
@@ -48,47 +48,46 @@ namespace Bx
 	}
 
 	void PlayerScript::LateUpdate()
-	{
-	}
+	{}
 
+	//Animation Render 함수에서 처리한다.
 	void PlayerScript::Render(HDC _hdc)
-	{
-	}
+	{}
 
 	void PlayerScript::Idle()
 	{
 		if (Input::GetKey(KeyCode::LButton))
 		{
-			state = PlayerScript::State::MOVE;
-			animator->PlayAnimation(L"RMove");
+			state = PlayerScript::State::GIVEWATER;
+			animator->PlayAnimation(L"FrontGiveWater", false);
 
 			Vector2 mousePos = Input::GetMousePos(); 
 		}
 
 
-		/*if (Input::GetKey(KeyCode::Right))
+		if (Input::GetKey(KeyCode::Right))
 		{
 			state = PlayerScript::State::MOVE; 
-			animator->PlayAnimation(L"RMove"); 
+			//animator->PlayAnimation(L"RMove"); 
 		}
 		
 		if (Input::GetKey(KeyCode::Left))
 		{
 			state = PlayerScript::State::MOVE;
-			animator->PlayAnimation(L"LMove");
+			//animator->PlayAnimation(L"LMove");
 		}
 		
 		if (Input::GetKey(KeyCode::Up))
 		{
 			state = PlayerScript::State::MOVE;
-			animator->PlayAnimation(L"UMove");
+			//animator->PlayAnimation(L"UMove");
 		}
 		
 		if (Input::GetKey(KeyCode::Down))
 		{
 			state = PlayerScript::State::MOVE;
-			animator->PlayAnimation(L"DMove");
-		}*/
+			//animator->PlayAnimation(L"DMove");
+		}
 	}
 
 	void PlayerScript::Move()
@@ -126,7 +125,20 @@ namespace Bx
 			Input::GetKeyUp(KeyCode::Up) || Input::GetKeyUp(KeyCode::Down))
 		{
 			state = PlayerScript::State::IDLE;
-			animator->PlayAnimation(L"Sit", false); 
+			animator->PlayAnimation(L"Idle", false); 
 		}
+	}
+
+	void PlayerScript::GiveWater()
+	{
+		/*Animation* fgwani = animator->FindAnimation(L"FrontGiveWater");
+		Animation* activeAni = animator->GetActiveAnimation(); */
+		bool isCompleteAni = animator->IsCompleteAnimation(); 
+
+		if (/*fgwani == activeAni &&*/ isCompleteAni)
+		{
+			state = State::IDLE; 
+			animator->PlayAnimation(L"Idle", false); 
+		}		
 	}
 }

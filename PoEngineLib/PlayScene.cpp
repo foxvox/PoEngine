@@ -46,7 +46,10 @@ namespace Bx
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
 
-		playerAnimator->CreateAnimation(L"Idle", pltx, Vector2(2000.f, 250.f), Vector2(250.f, 250.f), Vector2::zero, 1, 0.4f);
+		playerAnimator->CreateAnimation(L"Idle", pltx, Vector2(2000.f, 250.f), Vector2(250.f, 250.f), Vector2::zero, 1, 0.1f);
+		playerAnimator->PlayAnimation(L"Idle", false);
+
+		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.2f);
 		playerAnimator->PlayAnimation(L"Idle", false);
 		
 		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));

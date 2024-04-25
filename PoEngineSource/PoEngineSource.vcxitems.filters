@@ -55,11 +55,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Animator.cpp">
-      <Filter>Animation</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Animation.cpp">
       <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Animator.cpp">
+      <Filter>Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +126,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Animator.h">
-      <Filter>Animation</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Animation.h">
       <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Animator.h">
+      <Filter>Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

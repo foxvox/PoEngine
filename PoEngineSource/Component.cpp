@@ -10,18 +10,14 @@ namespace Bx
 	{}
 
 	void Component::Init()
-	{
-	}
+	{}
 
 	void Component::Update()
-	{
-	}
+	{}
 
 	void Component::LateUpdate()
-	{
-	}
+	{}
 
 	void Component::Render(HDC _hdc)
-	{		
-	}
+	{}
 }

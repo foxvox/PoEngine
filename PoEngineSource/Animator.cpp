@@ -3,7 +3,7 @@
 namespace Bx
 {
 	Animator::Animator() 
-		: Component(CompType::ANI), animations{}, activeAnimation(nullptr), isLoop(true) 
+		: Component(CompType::ANIMATOR), animations{}, activeAnimation(nullptr), isLoop(true) 
 	{
 	}
 
@@ -26,7 +26,7 @@ namespace Bx
 			if (activeAnimation->IsComplete() == true)
 			{
 				//애니가 다른 애니로의 전환 없이 완료된 경우 Complete 이벤트를 발생시킨다. 
-				if (ep) 
+				if (ep->Complete.event) 
 					ep->Complete(); 
 
 				if (isLoop == true) 
@@ -49,15 +49,19 @@ namespace Bx
 		Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
 		UINT _frames, float _timeLag)
 	{
-		Animation* ani = nullptr; 
-		
+		Animation* ani = nullptr; 		
 		ani = FindAnimation(_name);
 		if (ani != nullptr)
 			return; 
 
 		ani = new Animation(); 
+		ani->SetName(_name); 
 		ani->CreateAnimation(_name, _spriteSheet, _leftTop, _span, _offSet, _frames, _timeLag); 		
 		ani->SetAnimator(this); 
+		
+		EventPack* ep = new EventPack(); 
+		eventPacks.insert(std::make_pair(_name, ep)); 
+
 		animations.insert(std::make_pair(_name, ani)); 
 	}
 
@@ -77,13 +81,18 @@ namespace Bx
 			return; 
 
 		//바로 아래쪽에서 새로 찾은 애니로 교체하고 있다. 교체하기 전에 이전 애니의 End 이벤트를 통해 
-		//이전 애니를 마무리해 줄 수 있다. 
-		EventPack* curEp = FindEventPack(activeAnimation->GetName());
-		curEp->End(); 
+		//이전 애니를 마무리해 줄 수 있다.
+		if (activeAnimation)
+		{
+			EventPack* curEp = FindEventPack(activeAnimation->GetName());
+			if (curEp->End.event)
+				curEp->End();
+		} 
 
 		//새로 찾은 애니의 Start 이벤트를 실행한다. 
 		EventPack* nextEp = FindEventPack(ani->GetName());
-		nextEp->Start();
+		if (nextEp->Start.event)  
+			nextEp->Start();
 
 		activeAnimation = ani; 
 		activeAnimation->Reset(); 

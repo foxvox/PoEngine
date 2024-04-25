@@ -3,7 +3,7 @@
 
 namespace Bx
 {
-	class Entity
+	class Entity 
 	{
 	public:
 		Entity();

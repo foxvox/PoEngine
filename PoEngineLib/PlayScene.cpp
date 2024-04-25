@@ -41,7 +41,7 @@ namespace Bx
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
-		player->AddComponent<PlayerScript>();
+		PlayerScript* ps = player->AddComponent<PlayerScript>();
 
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
@@ -51,6 +51,9 @@ namespace Bx
 
 		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.2f);
 		playerAnimator->PlayAnimation(L"Idle", false);
+
+		//멤버함수가 작동하는 원리를 확실히 알 수 있는 코드라인 
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, ps); 
 		
 		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
 		player->GetComponent<Transform>()->SetRot(0.f);	*/	

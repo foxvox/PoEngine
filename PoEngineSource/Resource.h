@@ -15,8 +15,7 @@ namespace Bx
 
 	private:
 		ResrcType		rcType; 
-		std::wstring	path; 
-
+		std::wstring	path;
 	};
 
 	//class Texture : public Resource;

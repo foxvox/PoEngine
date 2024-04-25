@@ -27,7 +27,7 @@ namespace Bx
 		void Move(); 
 		void GiveWater(); 
 
-		//void (*)
+		void AttackEffect() {}
 
 	private:
 		State state; 

@@ -14,12 +14,10 @@ namespace Bx
 		animator(nullptr), texture(nullptr), 
 		aniSheet{}, index(0), 
 		timeLag(0.f), isComplete(false) 
-	{
-	}
+	{}
 
 	Animation::~Animation()
-	{
-	}
+	{}
 
 	HRESULT Animation::Load(const std::wstring& _path)
 	{
@@ -51,9 +49,9 @@ namespace Bx
 
 		GameObject* gameObj = animator->GetOwner();
 		Transform* tr = gameObj->GetComponent<Transform>(); 
-		Vector2 pos = tr->GetPos(); 
-		float rot = tr->GetRot();
 		Vector2 scale = tr->GetScale();
+		float rot = tr->GetRot();
+		Vector2 pos = tr->GetPos(); 		
 		
 		//Vector2 camPos{}; 
 		/*
@@ -108,12 +106,12 @@ namespace Bx
 
 	void Animation::CreateAnimation(const std::wstring& _name, Texture* _spriteSheet, 
 		Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
-		UINT _spriteNum, float _timeLag)
+		UINT _frames, float _timeLag)
 	{
 		texture = _spriteSheet; 
-		for (size_t i = 0; i < _spriteNum; i++)
+		for (size_t i = 0; i < _frames; i++)
 		{
-			Sprite sprite = {}; 
+			Sprite sprite{}; 
 			sprite.tLeftTop.x = _leftTop.x + _span.x * i; 
 			sprite.tLeftTop.y = _leftTop.y; 
 			sprite.tSpan = _span; 

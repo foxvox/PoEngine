@@ -6,7 +6,7 @@ namespace Bx
 	{		 
 		TRANS, 
 		SR,
-		ANI, 
+		ANIMATOR, 
 		SCRIPT,
 		CAMERA,	
 		END, 

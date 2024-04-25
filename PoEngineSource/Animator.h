@@ -19,7 +19,7 @@ namespace Bx
 			void operator()()
 			{
 				if (event)
-					event;  // event == event() 
+					event();  
 			}
 
 			//void (*evnet)(); <= 함수포인터 표현법 void: return, (): param

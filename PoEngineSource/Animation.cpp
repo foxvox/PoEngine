@@ -31,7 +31,7 @@ namespace Bx
 		if (isComplete)
 			return; 
 
-		timeLag += float(BxTime::DeltaTime());
+		timeLag += BxTime::DeltaTime();
 
 		if (aniSheet[index].tTimeLag < timeLag)
 		{

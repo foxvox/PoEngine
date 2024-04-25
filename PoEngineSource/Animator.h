@@ -26,11 +26,11 @@ namespace Bx
 			std::function<void()> event;  //functor(함수객체)표현법 
 		};
 
-		struct Events
+		struct EventPack
 		{
-			Event startEvent;
-			Event completeEvent;
-			Event endEvent;
+			Event Start;
+			Event Complete;
+			Event End;
 		};
 
 		Animator();
@@ -43,20 +43,24 @@ namespace Bx
 
 		void CreateAnimation(const std::wstring& _name, Texture* _spriteSheet,
 			Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
-			UINT _spriteNum, float _timeLag); 
+			UINT _frames, float _timeLag); 
 
 		Animation* FindAnimation(const std::wstring& _name); 
 		void PlayAnimation(const std::wstring& _name, bool _isLoop = true); 
-
-		bool IsCompleteAnimation() { return activeAnimation->IsComplete(); } 
+		bool IsAnimationComplete() { return activeAnimation->IsComplete(); } 
 		Animation* GetActiveAnimation() { return activeAnimation; } 
+
+		EventPack* FindEventPack(const std::wstring& _name);
+		std::function<void()>& GetStartEvent(const std::wstring& _name);
+		std::function<void()>& GetCompleteEvent(const std::wstring& _name);
+		std::function<void()>& GetEndEvent(const std::wstring& _name);
 
 	private:
 		std::map<std::wstring, Animation*> animations; 
 		Animation* activeAnimation; 
 		bool isLoop; 
 
-		std::map<std::wstring, Events*> events; 
+		std::map<std::wstring, EventPack*> eventPacks; 
 	};
 }
 

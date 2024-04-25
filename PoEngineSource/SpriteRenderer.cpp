@@ -23,7 +23,7 @@ namespace Bx
 	{
 		/* PlayerScript에서 처리하기로 함 deprecated 
 		const float speed = 100.f;
-		const float deltaTime = float(Time::DeltaTime());
+		const float deltaTime = Time::DeltaTime();
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		float x = tr->GetPos().x; 

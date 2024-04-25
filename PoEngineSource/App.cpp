@@ -28,7 +28,7 @@ namespace Bx
 		hwnd = _hwnd;
 		hdc = GetDC(hwnd);
 
-		RECT rect = { 0, 0, _width, _height };
+		RECT rect = { 0, 0, (LONG)_width, (LONG)_height };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		width = rect.right - rect.left;

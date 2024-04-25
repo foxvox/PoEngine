@@ -39,7 +39,7 @@ namespace Bx
 
 	void Animator::CreateAnimation(const std::wstring& _name, Texture* _spriteSheet, 
 		Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
-		UINT _spriteNum, float _timeLag)
+		UINT _frames, float _timeLag)
 	{
 		Animation* ani = nullptr; 
 		
@@ -48,7 +48,7 @@ namespace Bx
 			return; 
 
 		ani = new Animation(); 
-		ani->CreateAnimation(_name, _spriteSheet, _leftTop, _span, _offSet, _spriteNum, _timeLag); 		
+		ani->CreateAnimation(_name, _spriteSheet, _leftTop, _span, _offSet, _frames, _timeLag); 		
 		ani->SetAnimator(this); 
 		animations.insert(std::make_pair(_name, ani)); 
 	}
@@ -71,5 +71,32 @@ namespace Bx
 		activeAnimation = ani; 
 		activeAnimation->Reset(); 
 		isLoop = _isLoop; 
+	}
+
+	Animator::EventPack* Animator::FindEventPack(const std::wstring& _name)
+	{
+		auto iter = eventPacks.find(_name);
+		if (iter == eventPacks.end())
+			return nullptr;
+
+		return iter->second;
+	}
+
+	std::function<void()>& Animator::GetStartEvent(const std::wstring& _name)
+	{
+		EventPack* ep = FindEventPack(_name); 
+		return ep->Start.event;
+	}
+
+	std::function<void()>& Animator::GetCompleteEvent(const std::wstring& _name)
+	{
+		EventPack* ep = FindEventPack(_name);
+		return ep->Complete.event; 
+	}
+
+	std::function<void()>& Animator::GetEndEvent(const std::wstring& _name)
+	{
+		EventPack* ep = FindEventPack(_name);
+		return ep->End.event;
 	}
 }

@@ -8,10 +8,7 @@ namespace Bx
 		static void Init();
 		static void Update();
 		static void Render(HDC hDC);
-		static double DeltaTime()
-		{
-			return deltaTime; 
-		}
+		static float DeltaTime() {	return deltaTime; }
 
 	private:
 		static LARGE_INTEGER cpuFreq;

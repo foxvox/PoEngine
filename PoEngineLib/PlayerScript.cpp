@@ -133,7 +133,7 @@ namespace Bx
 	{
 		/*Animation* fgwani = animator->FindAnimation(L"FrontGiveWater");
 		Animation* activeAni = animator->GetActiveAnimation(); */
-		bool isCompleteAni = animator->IsCompleteAnimation(); 
+		bool isCompleteAni = animator->IsAnimationComplete(); 
 
 		if (/*fgwani == activeAni &&*/ isCompleteAni)
 		{

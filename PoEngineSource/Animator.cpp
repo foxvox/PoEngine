@@ -20,9 +20,17 @@ namespace Bx
 		if (activeAnimation)
 		{
 			activeAnimation->Update(); 
-			if (activeAnimation->IsComplete() == true && isLoop == true)
+
+			EventPack* ep = FindEventPack(activeAnimation->GetName());
+
+			if (activeAnimation->IsComplete() == true)
 			{
-				activeAnimation->Reset(); 
+				//애니가 다른 애니로의 전환 없이 완료된 경우 Complete 이벤트를 발생시킨다. 
+				if (ep) 
+					ep->Complete(); 
+
+				if (isLoop == true) 
+					activeAnimation->Reset(); 
 			}
 		}
 	}
@@ -67,6 +75,15 @@ namespace Bx
 		Animation* ani = FindAnimation(_name); 
 		if (ani == nullptr)
 			return; 
+
+		//바로 아래쪽에서 새로 찾은 애니로 교체하고 있다. 교체하기 전에 이전 애니의 End 이벤트를 통해 
+		//이전 애니를 마무리해 줄 수 있다. 
+		EventPack* curEp = FindEventPack(activeAnimation->GetName());
+		curEp->End(); 
+
+		//새로 찾은 애니의 Start 이벤트를 실행한다. 
+		EventPack* nextEp = FindEventPack(ani->GetName());
+		nextEp->Start();
 
 		activeAnimation = ani; 
 		activeAnimation->Reset(); 

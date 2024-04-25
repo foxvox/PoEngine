@@ -15,6 +15,7 @@ namespace Bx
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Release(); 
 
 		UINT GetWidth() { return width; } 
 		UINT GetHeight() { return height; } 

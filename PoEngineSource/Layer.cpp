@@ -7,7 +7,16 @@ namespace Bx
 	{}
 
 	Layer::~Layer()
-	{}
+	{
+		for (GameObject* gameObj : gameObjects)
+		{
+			if (gameObj == nullptr)
+				continue; 
+
+			delete gameObj; 
+			gameObj = nullptr; 
+		}
+	}
 
 	void Layer::Init()
 	{

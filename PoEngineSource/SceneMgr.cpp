@@ -39,4 +39,17 @@ namespace Bx
 	{
 		activeScene->Render(_hdc); 
 	}
+
+	void SceneMgr::Release()
+	{
+		//static std::map<std::wstring, Scene*> scenes; 
+		for (auto& iter : scenes)
+		{
+			if (iter.second == nullptr)
+				continue; 
+
+			delete iter.second; 
+			iter.second = nullptr;
+		}
+	}
 }

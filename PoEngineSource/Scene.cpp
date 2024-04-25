@@ -9,7 +9,16 @@ namespace Bx
 	}
 
 	Scene::~Scene()
-	{}
+	{
+		for (Layer* layer : layers)
+		{
+			if (layer == nullptr)
+				continue; 
+
+			delete layer; 
+			layer = nullptr; 
+		}
+	}
 
 	void Scene::Init()
 	{
@@ -56,12 +65,10 @@ namespace Bx
 	}
 
 	void Scene::OnEnter()
-	{
-	}
+	{}
 
 	void Scene::OnExit()
-	{		
-	}
+	{}
 
 	void Scene::AddGameObject(GameObject* _gameObj, LayerType _type)
 	{

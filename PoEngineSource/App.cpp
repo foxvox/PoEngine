@@ -90,5 +90,9 @@ namespace Bx
 		SwapChain(hdc, backhdc); 
 	}
 
+	void App::Release()
+	{
+		SceneMgr::Release(); 
+	}
 }
 

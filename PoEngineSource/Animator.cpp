@@ -9,11 +9,27 @@ namespace Bx
 
 	Animator::~Animator()
 	{
+		for (auto& iter : animations)
+		{
+			if (iter.second == nullptr)
+				continue; 
+
+			delete iter.second; 
+			iter.second = nullptr; 
+		}
+
+		for (auto& iter : eventPacks) 
+		{
+			if (iter.second == nullptr)
+				continue;
+
+			delete iter.second;
+			iter.second = nullptr; 
+		}
 	}
 
 	void Animator::Init()
-	{
-	}
+	{}
 
 	void Animator::Update()
 	{

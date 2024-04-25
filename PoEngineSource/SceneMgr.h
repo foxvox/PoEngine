@@ -26,11 +26,14 @@ namespace Bx
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC _hdc); 
+		static void Release(); 
 		
 	private:
 		static std::map<std::wstring, Scene*> scenes; 
 		static Scene* activeScene; 
 	};
+
+	//static SceneMgr sceneMgr; 
 }
 
 

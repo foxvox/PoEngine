@@ -4,6 +4,10 @@
 #include "../PoEngineLib/LoadResources.h"  
 #include "../PoEngineLib/LoadScenes.h" 
 
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
 using namespace Bx;
 #define MAX_LOADSTRING 100
 
@@ -28,14 +32,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_ int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+    UNREFERENCED_PARAMETER(lpCmdLine); 
 
-    // 전역 문자열을 초기화합니다.
+    //Memory leak checking...
+    //_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(496);
+
+    //전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_POENGINEEDITOR, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
 
-    // 애플리케이션 초기화를 수행합니다:
+    //애플리케이션 초기화를 수행합니다.
     if (!InitInstance (hInstance, nCmdShow))
     {
         return FALSE;
@@ -65,6 +73,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     Gdiplus::GdiplusShutdown(token); 
+    app.Release(); 
 
     return (int) msg.wParam;
 }
@@ -112,7 +121,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
 
-   // Load Scenes... 
+   //Load Scenes... 
    int a = 0; 
    srand(unsigned int(&a)); 
    LoadResources(); 

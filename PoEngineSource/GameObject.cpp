@@ -14,6 +14,9 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
+			if (comp == nullptr)
+				continue; 
+
 			delete comp;
 			comp = nullptr;
 		}

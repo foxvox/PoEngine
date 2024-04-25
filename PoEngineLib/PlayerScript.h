@@ -27,6 +27,8 @@ namespace Bx
 		void Move(); 
 		void GiveWater(); 
 
+		//void (*)
+
 	private:
 		State state; 
 		class Animator* animator; 

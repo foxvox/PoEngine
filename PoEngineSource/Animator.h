@@ -8,6 +8,31 @@ namespace Bx
 	class Animator : public Component 
 	{
 	public:
+		struct Event
+		{
+			// 대입연산자 재정의
+			void operator=(std::function<void()> func)
+			{
+				event = std::move(func); 
+			}
+
+			void operator()()
+			{
+				if (event)
+					event;  // event == event() 
+			}
+
+			//void (*evnet)(); <= 함수포인터 표현법 void: return, (): param
+			std::function<void()> event;  //functor(함수객체)표현법 
+		};
+
+		struct Events
+		{
+			Event startEvent;
+			Event completeEvent;
+			Event endEvent;
+		};
+
 		Animator();
 		~Animator(); 
 
@@ -29,7 +54,9 @@ namespace Bx
 	private:
 		std::map<std::wstring, Animation*> animations; 
 		Animation* activeAnimation; 
-		bool isLoop;  
+		bool isLoop; 
+
+		std::map<std::wstring, Events*> events; 
 	};
 }
 

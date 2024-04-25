@@ -10,6 +10,7 @@
 #include <string>
 #include <map>
 #include <dinput.h>
+#include <functional> 
 
 #include <mmsystem.h>
 #include <dinput.h>  

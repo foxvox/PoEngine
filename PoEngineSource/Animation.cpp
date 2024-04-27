@@ -53,14 +53,13 @@ namespace Bx
 		float rot = tr->GetRot();
 		Vector2 pos = tr->GetPos(); 		
 		
-		//Vector2 camPos{}; 
-		/*
+		Vector2 camPos{}; 
+		
 		if (camera)
 		{
 			camPos = camera->CalPos(pos); 
 			pos = camPos; 
-		}
-		*/ 
+		}		 
 
 		Sprite sprite = aniSheet[index];
 

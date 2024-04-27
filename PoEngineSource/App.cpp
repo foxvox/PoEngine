@@ -2,6 +2,7 @@
 #include "Input.h" 
 #include "BxTime.h"  
 #include "SceneMgr.h" 
+#include "Resources.h" 
 
 namespace Bx
 {
@@ -93,6 +94,7 @@ namespace Bx
 	void App::Release()
 	{
 		SceneMgr::Release(); 
+		Resources::Release(); 
 	}
 }
 

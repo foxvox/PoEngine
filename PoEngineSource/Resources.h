@@ -40,6 +40,18 @@ namespace Bx
 			return resource; 
 		}
 
+		static void Release()
+		{
+			for (auto& iter : resources)
+			{
+				if (iter.second == nullptr)
+					continue; 
+				
+				delete iter.second;
+				iter.second = nullptr;								
+			}
+		}
+
 	private:
 		static std::map<std::wstring, Resource*> resources; 
 

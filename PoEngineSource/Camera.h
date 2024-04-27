@@ -20,6 +20,8 @@ namespace Bx
 		void LateUpdate() override;
 		void Render(HDC _hdc) override; 
 
+		void SetTarget(GameObject* _target) { target = _target; }
+
 	private:		
 		Vector2		relativePos; 
 		Vector2		resolution; 

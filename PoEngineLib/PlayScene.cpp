@@ -30,6 +30,7 @@ namespace Bx
 		//Camera 
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
+		//camera는 Rederer.h에 선언되어있다. 
 		camera = camComp;
 
 		//BG	
@@ -41,7 +42,7 @@ namespace Bx
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
-		PlayerScript* ps = player->AddComponent<PlayerScript>();
+		PlayerScript* ps = player->AddComponent<PlayerScript>();		
 
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
@@ -65,6 +66,8 @@ namespace Bx
 
 		Texture* catx = Resources::Find<Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
+
+		camComp->SetTarget(cat);
 
 		catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);

@@ -31,4 +31,9 @@ namespace Bx
 
 		return gameObj;
 	}
+
+	static void Destroy(GameObject* gameObj)
+	{
+		gameObj->SetDead(); 
+	}
 }

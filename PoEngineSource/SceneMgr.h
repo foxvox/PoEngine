@@ -26,6 +26,7 @@ namespace Bx
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC _hdc); 
+		static void Destroy(); 
 		static void Release(); 
 		
 	private:

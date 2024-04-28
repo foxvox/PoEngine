@@ -67,7 +67,8 @@ namespace Bx
 		Texture* catx = Resources::Find<Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
 
-		camComp->SetTarget(cat);
+		//카메라가 타겟을 쫒아가게 설정
+		//camComp->SetTarget(cat);
 
 		catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);

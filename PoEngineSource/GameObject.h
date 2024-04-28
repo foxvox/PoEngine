@@ -3,9 +3,21 @@
 
 namespace Bx
 {
+	typedef std::vector<Component*>::iterator COMPOITER;
+
 	class GameObject
 	{
 	public:
+		//friend static void Destroy(GameObject* _gameobj); //필요하면 friend를 맺을 수 있다. 
+
+		enum class State
+		{
+			ACTIVE, 
+			INACTIVE, 
+			DEAD, 
+			END
+		};
+
 		GameObject();
 		~GameObject();
 
@@ -43,7 +55,20 @@ namespace Bx
 
 		void InitTransform(); 
 
+		State GetState() { return state; } 
+
+		void SetActive(bool _isActive)
+		{
+			if (_isActive == true)
+				state = State::ACTIVE;
+			else
+				state = State::INACTIVE; 			
+		}		 
+
+		void SetDead() { state = State::DEAD; }
+
 	private: 
+		State state; 
 		std::vector<Component*> components; 
 	};
 }

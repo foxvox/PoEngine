@@ -40,6 +40,11 @@ namespace Bx
 		activeScene->Render(_hdc); 
 	}
 
+	void SceneMgr::Destroy()
+	{
+		activeScene->Destroy(); 
+	}
+
 	void SceneMgr::Release()
 	{
 		//static std::map<std::wstring, Scene*> scenes; 

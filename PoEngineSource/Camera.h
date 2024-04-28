@@ -23,8 +23,8 @@ namespace Bx
 		void SetTarget(GameObject* _target) { target = _target; }
 
 	private:		
-		Vector2		relativePos; 
-		Vector2		resolution; 
+		Vector2		relativePos;
+		Vector2		resolution;
 		Vector2		destPos;
 		GameObject* target; 
 	};

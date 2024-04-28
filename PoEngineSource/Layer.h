@@ -5,6 +5,8 @@
  
 namespace Bx  
 {
+	typedef std::vector<GameObject*>::iterator GAMEOBJITER; 
+
 	class Layer : public Entity 
 	{
 	public:
@@ -13,7 +15,8 @@ namespace Bx
 		virtual void Init();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(HDC _hdc); 
+		virtual void Render(HDC _hdc);
+		virtual void Destroy();
 
 		void AddGameObject(GameObject* _gameObj);
 

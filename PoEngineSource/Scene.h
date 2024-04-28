@@ -15,7 +15,8 @@ namespace Bx
 		virtual void Init();
 		virtual void Update();
 		virtual void LateUpdate();
-		virtual void Render(HDC _hdc);		
+		virtual void Render(HDC _hdc);	
+		virtual void Destroy(); 
 
 		virtual void OnEnter();
 		virtual void OnExit(); 

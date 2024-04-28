@@ -55,6 +55,8 @@ namespace Bx
 		Update();
 		LateUpdate();
 		Render();
+
+		Destroy(); 
 	}
 
 	void App::Update()
@@ -95,6 +97,11 @@ namespace Bx
 	{
 		SceneMgr::Release(); 
 		Resources::Release(); 
+	}
+
+	void App::Destroy()
+	{
+		SceneMgr::Destroy();
 	}
 }
 

@@ -4,7 +4,8 @@
 
 namespace Bx
 {
-	GameObject::GameObject()		
+	GameObject::GameObject()	
+		: state(State::ACTIVE)
 	{
 		components.resize((size_t)CompType::END); 
 		InitTransform(); 
@@ -14,10 +15,10 @@ namespace Bx
 	{
 		for (Component* comp : components)
 		{
-			if (comp == nullptr)
+			if (comp == nullptr)    
 				continue; 
 
-			delete comp;
+			//delete comp;
 			comp = nullptr;
 		}
 	} 

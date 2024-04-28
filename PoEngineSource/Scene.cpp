@@ -64,6 +64,17 @@ namespace Bx
 		}
 	}
 
+	void Scene::Destroy()
+	{
+		for (Layer* layer : layers)
+		{
+			if (layer == nullptr)
+				continue;
+
+			layer->Destroy();
+		}
+	}
+
 	void Scene::OnEnter()
 	{}
 

@@ -26,10 +26,13 @@ namespace Bx
 			Transform* tr = target->GetComponent<Transform>(); 
 			destPos = tr->GetPos(); 
 		}
+		else
+		{
+			//GetOwner를 통해 게임오브젝트 인스턴스를 가져온다. 
+			Transform* camTr = GetOwner()->GetComponent<Transform>();
+			destPos = camTr->GetPos();
+		}
 
-		//GetOwner를 통해 게임오브젝트 인스턴스를 가져온다. 
-		Transform* camTr = GetOwner()->GetComponent<Transform>();
-		destPos = camTr->GetPos();
 		Vector2 halfResolution = resolution / 2.f; 
 		relativePos = destPos - halfResolution; 
 	}

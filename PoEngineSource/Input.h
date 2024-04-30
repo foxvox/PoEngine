@@ -1,5 +1,6 @@
 #pragma once 
 #include "CommonInclude.h" 
+#include "BxMath.h"
 
 using namespace std; 
 
@@ -51,7 +52,7 @@ namespace Bx
 			return keys[(size_t)_keyCode].keyState == KeyState::Pressed;
 		}
 
-		static Vector2  GetMousePos() { return mousePos; } 
+		static Vector2 GetMousePos() { return mousePos; } 
 
 		static bool	IsKeyDown(KeyCode _keyCode);
 		static void SetFocusWndPos(); 
@@ -62,9 +63,8 @@ namespace Bx
 		static void	UpdateKeyUp(Input::Key& _key);
 		static void ClearKeys(); 
 
-	private:		
 		static vector<Key> keys; 
-		static Vector2	   mousePos; 
+		static Vector2   mousePos; 
 	};
 }
 

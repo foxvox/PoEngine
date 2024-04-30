@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h" 
 #include "Texture.h" 
+#include "BxMath.h"
 
 namespace Bx
 {
@@ -21,7 +22,7 @@ namespace Bx
 
 	private:
 		Texture*	texture; 
-		Vector2		size;
+		Vector2	size;
 	};
 }
 

@@ -1,7 +1,4 @@
 #include "Player.h" 
-#include "Input.h" 
-#include "Transform.h" 
-#include "BxTime.h" 
 
 namespace Bx
 {

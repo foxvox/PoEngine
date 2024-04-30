@@ -1,6 +1,7 @@
 #pragma once 
 #include "Resource.h"
 #include "Texture.h" 
+#include "BxMath.h"
 
 namespace Bx
 {

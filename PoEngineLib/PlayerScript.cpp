@@ -4,6 +4,10 @@
 #include "BxTime.h" 
 #include "GameObject.h" 
 #include "Animator.h"
+#include "Cat.h" 
+#include "CatScript.h" 
+#include "Object.h" 
+#include "Resources.h"
 
 namespace Bx
 {
@@ -58,36 +62,64 @@ namespace Bx
 	{
 		if (Input::GetKey(KeyCode::LButton))
 		{
-			state = PlayerScript::State::GIVEWATER;
+			Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);
+			//cat->SetActive(true); 
+			CatScript* cs = cat->AddComponent<CatScript>();
+			cs->SetGameObj(GetOwner());
+
+			Texture* catx = Resources::Find<Texture>(L"Cat");
+			Animator* catAnimator = cat->AddComponent<Animator>();
+
+			//카메라가 타겟을 쫒아가게 설정
+			//camComp->SetTarget(cat);
+
+			catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+			//catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f);
+			catAnimator->PlayAnimation(L"Sit", false);
+
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+
+			cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
+			cat->GetComponent<Transform>()->SetPos(tr->GetPos());
+
+			Vector2 mousePos = Input::GetMousePos();
+
+			cs->dest = mousePos;
+
+			/*state = PlayerScript::State::GIVEWATER;
 			animator->PlayAnimation(L"FrontGiveWater", false);
-
-			Vector2 mousePos = Input::GetMousePos(); 
+			Vector2 mousePos = Input::GetMousePos(); */
 		}
 
-
-		if (Input::GetKey(KeyCode::Right))
-		{
-			state = PlayerScript::State::MOVE; 
-			//animator->PlayAnimation(L"RMove"); 
-		}
-		
-		if (Input::GetKey(KeyCode::Left))
-		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"LMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Up))
-		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"UMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Down))
-		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"DMove");
-		}
+		//if (Input::GetKey(KeyCode::Right))
+		//{
+		//	state = PlayerScript::State::MOVE; 
+		//	//animator->PlayAnimation(L"RMove"); 
+		//}
+		//
+		//if (Input::GetKey(KeyCode::Left))
+		//{
+		//	state = PlayerScript::State::MOVE;
+		//	//animator->PlayAnimation(L"LMove");
+		//}
+		//
+		//if (Input::GetKey(KeyCode::Up))
+		//{
+		//	state = PlayerScript::State::MOVE;
+		//	//animator->PlayAnimation(L"UMove");
+		//}
+		//
+		//if (Input::GetKey(KeyCode::Down))
+		//{
+		//	state = PlayerScript::State::MOVE;
+		//	//animator->PlayAnimation(L"DMove");
+		//}
 	}
 
 	void PlayerScript::Move()
@@ -140,5 +172,37 @@ namespace Bx
 			state = State::IDLE; 
 			animator->PlayAnimation(L"Idle", false); 
 		}		
+	}
+	void PlayerScript::AttackEffect() 
+	{
+		Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);
+		//cat->SetActive(true); 
+		CatScript* cs = cat->AddComponent<CatScript>();
+		cs->SetGameObj(GetOwner()); 
+
+		Texture* catx = Resources::Find<Texture>(L"Cat");
+		Animator* catAnimator = cat->AddComponent<Animator>();
+
+		//카메라가 타겟을 쫒아가게 설정
+		//camComp->SetTarget(cat);
+
+		catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f);
+		catAnimator->PlayAnimation(L"Sit", false);
+
+		Transform* tr = GetOwner()->GetComponent<Transform>(); 
+
+		cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
+		cat->GetComponent<Transform>()->SetPos(tr->GetPos());
+
+		Vector2 mousePos = Input::GetMousePos();
+
+		cs->dest = mousePos; 
 	}
 }

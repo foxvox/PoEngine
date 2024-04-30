@@ -67,7 +67,7 @@ namespace Bx
 		Vector2 scale = tr->GetScale();
 		
 		//Vector2 camPos = camera->CalPos(pos); 
-		//캠위치를 게임오브젝트 위치에 할당, 카메라 오작동시 할당 취소
+		//캠위치를 게임오브젝트 위치에 할당
 		//pos = camPos; 
 
 		if (texture->GetTextureType() == Texture::TextureType::PNG) 
@@ -90,11 +90,27 @@ namespace Bx
 				0, 0, texture->GetWidth(), texture->GetHeight(), Gdiplus::UnitPixel, &imgAttrib); 
 		}
 		else if (texture->GetTextureType() == Texture::TextureType::BMP) 
-		{
-			//dest먼저 src나중 순서로 사용됨  
-			TransparentBlt(_hdc, int(pos.x), int(pos.y), 
-				int(texture->GetWidth() * size.x * scale.x), int(texture->GetHeight() * size.y * scale.y), 
-				texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255)); 
+		{			
+			if (texture->IsAlpha())
+			{
+				//알파블렌드를 쓰려면 해당 이미지에 알파채널이 있어야 한다. 
+				BLENDFUNCTION func{};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255;  //0=>transparent, 255=>Opaque 				
+
+				AlphaBlend(_hdc, int(pos.x), int(pos.y),
+					int(texture->GetWidth() * size.x * scale.x), int(texture->GetHeight() * size.y * scale.y),
+					texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), func);
+			}
+			else 
+			{
+				//dest먼저 src나중 순서로 사용됨  
+				TransparentBlt(_hdc, int(pos.x), int(pos.y),
+					int(texture->GetWidth() * size.x * scale.x), int(texture->GetHeight() * size.y * scale.y),
+					texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255));
+			}
 		}		
 	}
 }

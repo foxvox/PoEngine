@@ -15,7 +15,6 @@
 #include "Cat.h"
 #include "CatScript.h" 
 
-
 namespace Bx
 {
 	PlayScene::PlayScene()
@@ -58,30 +57,28 @@ namespace Bx
 		
 		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
 		player->GetComponent<Transform>()->SetRot(0.f);	*/	
-		player->GetComponent<Transform>()->SetPos(Vector2(100.f, 100.f));
+		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
 
 		//Cat
-		cat = Instantiate<Cat>(LayerType::ANIMAL);
-		cat->AddComponent<CatScript>();
+		//cat = Instantiate<Cat>(LayerType::ANIMAL);
+		////cat->SetActive(true); 
+		//cat->AddComponent<CatScript>();
+		//Texture* catx = Resources::Find<Texture>(L"Cat");
+		//Animator* catAnimator = cat->AddComponent<Animator>();
 
-		Texture* catx = Resources::Find<Texture>(L"Cat");
-		Animator* catAnimator = cat->AddComponent<Animator>();
+		////카메라가 타겟을 쫒아가게 설정
+		////camComp->SetTarget(cat);
 
-		//카메라가 타겟을 쫒아가게 설정
-		//camComp->SetTarget(cat);
-
-		catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->PlayAnimation(L"Sit", false);
-
-		cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
-		cat->GetComponent<Transform>()->SetRot(0.f);
-		cat->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
+		//catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		//catAnimator->PlayAnimation(L"Sit", false);
+		//cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));		
+		//cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

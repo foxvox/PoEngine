@@ -4,7 +4,7 @@
 
 #include <Windows.h> 
 #include <assert.h> 
-
+#include <iostream>
 #include <algorithm> 
 #include <vector>
 #include <string>
@@ -18,9 +18,8 @@
 #pragma comment(lib, "winmm.lib")  
 
 #include <gdiplus.h>
-#pragma comment(lib, "gdiplus.lib")  
+#pragma comment(lib, "gdiplus.lib")
 
-#include "BxMath.h" 
 #include "BxEnum.h" 
 
 

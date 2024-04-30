@@ -1,5 +1,6 @@
 #pragma once 
 #include "CommonInclude.h" 
+
 namespace Bx
 {
 	class BxTime

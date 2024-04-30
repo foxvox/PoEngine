@@ -1,6 +1,6 @@
 #pragma once 
 #include "Entity.h" 
-#include "CommonInclude.h" 
+//#include "CommonInclude.h" 
 #include "GameObject.h" 
  
 namespace Bx  

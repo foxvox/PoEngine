@@ -42,8 +42,9 @@ namespace Bx
 		void Render(HDC _hdc) override; 
 
 		void CreateAnimation(const std::wstring& _name, Texture* _spriteSheet,
-			Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
-			UINT _frames, float _timeLag); 
+			Vector2 _leftTop, Vector2 _span, Vector2 _offset, 
+			UINT _frames, float _timeLag);
+		void CreateAniByFolder(const std::wstring& _name, const std::wstring& _path, Vector2 _offset, float _timeLag); 
 
 		Animation* FindAnimation(const std::wstring& _name); 
 		void PlayAnimation(const std::wstring& _name, bool _isLoop = true); 

@@ -1,5 +1,6 @@
 #pragma once 
 #include "Component.h" 
+#include "BxMath.h"
 
 namespace Bx
 {

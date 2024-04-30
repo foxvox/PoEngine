@@ -1,13 +1,39 @@
 #include "Texture.h" 
-#include "App.h"  
+#include "App.h" 
+#include "Resources.h" 
 
 extern Bx::App app;  // 외부 파일에 있는 전역변수를 사용하겠다고 전방선언 
 
 namespace Bx
 {
-	Texture::Texture() 
+	Texture* Texture::Create(const std::wstring& _name, UINT _width, UINT _height)
+	{
+		Texture* img = Resources::Find<Texture>(_name);
+		if (img)
+			return img; 
+
+		img = new Texture(); 
+		img->SetName(_name); 
+		img->SetWidth(_width); 
+		img->SetHeight(_height); 
+
+		HDC hdc = app.GetHDC(); 
+		//HWND hwnd = app.GetHWND();
+		
+		img->bitmap = CreateCompatibleBitmap(hdc, _width, _height);		
+		img->hdc = CreateCompatibleDC(hdc);
+
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(img->hdc, img->bitmap);
+		DeleteObject(oldBitmap); 
+
+		Resources::Insert(_name, img); 
+
+		return img;
+	}
+
+	Texture::Texture()
 		: Resource(ResrcType::TEXTURE), txType(TextureType::NONE), width(0), height(0), 
-		hdc(nullptr), bitmap(nullptr), image(nullptr) 
+		hdc(nullptr), bitmap(nullptr), image(nullptr), isAlpha(false) 
 	{}								
 
 	Texture::~Texture()			
@@ -42,6 +68,11 @@ namespace Bx
 			width = info.bmWidth; 
 			height = info.bmHeight; 
 			txType = TextureType::BMP; 
+
+			if (info.bmBitsPixel == 32)
+				isAlpha = true;
+			else if (info.bmBitsPixel == 24)
+				isAlpha = false; 
 
 			HDC mainDC = app.GetHDC(); 
 			hdc = CreateCompatibleDC(mainDC); 

@@ -39,6 +39,17 @@ namespace Bx
 
 			return resource; 
 		}
+				
+		static void Insert(const std::wstring& _key, Resource* _rsrc)
+		{
+			if (_key == L"")
+				return; 
+
+			if (_rsrc == nullptr)
+				return;
+
+			resources.insert(std::make_pair(_key, _rsrc));			
+		}
 
 		static void Release()
 		{

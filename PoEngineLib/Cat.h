@@ -14,7 +14,7 @@ namespace Bx
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-	private:
+	private:		
 	};
 
 }

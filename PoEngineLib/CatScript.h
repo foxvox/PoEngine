@@ -28,6 +28,8 @@ namespace Bx
 		CatScript();
 		~CatScript();
 
+		Vector2 dest;
+
 		void Init() override;
 		void Update() override;
 		void LateUpdate() override;
@@ -38,12 +40,17 @@ namespace Bx
 		void AniByMovingDir(Dir _dir); 
 		void CatMoving(Transform* _tr); 
 		void LayDown(); 
+		void SetGameObj(GameObject* _gameObj) { gameObj = _gameObj; } 		
 
 	private:
 		State state;
 		class Animator* animator;
 		float catTime; 
 		Dir   direction; 
+		float activeTime;
+
+		GameObject* gameObj;	
+		float radian; 
 	};
 }
 

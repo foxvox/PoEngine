@@ -1,11 +1,14 @@
 #include "Animator.h" 
+#include <filesystem>
+#include <Resources.h> 
+
+namespace fs = std::filesystem; 
 
 namespace Bx
 {
 	Animator::Animator() 
 		: Component(CompType::ANIMATOR), animations{}, activeAnimation(nullptr), isLoop(true) 
-	{
-	}
+	{}
 
 	Animator::~Animator()
 	{
@@ -59,10 +62,10 @@ namespace Bx
 	{
 		if (activeAnimation)
 			activeAnimation->Render(_hdc); 
-	}
+	}	
 
 	void Animator::CreateAnimation(const std::wstring& _name, Texture* _spriteSheet, 
-		Vector2 _leftTop, Vector2 _span, Vector2 _offSet, 
+		Vector2 _leftTop, Vector2 _span, Vector2 _offset, 
 		UINT _frames, float _timeLag)
 	{
 		Animation* ani = nullptr; 		
@@ -72,13 +75,48 @@ namespace Bx
 
 		ani = new Animation(); 
 		ani->SetName(_name); 
-		ani->CreateAnimation(_name, _spriteSheet, _leftTop, _span, _offSet, _frames, _timeLag); 		
+		ani->CreateAnimation(_name, _spriteSheet, _leftTop, _span, _offset, _frames, _timeLag); 		
 		ani->SetAnimator(this); 
 		
 		EventPack* ep = new EventPack(); 
 		eventPacks.insert(std::make_pair(_name, ep)); 
 
 		animations.insert(std::make_pair(_name, ani)); 
+	}
+
+	void Animator::CreateAniByFolder(const std::wstring& _name, const std::wstring& _path, Vector2 _offset, float _timeLag)
+	{
+		Animation* ani = nullptr; 
+		ani = FindAnimation(_name); 
+		if (ani != nullptr)
+			return;
+
+		int fileCnt = 0; 
+		fs::path aniPath(_path); 
+		std::vector<Texture*> imgs{}; 
+		for (auto& p : fs::recursive_directory_iterator(aniPath))
+		{
+			std::wstring fileName = p.path().filename(); 
+			std::wstring fullName = p.path(); 
+
+			Texture* tx = Resources::Load<Texture>(fileName, fullName); 
+			imgs.push_back(tx); 
+			fileCnt++; 
+		}
+
+		UINT imgWidth = imgs[0]->GetWidth();
+		UINT imgHeight = imgs[0]->GetHeight(); 
+
+		UINT sheetWidth =  imgWidth * fileCnt; 
+		UINT sheetHeight = imgHeight; 
+		Texture* spriteSheet = Texture::Create(_name, sheetWidth, sheetHeight); 
+
+		for (size_t i = 0; i < imgs.size(); i++) 
+		{
+			BitBlt(spriteSheet->GetHDC(), i * imgWidth, 0, imgWidth, imgHeight, imgs[i]->GetHDC(), 0, 0, SRCCOPY); 
+		}
+
+		CreateAnimation(_name, spriteSheet, Vector2::zero, Vector2(imgWidth, imgHeight), _offset, fileCnt, _timeLag); 
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& _name)

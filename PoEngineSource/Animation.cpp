@@ -88,19 +88,29 @@ namespace Bx
 		}
 		else if (tt == Texture::TextureType::BMP) 
 		{
-			//알파블렌드를 쓰려면 해당 이미지에 알파채널이 있어야 한다. 
-			BLENDFUNCTION func{};
-			func.BlendOp = AC_SRC_OVER;
-			func.BlendFlags = 0;
-			func.AlphaFormat = AC_SRC_ALPHA;
-			func.SourceConstantAlpha = 255;  //0=>transparent, 255=>Opaque 
-			
 			HDC imghdc = texture->GetHDC();
 
-			AlphaBlend(_hdc, 
-				int(pos.x - (sprite.tSpan.x / 2.f)), int(pos.y - (sprite.tSpan.y / 2.f)), 
-				int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y), imghdc,
-				int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), func);
+			if (texture->IsAlpha())
+			{
+				//알파블렌드를 쓰려면 해당 이미지에 알파채널이 있어야 한다. 
+				BLENDFUNCTION func{};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255;  //0=>transparent, 255=>Opaque 				
+
+				AlphaBlend(_hdc,
+					int(pos.x - (sprite.tSpan.x / 2.f) + sprite.tOffSet.x), int(pos.y - (sprite.tSpan.y / 2.f) + sprite.tOffSet.y), 
+					int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y), imghdc,
+					int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), func);
+			}
+			else
+			{
+				TransparentBlt(_hdc, 
+					int(pos.x - (sprite.tSpan.x / 2.f) + sprite.tOffSet.x), int(pos.y - (sprite.tSpan.y / 2.f) + sprite.tOffSet.y),
+					int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y), imghdc,
+					int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), RGB(255, 0, 255));
+			}
 		}
 	}
 

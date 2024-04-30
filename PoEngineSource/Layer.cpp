@@ -11,7 +11,7 @@ namespace Bx
 		for (GameObject* gameObj : gameObjects)
 		{
 			if (gameObj == nullptr)
-				continue; 
+				continue; 			
 
 			delete gameObj; 
 			gameObj = nullptr; 
@@ -23,7 +23,7 @@ namespace Bx
 		for (GameObject* gameObj : gameObjects)
 		{
 			if (gameObj == nullptr)
-				continue;
+				continue; 
 
 			gameObj->Init();
 		}
@@ -34,6 +34,11 @@ namespace Bx
 		for (GameObject* gameObj : gameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+
+			GameObject::State state = gameObj->GetState();
+			if (state == GameObject::State::INACTIVE ||
+				state == GameObject::State::DEAD)
 				continue;
 
 			gameObj->Update();
@@ -57,6 +62,11 @@ namespace Bx
 		{
 			if (gameObj == nullptr)
 				continue; 
+
+			GameObject::State state = gameObj->GetState();
+			if (state == GameObject::State::INACTIVE ||
+				state == GameObject::State::DEAD)
+				continue;
 
 			gameObj->Render(_hdc); 
 		}

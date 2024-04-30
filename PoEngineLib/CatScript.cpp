@@ -2,13 +2,16 @@
 #include "Input.h" 
 #include "BxTime.h" 
 #include "GameObject.h" 
-#include "Animator.h"
+#include "Animator.h" 
+#include "BxMath.h" 
+#include "Object.h" 
 
 namespace Bx
 {
 	CatScript::CatScript()
 		: state(CatScript::State::SIT), animator(nullptr), 
-		catTime(0.f), direction(CatScript::Dir::DOWN)
+		catTime(0.f), direction(CatScript::Dir::DOWN), activeTime(0.f), 
+		gameObj(nullptr), dest(Vector2::zero), radian(0.f) 
 	{}
 
 	CatScript::~CatScript()
@@ -19,6 +22,10 @@ namespace Bx
 
 	void CatScript::Update()
 	{
+		activeTime += BxTime::DeltaTime(); 
+		if (activeTime > 7.f)
+		{}
+
 		if (animator == nullptr)
 		{
 			animator = GetOwner()->GetComponent<Animator>();
@@ -50,13 +57,37 @@ namespace Bx
 	void CatScript::Sit()
 	{
 		catTime += BxTime::DeltaTime(); 
-		if (catTime > 4.f)
+
+		/*if (catTime > 3.f)
+		{
+			Destroy(GetOwner()); 
+		}*/
+
+		Transform* tr = GetOwner()->GetComponent<Transform>(); 
+		Vector2 pos = tr->GetPos(); 
+
+		//Vector2 mousePos = Input::GetMousePos(); 
+		//마우스 위치 이동 (벡터의 뺄셈 활용) 		
+		/*Transform* ptr = gameObj->GetComponent<Transform>(); 
+		Vector2 playerPos = ptr->GetPos(); 
+		Vector2 destDir = dest - playerPos; 		
+		pos += destDir.Normalize() * (100.f * BxTime::DeltaTime());*/ 
+
+		//삼각함수를 통한 이동 
+
+		radian += BxTime::DeltaTime(); 
+
+		pos += Vector2(1.f, cosf(radian)) * (100.f * BxTime::DeltaTime()); 
+
+		tr->SetPos(pos); 	
+
+		/*if (catTime > 2.f)
 		{
 			state = CatScript::State::MOVE; 			
 			direction = (Dir)(rand() % 4); 
 			AniByMovingDir(direction); 
 			catTime = 0.f;
-		}	
+		}*/	
 	}
 
 	void CatScript::Move()
@@ -108,9 +139,6 @@ namespace Bx
 		Vector2 pos = _tr->GetPos();
 
 		const float speed = 50.f;
-
-		/*if (BxTime::DeltaTime() > 1.f)
-			return;*/ 
 		
 		switch (direction)
 		{

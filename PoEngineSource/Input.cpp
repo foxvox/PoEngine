@@ -1,15 +1,15 @@
 #include "Input.h" 
 #include "App.h" 
+#include "BxMath.h" 
 
 extern Bx::App app;  // 외부 파일에 있는 전역변수를 사용하겠다고 전방선언
 
 namespace Bx
 {	
 	vector<Input::Key> Input::keys{};
-	Vector2 Input::mousePos{}; 
+	Vector2 Input::mousePos = Vector2::zero; 
 
-	Input::Input() {}
-	
+	Input::Input() {}	
 	Input::~Input() {}
 
 	int ASCII[(size_t)KeyCode::END] =
@@ -18,7 +18,7 @@ namespace Bx
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
 		'Z', 'X', 'C', 'V', 'B', 'N', 'M',
 		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP, 
-		VK_LBUTTON, VK_MBUTTON, VK_RBUTTON, 
+		VK_LBUTTON, VK_MBUTTON, VK_RBUTTON,  
 	};
 
 	void Input::Init()

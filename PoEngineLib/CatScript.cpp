@@ -11,7 +11,7 @@ namespace Bx
 	CatScript::CatScript()
 		: state(CatScript::State::SIT), animator(nullptr), 
 		catTime(0.f), direction(CatScript::Dir::DOWN), activeTime(0.f), 
-		gameObj(nullptr), dest(Vector2::zero), radian(0.f)
+		player(nullptr), dest(Vector2::zero), radian(0.f)
 	{}
 
 	CatScript::~CatScript()
@@ -58,7 +58,7 @@ namespace Bx
 	{
 		catTime += BxTime::DeltaTime(); 
 
-		if (catTime > 3.f) 
+		if (catTime > 4.f) 
 		{
 			Destroy(GetOwner()); 
 		}
@@ -66,26 +66,29 @@ namespace Bx
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
 
-		//이동 후의 위치를 reset하고 싶을 때
-		static const float initY = pos.y; 
-		pos.y = initY; 
-		tr->SetPos(pos); 
+		//player 위치에서 start하고 싶을 때
+		/*pos.y = playerPos.y;
+		tr->SetPos(pos);*/
 
 		//Vector2 mousePos = Input::GetMousePos(); 
 		//마우스 위치 이동 (벡터의 뺄셈 활용) 		
-		/*Transform* ptr = gameObj->GetComponent<Transform>(); 
-		Vector2 playerPos = ptr->GetPos(); 
-		Vector2 destDir = dest - playerPos; 		
-		pos += destDir.Normalize() * (100.f * BxTime::DeltaTime());*/ 
+		Transform* playerTr = player->GetComponent<Transform>(); 
+		Vector2 playerPos = playerTr->GetPos(); 
+		Vector2 destDir = dest - playerPos; 
+		destDir.Normalize(); 
+		pos += destDir * (100.f * BxTime::DeltaTime());
+		float dotVal = destDir.Dot(Vector2::right); 
+		float rotRad = acosf(dotVal); 
+		float rotDeg = RadToDeg(rotRad);  
 
 		//삼각함수를 통한 이동 
-		radian += 4.f * BxTime::DeltaTime();
+		/*radian += 4.f * BxTime::DeltaTime();
 		pos.x += 100.f * BxTime::DeltaTime(); 
-		pos.y -= 200.f * abs(sinf(radian)) * (100.f * BxTime::DeltaTime()); 
+		pos.y -= 100.f * abs(sinf(radian)) * (100.f * BxTime::DeltaTime()); */
 		
 		tr->SetPos(pos); 		
 
-		/*if (catTime > 2.f)
+		/*if (catTime > 2.f) 
 		{
 			state = CatScript::State::MOVE; 			
 			direction = (Dir)(rand() % 4); 

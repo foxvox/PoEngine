@@ -65,7 +65,7 @@ namespace Bx
 			Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);
 			//cat->SetActive(true); 
 			CatScript* cs = cat->AddComponent<CatScript>();
-			cs->SetGameObj(GetOwner());
+			cs->SetPlayer(GetOwner());
 
 			Texture* catx = Resources::Find<Texture>(L"Cat");
 			Animator* catAnimator = cat->AddComponent<Animator>();
@@ -82,44 +82,38 @@ namespace Bx
 			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 			//catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f);
 			catAnimator->PlayAnimation(L"Sit", false);
-
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 
 			cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
 			cat->GetComponent<Transform>()->SetPos(tr->GetPos());
 
 			Vector2 mousePos = Input::GetMousePos();
-
 			cs->dest = mousePos;
-
-			/*state = PlayerScript::State::GIVEWATER;
-			animator->PlayAnimation(L"FrontGiveWater", false);
-			Vector2 mousePos = Input::GetMousePos(); */
 		}
 
-		//if (Input::GetKey(KeyCode::Right))
-		//{
-		//	state = PlayerScript::State::MOVE; 
-		//	//animator->PlayAnimation(L"RMove"); 
-		//}
-		//
-		//if (Input::GetKey(KeyCode::Left))
-		//{
-		//	state = PlayerScript::State::MOVE;
-		//	//animator->PlayAnimation(L"LMove");
-		//}
-		//
-		//if (Input::GetKey(KeyCode::Up))
-		//{
-		//	state = PlayerScript::State::MOVE;
-		//	//animator->PlayAnimation(L"UMove");
-		//}
-		//
-		//if (Input::GetKey(KeyCode::Down))
-		//{
-		//	state = PlayerScript::State::MOVE;
-		//	//animator->PlayAnimation(L"DMove");
-		//}
+		if (Input::GetKey(KeyCode::Right))
+		{
+			state = PlayerScript::State::MOVE; 
+			//animator->PlayAnimation(L"RMove"); 
+		}
+		
+		if (Input::GetKey(KeyCode::Left))
+		{
+			state = PlayerScript::State::MOVE;
+			//animator->PlayAnimation(L"LMove");
+		}
+		
+		if (Input::GetKey(KeyCode::Up))
+		{
+			state = PlayerScript::State::MOVE;
+			//animator->PlayAnimation(L"UMove");
+		}
+		
+		if (Input::GetKey(KeyCode::Down))
+		{
+			state = PlayerScript::State::MOVE;
+			//animator->PlayAnimation(L"DMove");
+		}
 	}
 
 	void PlayerScript::Move()
@@ -178,7 +172,7 @@ namespace Bx
 		Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);
 		//cat->SetActive(true); 
 		CatScript* cs = cat->AddComponent<CatScript>();
-		cs->SetGameObj(GetOwner()); 
+		cs->SetPlayer(GetOwner()); 
 
 		Texture* catx = Resources::Find<Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();

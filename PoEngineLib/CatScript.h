@@ -40,7 +40,7 @@ namespace Bx
 		void AniByMovingDir(Dir _dir); 
 		void CatMoving(Transform* _tr); 
 		void LayDown(); 
-		void SetGameObj(GameObject* _gameObj) { gameObj = _gameObj; } 		
+		void SetPlayer(GameObject* _player) { player = _player; } 		
 
 	private:
 		State state;
@@ -49,7 +49,7 @@ namespace Bx
 		Dir   direction; 
 		float activeTime;
 
-		GameObject* gameObj;	
+		GameObject* player;	
 		float radian; 
 	};
 }

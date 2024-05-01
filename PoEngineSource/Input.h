@@ -37,22 +37,22 @@ namespace Bx
 		static void Init();
 		static void Update(); 
 
-		static bool GetKeyDown(KeyCode _keyCode)
+		__forceinline static bool GetKeyDown(KeyCode _keyCode)
 		{
 			return keys[(size_t)_keyCode].keyState == KeyState::Down;
 		}
 
-		static bool GetKeyUp(KeyCode _keyCode)
+		__forceinline static bool GetKeyUp(KeyCode _keyCode)
 		{
 			return keys[(size_t)_keyCode].keyState == KeyState::Up;
 		}
 
-		static bool GetKey(KeyCode _keyCode)
+		__forceinline static bool GetKey(KeyCode _keyCode)
 		{
-			return keys[(size_t)_keyCode].keyState == KeyState::Pressed;
+			return keys[(size_t)_keyCode].keyState == KeyState::Pressed; 
 		}
 
-		static Vector2 GetMousePos() { return mousePos; } 
+		__forceinline static Vector2 GetMousePos() { return mousePos; } 
 
 		static bool	IsKeyDown(KeyCode _keyCode);
 		static void SetFocusWndPos(); 

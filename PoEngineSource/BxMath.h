@@ -1,10 +1,13 @@
 #pragma once 
 #include <cmath>
 
-constexpr auto PI = 3.141592;
+static constexpr auto PI = 3.141592;
 
 namespace Bx 
 {
+	static float DegToRad(float _deg) { return _deg * (PI / 180.f); } 
+	static float RadToDeg(float _rad) { return _rad * (180.f / PI); } 
+
 	struct Vector2
 	{
 	public: 
@@ -42,6 +45,18 @@ namespace Bx
 		}
 
 		void operator-=(Vector2& _rv)
+		{
+			x -= _rv.x;
+			y -= _rv.y;
+		}
+
+		void operator+=(Vector2 _rv)
+		{
+			x += _rv.x;
+			y += _rv.y;
+		}
+
+		void operator-=(Vector2 _rv)
 		{
 			x -= _rv.x;
 			y -= _rv.y;

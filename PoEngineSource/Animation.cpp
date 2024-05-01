@@ -111,6 +111,8 @@ namespace Bx
 					int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y), imghdc,
 					int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), RGB(255, 0, 255));
 			}
+
+			//Rectangle(_hdc, pos.x, pos.y, pos.x + 50, pos.y + 50); 
 		}
 	}
 

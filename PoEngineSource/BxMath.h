@@ -1,7 +1,7 @@
 #pragma once 
 #include <cmath>
 
-constexpr auto PI = 3.14159;
+constexpr auto PI = 3.141592;
 
 namespace Bx 
 {
@@ -19,14 +19,14 @@ namespace Bx
 		static Vector2 down; 
 
 		Vector2()
-			: x(0.f), y(0.f)
+			: x(0.f), y(0.f) 
 		{} 
 
 		Vector2(const Vector2& _vec)
 			: x(_vec.x), y(_vec.y) 
 		{}
 
-		Vector2(float _x, float _y)
+		Vector2(float _x, float _y) 
 			: x(_x), y(_y)
 		{} 
 
@@ -35,10 +35,16 @@ namespace Bx
 			return Vector2(x + _rv.x, y + _rv.y);
 		}
 
-		void operator+=(Vector2 _rv)
+		void operator+=(Vector2& _rv)
 		{
 			x += _rv.x; 
 			y += _rv.y;
+		}
+
+		void operator-=(Vector2& _rv)
+		{
+			x -= _rv.x;
+			y -= _rv.y;
 		}
 
 		Vector2 operator-(Vector2& _rv)

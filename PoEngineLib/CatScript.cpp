@@ -11,7 +11,7 @@ namespace Bx
 	CatScript::CatScript()
 		: state(CatScript::State::SIT), animator(nullptr), 
 		catTime(0.f), direction(CatScript::Dir::DOWN), activeTime(0.f), 
-		gameObj(nullptr), dest(Vector2::zero), radian(0.f) 
+		gameObj(nullptr), dest(Vector2::zero), radian(0.f)
 	{}
 
 	CatScript::~CatScript()
@@ -58,13 +58,18 @@ namespace Bx
 	{
 		catTime += BxTime::DeltaTime(); 
 
-		/*if (catTime > 3.f)
+		if (catTime > 3.f) 
 		{
 			Destroy(GetOwner()); 
-		}*/
+		}
 
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
+
+		//이동 후의 위치를 reset하고 싶을 때
+		static const float initY = pos.y; 
+		pos.y = initY; 
+		tr->SetPos(pos); 
 
 		//Vector2 mousePos = Input::GetMousePos(); 
 		//마우스 위치 이동 (벡터의 뺄셈 활용) 		
@@ -74,12 +79,11 @@ namespace Bx
 		pos += destDir.Normalize() * (100.f * BxTime::DeltaTime());*/ 
 
 		//삼각함수를 통한 이동 
-
-		radian += BxTime::DeltaTime(); 
-
-		pos += Vector2(1.f, cosf(radian)) * (100.f * BxTime::DeltaTime()); 
-
-		tr->SetPos(pos); 	
+		radian += 4.f * BxTime::DeltaTime();
+		pos.x += 100.f * BxTime::DeltaTime(); 
+		pos.y -= 200.f * abs(sinf(radian)) * (100.f * BxTime::DeltaTime()); 
+		
+		tr->SetPos(pos); 		
 
 		/*if (catTime > 2.f)
 		{

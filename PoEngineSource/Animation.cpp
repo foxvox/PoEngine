@@ -112,7 +112,7 @@ namespace Bx
 					int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), RGB(255, 0, 255));
 			}
 
-			//Rectangle(_hdc, pos.x, pos.y, pos.x + 50, pos.y + 50); 
+			Rectangle(_hdc, pos.x, pos.y, pos.x + 10, pos.y + 10); 
 		}
 	}
 

@@ -59,7 +59,16 @@
       <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Animator.cpp">
-      <Filter>Component</Filter>
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Collider.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)BoxCollider2D.cpp">
+      <Filter>Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)CircleCollider2D.cpp">
+      <Filter>Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,7 +139,16 @@
       <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Animator.h">
-      <Filter>Component</Filter>
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h">
+      <Filter>Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)CircleCollider2D.h">
+      <Filter>Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h">
+      <Filter>Collider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +181,9 @@
     </Filter>
     <Filter Include="Animation">
       <UniqueIdentifier>{d0869364-35bf-4f48-90bc-6a5951a9c180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collider">
+      <UniqueIdentifier>{b1653c96-e834-4975-990a-833233ea821b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -14,6 +14,8 @@
 #include "Animator.h" 
 #include "Cat.h"
 #include "CatScript.h" 
+#include "BoxCollider2D.h" 
+#include "CircleCollider2D.h" 
 
 namespace Bx
 {
@@ -41,7 +43,9 @@ namespace Bx
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
-		PlayerScript* ps = player->AddComponent<PlayerScript>();		
+		PlayerScript* ps = player->AddComponent<PlayerScript>();
+		BoxCollider2D* bc = player->AddComponent<BoxCollider2D>(); 
+		bc->SetOffset(Vector2(-50.f, -50.f)); 
 
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 

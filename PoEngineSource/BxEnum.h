@@ -5,9 +5,10 @@ namespace Bx
 	enum class CompType
 	{		 
 		TRANS, 
-		SR,
-		ANIMATOR, 
+		COLLIDER, 
 		SCRIPT,
+		SR,
+		ANIMATOR,
 		CAMERA,	
 		END, 
 	};

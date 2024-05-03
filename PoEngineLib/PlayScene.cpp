@@ -61,7 +61,7 @@ namespace Bx
 		
 		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
 		player->GetComponent<Transform>()->SetRot(0.f);	*/	
-		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
+		player->GetComponent<Transform>()->SetPos(Vector2(400.f, 400.f));
 
 		//Cat
 		//cat = Instantiate<Cat>(LayerType::ANIMAL);

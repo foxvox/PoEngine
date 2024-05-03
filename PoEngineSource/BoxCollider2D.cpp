@@ -26,11 +26,16 @@ namespace Bx
 		Vector2 pos = tr->GetPos(); 
 
 		Vector2 offset = GetOffset(); 
-		HBRUSH tb = (HBRUSH)GetStockObject(NULL_BRUSH); 
-		HBRUSH ob = (HBRUSH)SelectObject(_hdc, tb);
-		
-		Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, pos.x + offset.x + 100, pos.y + offset.y + 100); 
 
-		SelectObject(_hdc, ob); 
+		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH); 
+		HBRUSH oldBrush = (HBRUSH)SelectObject(_hdc, transparentBrush);
+
+		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0)); 
+		HPEN oldPen = (HPEN)SelectObject(_hdc, greenPen);
+		Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, pos.x + offset.x + 100, pos.y + offset.y + 100); 
+		SelectObject(_hdc, oldBrush); 
+		SelectObject(_hdc, oldPen);
+
+		DeleteObject(greenPen); 
 	}
 }

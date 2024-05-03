@@ -73,7 +73,11 @@ namespace Bx
 
 	void App::ClearBackBuf()
 	{
+		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(backhdc, grayBrush); 
 		Rectangle(backhdc, -1, -1, width + 1, height + 1);
+		(HBRUSH)SelectObject(backhdc, oldBrush);
+		DeleteObject(grayBrush);
 	}
 
 	void App::SwapChain(HDC _disp, HDC _back)

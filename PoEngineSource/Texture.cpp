@@ -18,15 +18,20 @@ namespace Bx
 		img->SetHeight(_height); 
 
 		HDC hdc = app.GetHDC(); 
-		//HWND hwnd = app.GetHWND();
+		HWND hwnd = app.GetHWND();
 		
 		img->bitmap = CreateCompatibleBitmap(hdc, _width, _height);		
-		img->hdc = CreateCompatibleDC(hdc);
+		img->hdc = CreateCompatibleDC(hdc); 
+
+		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
+		Rectangle(img->hdc, -1, -1, img->GetWidth() + 1, img->GetHeight() + 1);
+		SelectObject(hdc, oldBrush);
 
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(img->hdc, img->bitmap);
 		DeleteObject(oldBitmap); 
 
-		Resources::Insert(_name, img); 
+		Resources::Insert(_name + L"Image", img);
 
 		return img;
 	}

@@ -1,6 +1,7 @@
 #include "App.h" 
 #include "Input.h" 
 #include "BxTime.h"  
+#include "CollisionMgr.h" 
 #include "SceneMgr.h" 
 #include "Resources.h" 
 
@@ -12,6 +13,7 @@ namespace Bx
 	{
 		BxTime::Init();
 		Input::Init();
+		CollisionMgr::Init();
 		SceneMgr::Init();
 	}
 
@@ -21,7 +23,7 @@ namespace Bx
 	void App::Init(HWND _hwnd)
 	{
 		GetWindow(_hwnd, width, height); 
-		CreateBackBuf(width, height); 		
+		CreateBackBuf(width, height); 
 	} 
 
 	void App::GetWindow(HWND _hwnd, UINT _width, UINT _height)
@@ -55,7 +57,6 @@ namespace Bx
 		Update();
 		LateUpdate();
 		Render();
-
 		Destroy(); 
 	}
 
@@ -63,11 +64,13 @@ namespace Bx
 	{
 		Input::Update();
 		BxTime::Update();
+		CollisionMgr::Update();
 		SceneMgr::Update(); 
 	}
 
 	void App::LateUpdate()
 	{
+		CollisionMgr::LateUpdate();
 		SceneMgr::LateUpdate();
 	}
 
@@ -91,6 +94,7 @@ namespace Bx
 		ClearBackBuf(); 
 		 
 		BxTime::Render(backhdc);
+		CollisionMgr::Render(backhdc); 
 		SceneMgr::Render(backhdc);
 		
 		//백버퍼와 원본버퍼를 Swap

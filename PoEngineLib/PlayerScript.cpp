@@ -79,8 +79,7 @@ namespace Bx
 			catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 			catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 			catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			//catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f);
+			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);			
 			catAnimator->PlayAnimation(L"Sit", false);
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 
@@ -114,6 +113,8 @@ namespace Bx
 			state = PlayerScript::State::MOVE;
 			//animator->PlayAnimation(L"DMove");
 		}
+
+
 	}
 
 	void PlayerScript::Move()

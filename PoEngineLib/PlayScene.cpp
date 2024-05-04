@@ -51,8 +51,6 @@ namespace Bx
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
 
 		playerAnimator->CreateAnimation(L"Idle", pltx, Vector2(2000.f, 250.f), Vector2(250.f, 250.f), Vector2::zero, 1, 0.1f);
-		playerAnimator->PlayAnimation(L"Idle", false);
-
 		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.2f);
 		playerAnimator->PlayAnimation(L"Idle", false);
 
@@ -63,26 +61,39 @@ namespace Bx
 		player->GetComponent<Transform>()->SetRot(0.f);	*/	
 		player->GetComponent<Transform>()->SetPos(Vector2(400.f, 400.f));
 
-		//Cat
-		//cat = Instantiate<Cat>(LayerType::ANIMAL);
-		////cat->SetActive(true); 
-		//cat->AddComponent<CatScript>();
-		//Texture* catx = Resources::Find<Texture>(L"Cat");
-		//Animator* catAnimator = cat->AddComponent<Animator>();
+		//Cat관련
+		cat = Instantiate<Cat>(LayerType::ANIMAL);
+		//cat->SetActive(true); 
+		cat->AddComponent<CatScript>();
+		Texture* catx = Resources::Find<Texture>(L"Cat");
+		Animator* catAnimator = cat->AddComponent<Animator>();
+		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>(); 
+		boxCatCollider->SetOffset(Vector2(-50.f, -50.f));
 
-		////카메라가 타겟을 쫒아가게 설정
-		////camComp->SetTarget(cat);
+		//카메라가 타겟을 쫒아가게 설정
+		//camComp->SetTarget(cat);
 
-		//catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->PlayAnimation(L"Sit", false);
-		//cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));		
-		//cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
+		/*catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->PlayAnimation(L"Sit", false);*/ 
+
+		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f); 
+		catAnimator->PlayAnimation(L"MushroomIdle", true);  
+
+		cat->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
+		cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
+
+		/*GameObject* sheet = Instantiate<GameObject>(LayerType::PARTICLE);
+		SpriteRenderer* sheetSR = sheet->AddComponent<SpriteRenderer>();*/ 
+		
+		/*Texture* mrIdle = Resources::Find<Texture>(L"MushroomIdle"); 
+		sheetSR->SetTexture(mrIdle); 
+		Animator* playerAnimator = player->AddComponent<Animator>(); */
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

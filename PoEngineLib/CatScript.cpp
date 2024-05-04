@@ -71,15 +71,15 @@ namespace Bx
 		tr->SetPos(pos);*/
 
 		//Vector2 mousePos = Input::GetMousePos(); 
-		//마우스 위치 이동 (벡터의 뺄셈 활용) 		
-		Transform* playerTr = player->GetComponent<Transform>(); 
+		//마우스 위치 이동 (벡터의 뺄셈 활용) 		 		
+		/*Transform* playerTr = player->GetComponent<Transform>(); 
 		Vector2 playerPos = playerTr->GetPos(); 
 		Vector2 destDir = dest - playerPos; 
 		destDir.Normalize(); 
 		pos += destDir * (100.f * BxTime::DeltaTime());
 		float dotVal = destDir.Dot(Vector2::right); 
 		float rotRad = acosf(dotVal); 
-		float rotDeg = RadToDeg(rotRad);  
+		float rotDeg = RadToDeg(rotRad);*/  
 
 		//삼각함수를 통한 이동 
 		/*radian += 4.f * BxTime::DeltaTime();

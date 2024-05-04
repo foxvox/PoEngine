@@ -104,12 +104,12 @@ namespace Bx
 			fileCnt++; 
 		}
 
-		UINT imgWidth = imgs[0]->GetWidth();
-		UINT imgHeight = imgs[0]->GetHeight(); 
+		UINT sheetWidth = imgs[0]->GetWidth() * fileCnt;
+		UINT sheetHeight = imgs[0]->GetHeight();
+		Texture* spriteSheet = Texture::Create(_name, sheetWidth, sheetHeight);
 
-		UINT sheetWidth =  imgWidth * fileCnt; 
-		UINT sheetHeight = imgHeight; 
-		Texture* spriteSheet = Texture::Create(_name, sheetWidth, sheetHeight); 
+		UINT imgWidth = imgs[0]->GetWidth() * fileCnt;
+		UINT imgHeight = imgs[0]->GetHeight(); 
 
 		for (size_t i = 0; i < imgs.size(); i++) 
 		{

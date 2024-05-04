@@ -20,7 +20,7 @@ namespace Bx
 		ANIMAL, 
 		PLAYER, 
 		PARTICLE, 
-		MAX = 10, 
+		MAX = 16, 
 	};
 
 	enum class ResrcType 

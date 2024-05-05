@@ -58,10 +58,10 @@ namespace Bx
 	{
 		catTime += BxTime::DeltaTime(); 
 
-		if (catTime > 4.f) 
+		/*if (catTime > 4.f) 
 		{
 			Destroy(GetOwner()); 
-		}
+		}*/
 
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
@@ -86,7 +86,7 @@ namespace Bx
 		pos.x += 100.f * BxTime::DeltaTime(); 
 		pos.y -= 100.f * abs(sinf(radian)) * (100.f * BxTime::DeltaTime()); */
 		
-		tr->SetPos(pos); 		
+		//tr->SetPos(pos); 		
 
 		/*if (catTime > 2.f) 
 		{

@@ -16,6 +16,7 @@
 #include "CatScript.h" 
 #include "BoxCollider2D.h" 
 #include "CircleCollider2D.h" 
+#include "CollisionMgr.h" 
 
 namespace Bx
 {
@@ -28,6 +29,8 @@ namespace Bx
 
 	void PlayScene::Init()
 	{
+		CollisionMgr::LayerCollisionCheck(LayerType::PLAYER, LayerType::ANIMAL, true);
+
 		//Camera 
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
@@ -44,8 +47,8 @@ namespace Bx
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
 		PlayerScript* ps = player->AddComponent<PlayerScript>();
-		BoxCollider2D* bc = player->AddComponent<BoxCollider2D>(); 
-		bc->SetOffset(Vector2(-50.f, -50.f)); 
+		BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 
+		pbc->SetOffset(Vector2(-50.f, -50.f)); 
 
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
@@ -59,7 +62,7 @@ namespace Bx
 		
 		/*player->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
 		player->GetComponent<Transform>()->SetRot(0.f);	*/	
-		player->GetComponent<Transform>()->SetPos(Vector2(400.f, 400.f));
+		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
 
 		//Cat관련
 		cat = Instantiate<Cat>(LayerType::ANIMAL);
@@ -67,12 +70,11 @@ namespace Bx
 		cat->AddComponent<CatScript>();
 		Texture* catx = Resources::Find<Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
-		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>(); 
-		boxCatCollider->SetOffset(Vector2(-50.f, -50.f));
+		BoxCollider2D* cbc = cat->AddComponent<BoxCollider2D>(); 
+		cbc->SetOffset(Vector2(-50.f, -50.f));
 
 		//카메라가 타겟을 쫒아가게 설정
 		//camComp->SetTarget(cat);
-
 		/*catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
@@ -82,18 +84,11 @@ namespace Bx
 		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->PlayAnimation(L"Sit", false);*/ 
 
-		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f); 
+		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/Mushroom", Vector2::zero, 0.1f); 
 		catAnimator->PlayAnimation(L"MushroomIdle", true);  
 
 		cat->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
-		cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));
-
-		/*GameObject* sheet = Instantiate<GameObject>(LayerType::PARTICLE);
-		SpriteRenderer* sheetSR = sheet->AddComponent<SpriteRenderer>();*/ 
-		
-		/*Texture* mrIdle = Resources::Find<Texture>(L"MushroomIdle"); 
-		sheetSR->SetTexture(mrIdle); 
-		Animator* playerAnimator = player->AddComponent<Animator>(); */
+		cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));		
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
 		Scene::Init(); 		

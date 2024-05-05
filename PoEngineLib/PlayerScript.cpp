@@ -62,8 +62,7 @@ namespace Bx
 	{
 		if (Input::GetKey(KeyCode::LButton))
 		{
-			Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);
-			//cat->SetActive(true); 
+			Cat* cat = Instantiate<Cat>(LayerType::ANIMAL);			
 			CatScript* cs = cat->AddComponent<CatScript>();
 			cs->SetPlayer(GetOwner());
 
@@ -81,6 +80,7 @@ namespace Bx
 			catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);			
 			catAnimator->PlayAnimation(L"Sit", false);
+
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 
 			cat->GetComponent<Transform>()->SetScale(Vector2(2.f, 2.f));
@@ -89,6 +89,9 @@ namespace Bx
 			Vector2 mousePos = Input::GetMousePos();
 			cs->dest = mousePos;
 		}
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPos();
 
 		if (Input::GetKey(KeyCode::Right))
 		{
@@ -114,7 +117,7 @@ namespace Bx
 			//animator->PlayAnimation(L"DMove");
 		}
 
-
+		tr->SetPos(pos); 
 	}
 
 	void PlayerScript::Move()
@@ -160,9 +163,9 @@ namespace Bx
 	{
 		/*Animation* fgwani = animator->FindAnimation(L"FrontGiveWater");
 		Animation* activeAni = animator->GetActiveAnimation(); */
-		bool isCompleteAni = animator->IsAnimationComplete(); 
+		bool isAniComplete = animator->IsAnimationComplete(); 
 
-		if (/*fgwani == activeAni &&*/ isCompleteAni)
+		if (/*fgwani == activeAni &&*/ isAniComplete)
 		{
 			state = State::IDLE; 
 			animator->PlayAnimation(L"Idle", false); 
@@ -188,7 +191,6 @@ namespace Bx
 		catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		//catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/mushroom", Vector2::zero, 0.1f);
 		catAnimator->PlayAnimation(L"Sit", false);
 
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
@@ -197,7 +199,6 @@ namespace Bx
 		cat->GetComponent<Transform>()->SetPos(tr->GetPos());
 
 		Vector2 mousePos = Input::GetMousePos();
-
 		cs->dest = mousePos; 
 	}
 }

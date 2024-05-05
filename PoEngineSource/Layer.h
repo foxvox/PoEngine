@@ -12,6 +12,7 @@ namespace Bx
 	public:
 		Layer();
 		~Layer(); 
+
 		virtual void Init();
 		virtual void Update();
 		virtual void LateUpdate();
@@ -20,9 +21,15 @@ namespace Bx
 
 		void AddGameObject(GameObject* _gameObj);
 
+		const std::vector<GameObject*> GetGameObjects() { return gameObjs; }
+
+		void FindDeadGameObjs(OUT std::vector<GameObject*>& _gameObjs);
+		void DelGameObjs(std::vector<GameObject*> _gameObjs);
+		void EraseGameObjs();
+
 	private:
 		//LayerType type; 
-		std::vector<GameObject*> gameObjects;
+		std::vector<GameObject*> gameObjs;
 	};
 }
 

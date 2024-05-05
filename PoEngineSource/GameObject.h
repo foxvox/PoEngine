@@ -34,8 +34,7 @@ namespace Bx
 			comp->Init(); 
 			comp->SetOwner(this); 
 
-			components[(size_t)comp->GetType()] = comp; 
-			components.push_back(comp); 
+			components[(UINT)comp->GetType()] = comp; 	
 
 			return comp; 
 		}
@@ -67,6 +66,9 @@ namespace Bx
 		}		 
 
 		void SetDead() { state = State::DEAD; }
+
+		bool IsActive() { return state == State::ACTIVE; }
+		bool IsDead() { return state == State::DEAD; } 
 
 	private: 
 		State state; 

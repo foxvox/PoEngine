@@ -8,8 +8,7 @@ namespace Bx
 	public: 
 		template<typename T>
 		static T* Find(const std::wstring& _key)
-		{
-			//std::map<std::wstring, Resource*>::iterator iter = resource.find(_key); 
+		{			
 			auto iter = resources.find(_key); 
 			if (iter == resources.end())
 				return nullptr; 
@@ -27,8 +26,7 @@ namespace Bx
 			resource = new T(); 
 			if (FAILED(resource->Load(_path)))
 			{
-				assert(false); 
-				//MessageBoxW(nullptr, _key.c_str() + L"Image Load Failed!", L"Error", MB_OK);
+				assert(false); 				
 				return nullptr; 
 			}
 

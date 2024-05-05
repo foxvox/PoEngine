@@ -3,12 +3,12 @@
 namespace Bx
 {
 	Layer::Layer() 
-		: gameObjects{} 
+		: gameObjs{} 
 	{}
 
 	Layer::~Layer()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
 				continue; 			
@@ -20,7 +20,7 @@ namespace Bx
 
 	void Layer::Init()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
 				continue; 
@@ -31,14 +31,12 @@ namespace Bx
 
 	void Layer::Update()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
 				continue;
-
-			GameObject::State state = gameObj->GetState();
-			if (state == GameObject::State::INACTIVE ||
-				state == GameObject::State::DEAD)
+						
+			if (gameObj->IsActive() == false) 
 				continue;
 
 			gameObj->Update();
@@ -47,9 +45,12 @@ namespace Bx
 
 	void Layer::LateUpdate()
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
+				continue;
+
+			if (gameObj->IsActive() == false)
 				continue;
 
 			gameObj->LateUpdate();
@@ -58,14 +59,12 @@ namespace Bx
 
 	void Layer::Render(HDC _hdc)
 	{
-		for (GameObject* gameObj : gameObjects)
+		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
 				continue; 
 
-			GameObject::State state = gameObj->GetState();
-			if (state == GameObject::State::INACTIVE ||
-				state == GameObject::State::DEAD)
+			if (gameObj->IsActive() == false)
 				continue;
 
 			gameObj->Render(_hdc); 
@@ -74,25 +73,10 @@ namespace Bx
 
 	void Layer::Destroy()
 	{
-		for (GAMEOBJITER iter = gameObjects.begin(); iter != gameObjects.end(); )  
-		{
-			GameObject::State state = (*iter)->GetState(); 
-			if (state == GameObject::State::DEAD)
-			{
-				GameObject* deadObj = (*iter); 
-
-				//vector class의 erase 멤버함수를 사용하기 위해 iter를 사용할 수 있게 했다. 
-				//주의! iter가 가리키는 GameObject* 가 삭제되면 iter는 자동으로 다음 원소를 가리키게 된다. 
-				iter = gameObjects.erase(iter);
-
-				delete deadObj; 
-				deadObj = nullptr; 
-
-				continue; 
-			}
-
-			iter++; 
-		}
+		std::vector<GameObject*> delGameObjs{};
+		FindDeadGameObjs(delGameObjs);
+		EraseGameObjs();
+		DelGameObjs(delGameObjs);		
 	}
 
 	void Layer::AddGameObject(GameObject* _gameObj)
@@ -100,7 +84,31 @@ namespace Bx
 		if (_gameObj == nullptr)
 			return; 
 
-		gameObjects.push_back(_gameObj);
+		gameObjs.push_back(_gameObj);
+	}
+
+	void Layer::FindDeadGameObjs(OUT std::vector<GameObject*>& _gameObjs)
+	{
+		for (GameObject* obj : gameObjs)
+		{
+			GameObject::State state = obj->GetState();
+			if (state == GameObject::State::DEAD)
+				_gameObjs.push_back(obj);
+		}
+	}
+
+	void Layer::DelGameObjs(std::vector<GameObject*> _gameObjs)
+	{
+		for (GameObject* obj : _gameObjs)
+		{
+			delete obj;
+			obj = nullptr;
+		}
+	}
+
+	void Layer::EraseGameObjs()
+	{
+		std::erase_if(gameObjs,	[](GameObject* obj)	{ return obj->IsDead(); }); 
 	}
 }
 

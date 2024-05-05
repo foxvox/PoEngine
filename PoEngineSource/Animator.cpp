@@ -108,15 +108,15 @@ namespace Bx
 		UINT sheetHeight = imgs[0]->GetHeight();
 		Texture* spriteSheet = Texture::Create(_name, sheetWidth, sheetHeight);
 
-		UINT imgWidth = imgs[0]->GetWidth() * fileCnt;
+		UINT imgWidth = imgs[0]->GetWidth();
 		UINT imgHeight = imgs[0]->GetHeight(); 
 
 		for (size_t i = 0; i < imgs.size(); i++) 
-		{
-			BitBlt(spriteSheet->GetHDC(), i * imgWidth, 0, imgWidth, imgHeight, imgs[i]->GetHDC(), 0, 0, SRCCOPY); 
-		}
+		{			
+			BitBlt(spriteSheet->GetHDC(), i * imgWidth, 0, imgWidth, imgHeight, imgs[i]->GetHDC(), 0, 0, SRCCOPY); 			
+		}	
 
-		CreateAnimation(_name, spriteSheet, Vector2::zero, Vector2(imgWidth, imgHeight), _offset, fileCnt, _timeLag); 
+		CreateAnimation(_name, spriteSheet, Vector2::zero, Vector2(imgWidth, imgHeight), _offset, fileCnt, _timeLag);
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& _name)
@@ -139,13 +139,13 @@ namespace Bx
 		if (activeAnimation)
 		{
 			EventPack* curEp = FindEventPack(activeAnimation->GetName());
-			if (curEp->End.event)
+			if (curEp)
 				curEp->End();
 		} 
 
 		//새로 찾은 애니의 Start 이벤트를 실행한다. 
 		EventPack* nextEp = FindEventPack(ani->GetName());
-		if (nextEp->Start.event)  
+		if (nextEp)  
 			nextEp->Start();
 
 		activeAnimation = ani; 

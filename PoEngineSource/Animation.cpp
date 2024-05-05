@@ -53,8 +53,7 @@ namespace Bx
 		float rot = tr->GetRot();
 		Vector2 pos = tr->GetPos(); 		
 		
-		Vector2 camPos{}; 
-		
+		Vector2 camPos{}; 		
 		//Renderer.h 안에 선언되어 있음.
 		if (camera)
 		{
@@ -63,14 +62,13 @@ namespace Bx
 		}		 
 
 		Sprite sprite = aniSheet[index];
-
 		Texture::TextureType tt = texture->GetTextureType(); 
 		if (tt == Texture::TextureType::PNG)
 		{
 			//내가 원하는 픽셀을 투명화 시킬 때 
 			Gdiplus::ImageAttributes imgAttrib{}; 
 			//투명화 시킬 픽셀의 색 범위
-			imgAttrib.SetColorKey(Gdiplus::Color(240, 240, 240), Gdiplus::Color(255, 255, 255)); 
+			imgAttrib.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255)); 
 
 			Gdiplus::Graphics graphics(_hdc);
 
@@ -84,7 +82,7 @@ namespace Bx
 					int(sprite.tSpan.x * scale.x), int(sprite.tSpan.y * scale.y)),
 				int(sprite.tLeftTop.x), int(sprite.tLeftTop.y),
 				int(sprite.tSpan.x), int(sprite.tSpan.y), 
-				Gdiplus::UnitPixel, &imgAttrib);
+				Gdiplus::UnitPixel, /*&imgAttrib*/nullptr);
 		}
 		else if (tt == Texture::TextureType::BMP) 
 		{
@@ -112,7 +110,7 @@ namespace Bx
 					int(sprite.tLeftTop.x), int(sprite.tLeftTop.y), int(sprite.tSpan.x), int(sprite.tSpan.y), RGB(255, 0, 255));
 			}
 
-			Rectangle(_hdc, pos.x, pos.y, pos.x + 10, pos.y + 10); 
+			Rectangle(_hdc, pos.x, pos.y, pos.x + 20, pos.y + 20); 
 		}
 	}
 

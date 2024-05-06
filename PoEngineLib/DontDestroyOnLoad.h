@@ -4,13 +4,13 @@
 namespace Bx
 {
 	class Player;
-	class Cat; 
+	class Cat;
 
-	class PlayScene : public Scene 
+	class DontDestroyOnLoad : public Scene
 	{
-	public: 
-		PlayScene();
-		~PlayScene();
+	public:
+		DontDestroyOnLoad();
+		~DontDestroyOnLoad();
 
 		void Initialize() override;
 		void Update() override;
@@ -18,11 +18,12 @@ namespace Bx
 		void Render(HDC _hdc) override;
 
 		void OnEnter() override;
-		void OnExit() override; 
+		void OnExit() override;
 	private:
-		Player*	player; 
-		Cat*	cat; 
+		Player* player;
+		Cat* cat;
 	};
 }
+
 
 

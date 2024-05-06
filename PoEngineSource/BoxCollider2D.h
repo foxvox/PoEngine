@@ -16,7 +16,7 @@ namespace Bx
 		virtual void Render(HDC _hdc);
 
 	private:
-		Vector2 size; 
+		Vector2 span; 
 	};
 }
 

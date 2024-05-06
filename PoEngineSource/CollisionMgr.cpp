@@ -131,17 +131,18 @@ namespace Bx
 		Transform* lTr = lColl->GetOwner()->GetComponent<Transform>();
 		Transform* rTr = rColl->GetOwner()->GetComponent<Transform>();
 
+		//Vector 연산자 오버로딩 call by value 형태여야 이름없는 Vector 처리가 된다. 
 		Vector2 lPos = lTr->GetPos() + lColl->GetOffset();
 		Vector2 rPos = rTr->GetPos() + rColl->GetOffset();
 
-		// size 1,1 일떄 기본크기가 100픽셀
+		// span 1,1 일떄 기본크기가 100픽셀
 		Vector2 lSpan = lColl->GetSpan() * 100.f;
 		Vector2 rSpan = rColl->GetSpan() * 100.f;
 
-		//AABB 충돌
 		ColliderType lType = lColl->GetColliderType();
 		ColliderType rType = rColl->GetColliderType();
 
+		//rect-rect 충돌 
 		if (lType == ColliderType::RECT2D && rType == ColliderType::RECT2D)
 		{
 			if (fabs(lPos.x - rPos.x) < fabs(lSpan.x / 2.f + rSpan.x / 2.f)

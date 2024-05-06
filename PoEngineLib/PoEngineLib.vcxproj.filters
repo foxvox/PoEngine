@@ -27,7 +27,6 @@
     <ClInclude Include="framework.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="LoadResources.h" />
     <ClInclude Include="PlayerScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
@@ -36,6 +35,9 @@
     </ClInclude>
     <ClInclude Include="CatScript.h">
       <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadResources.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

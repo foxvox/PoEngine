@@ -1,4 +1,5 @@
-#include "SceneMgr.h"
+#include "SceneMgr.h" 
+#include "DontDestroyOnLoad.h" 
 
 namespace Bx
 {
@@ -22,7 +23,8 @@ namespace Bx
 	}
 
 	void SceneMgr::Initialize()
-	{		
+	{	
+		CreateScene<DontDestroyOnLoad>(L"PlayScene");
 	}
 
 	void SceneMgr::Update()

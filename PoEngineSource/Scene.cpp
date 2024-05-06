@@ -86,6 +86,12 @@ namespace Bx
 		layers[(size_t)_type]->AddGameObject(_gameObj); 
 	}
 
+	void Scene::EraseGameObject(GameObject* _gameObj)
+	{
+		LayerType layerType = _gameObj->GetLayerType();
+		layers[(UINT)layerType]->EraseGameObject(_gameObj);
+	}
+
 	void Scene::CreateLayers()
 	{
 		layers.resize((size_t)LayerType::MAX);

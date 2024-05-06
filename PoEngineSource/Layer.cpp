@@ -75,7 +75,7 @@ namespace Bx
 	{
 		std::vector<GameObject*> delGameObjs{};
 		FindDeadGameObjs(delGameObjs);
-		EraseGameObjs();
+		EraseDeadGameObjs(); 
 		DelGameObjs(delGameObjs);		
 	}
 
@@ -97,6 +97,25 @@ namespace Bx
 		}
 	}
 
+	void Layer::EraseGameObject(GameObject* _obj)
+	{
+		//¶÷´ÙÆã¼Ç 
+		std::erase_if(gameObjs,
+			[=](GameObject* gameObj)
+			{
+				return gameObj == _obj;
+			});
+	}
+
+	void Layer::EraseDeadGameObjs()
+	{
+		std::erase_if(gameObjs,
+			[](GameObject* gameObj)
+			{
+				return (gameObj)->IsDead();
+			});
+	}
+
 	void Layer::DelGameObjs(std::vector<GameObject*> _gameObjs)
 	{
 		for (GameObject* obj : _gameObjs)
@@ -104,11 +123,6 @@ namespace Bx
 			delete obj;
 			obj = nullptr;
 		}
-	}
-
-	void Layer::EraseGameObjs()
-	{
-		std::erase_if(gameObjs,	[](GameObject* obj)	{ return obj->IsDead(); }); 
 	}
 }
 

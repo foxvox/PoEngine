@@ -17,6 +17,7 @@
 #include "BoxCollider2D.h" 
 #include "CircleCollider2D.h" 
 #include "CollisionMgr.h" 
+#include "DontDestroyOnLoad.h" 
 
 namespace Bx
 {
@@ -39,6 +40,8 @@ namespace Bx
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
+		//DontDestroyOnLoad(player); 
+
 		PlayerScript* ps = player->AddComponent<PlayerScript>();
 		//BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 
 		//pbc->SetOffset(Vector2(-50.f, -50.f)); 

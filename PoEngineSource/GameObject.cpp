@@ -4,8 +4,14 @@
 
 namespace Bx
 {
+	static void Destroy(GameObject* gameObj)
+	{
+		if (gameObj != nullptr)
+			gameObj->SetDead();
+	}
+
 	GameObject::GameObject()	
-		: state(State::ACTIVE)
+		: state(State::ACTIVE), layerType(LayerType::NONE)
 	{
 		components.resize((size_t)CompType::END); 
 		InitTransform(); 

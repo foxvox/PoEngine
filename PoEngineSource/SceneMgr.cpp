@@ -5,6 +5,7 @@ namespace Bx
 {
 	std::map<std::wstring, Scene*> SceneMgr::scenes{}; 
 	Scene* SceneMgr::activeScene = nullptr; 
+	Scene* SceneMgr::ddolScene = nullptr; 
 
 	Scene* SceneMgr::LoadScene(const std::wstring& _name)
 	{
@@ -24,27 +25,31 @@ namespace Bx
 
 	void SceneMgr::Initialize()
 	{	
-		CreateScene<DontDestroyOnLoad>(L"PlayScene");
+		ddolScene = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
 	}
 
 	void SceneMgr::Update()
 	{
 		activeScene->Update(); 
+		ddolScene->Update(); 
 	}
 
 	void SceneMgr::LateUpdate()
 	{
 		activeScene->LateUpdate(); 
+		ddolScene->LateUpdate();
 	}
 
 	void SceneMgr::Render(HDC _hdc)
 	{
 		activeScene->Render(_hdc); 
+		ddolScene->Render(_hdc);
 	}
 
 	void SceneMgr::Destroy()
 	{
 		activeScene->Destroy(); 
+		ddolScene->Destroy();
 	}
 
 	void SceneMgr::Release()

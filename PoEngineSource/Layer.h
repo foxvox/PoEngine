@@ -25,7 +25,8 @@ namespace Bx
 
 		void FindDeadGameObjs(OUT std::vector<GameObject*>& _gameObjs);
 		void DelGameObjs(std::vector<GameObject*> _gameObjs);
-		void EraseGameObjs();
+		void EraseDeadGameObjs();
+		void EraseGameObject(GameObject* obj);		
 
 	private:
 		//LayerType type; 

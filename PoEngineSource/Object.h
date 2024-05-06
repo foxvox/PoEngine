@@ -32,8 +32,14 @@ namespace Bx
 		return gameObj;
 	}
 
-	static void Destroy(GameObject* gameObj)
+	static void DontDestroyOnLoad(GameObject* gameObj)
 	{
-		gameObj->SetDead(); 
+		Scene* activeScene = SceneMgr::GetActiveScene();
+		// 현재씬에서 게임오브젝트를 지워준다.
+		activeScene->EraseGameObject(gameObj);
+
+		// 해당 게임오브젝트를 DontDestroy씬으로 넣어준다.
+		Scene* ddolScene = SceneMgr::GetDDOLScene();
+		ddolScene->AddGameObject(gameObj, gameObj->GetLayerType()); 
 	}
 }

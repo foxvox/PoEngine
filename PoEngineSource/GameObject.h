@@ -55,7 +55,7 @@ namespace Bx
 
 		void InitTransform(); 
 
-		State GetState() { return state; } 
+		 
 
 		void SetActive(bool _isActive)
 		{
@@ -65,14 +65,18 @@ namespace Bx
 				state = State::INACTIVE; 			
 		}		 
 
-		void SetDead() { state = State::DEAD; }
-
-		bool IsActive() { return state == State::ACTIVE; }
-		bool IsDead() { return state == State::DEAD; } 
+		State	  GetState()					{ return state; }
+		void	  SetDead()						{ state = State::DEAD; }
+		bool	  IsActive()					{ return state == State::ACTIVE; }
+		bool	  IsDead()						{ return state == State::DEAD; } 		
+		LayerType GetLayerType()				{ return layerType; }
+		void	  SetLayerType(LayerType _lt)   { layerType = _lt; }
 
 	private: 
-		State state; 
-		std::vector<Component*> components; 
+		State	  state; 
+		LayerType layerType; 
+
+		std::vector<Component*> components; 		
 	};
 }
 

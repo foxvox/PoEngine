@@ -21,6 +21,7 @@ namespace Bx
 
 		static Scene* LoadScene(const std::wstring& _name);	
 		static Scene* GetActiveScene() { return activeScene; } 
+		static Scene* GetDDOLScene() { return ddolScene; }
 
 		static void Initialize();		
 		static void Update();
@@ -32,6 +33,7 @@ namespace Bx
 	private:
 		static std::map<std::wstring, Scene*> scenes; 
 		static Scene* activeScene; 
+		static Scene* ddolScene; 
 	};
 
 	//static SceneMgr sceneMgr; 

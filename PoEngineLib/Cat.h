@@ -9,7 +9,7 @@ namespace Bx
 		Cat();
 		virtual ~Cat();
 
-		void Init() override;
+		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;

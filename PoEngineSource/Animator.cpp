@@ -31,7 +31,7 @@ namespace Bx
 		}
 	}
 
-	void Animator::Init()
+	void Animator::Initialize()
 	{}
 
 	void Animator::Update()

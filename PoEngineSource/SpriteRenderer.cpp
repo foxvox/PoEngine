@@ -16,7 +16,7 @@ namespace Bx
 	SpriteRenderer::~SpriteRenderer()
 	{}
 
-	void SpriteRenderer::Init()
+	void SpriteRenderer::Initialize()
 	{}
 
 	void SpriteRenderer::Update() 

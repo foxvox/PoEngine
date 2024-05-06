@@ -9,7 +9,7 @@ namespace Bx
 	Component::~Component()
 	{}
 
-	void Component::Init()
+	void Component::Initialize()
 	{}
 
 	void Component::Update()

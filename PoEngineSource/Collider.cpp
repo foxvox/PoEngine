@@ -1,15 +1,21 @@
 #include "Collider.h"
+#include "GameObject.h" 
+#include "Script.h" 
 
 namespace Bx
 {
-	Collider::Collider()
-		: Component(CompType::COLLIDER)
+	UINT32 Collider::CID = 1;
+
+	//span Vector2::zero로 잡으면 scale을 곱할 때 적용이 안 됨.
+	Collider::Collider(ColliderType _type)
+		: Component(CompType::COLLIDER), cid(CID++), type(_type), 
+		span(Vector2::one), offset(Vector2::one) 
 	{}
 
 	Collider::~Collider()
 	{}
 
-	void Collider::Init()
+	void Collider::Initialize()
 	{}
 
 	void Collider::Update()
@@ -20,4 +26,22 @@ namespace Bx
 	
 	void Collider::Render(HDC _hdc)
 	{}
+
+	void Collider::OnCollisionEnter(Collider * rc)
+	{
+		Script* script = GetOwner()->GetComponent<Script>();
+		script->OnCollisionEnter(rc);
+	}
+
+	void Collider::OnCollisionStay(Collider* rc)
+	{
+		Script* script = GetOwner()->GetComponent<Script>();
+		script->OnCollisionStay(rc);
+	}
+
+	void Collider::OnCollisionExit(Collider* rc)
+	{
+		Script* script = GetOwner()->GetComponent<Script>();
+		script->OnCollisionExit(rc);
+	}
 }

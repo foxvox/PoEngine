@@ -18,14 +18,14 @@ namespace Bx
 		}
 	}
 
-	void Layer::Init()
+	void Layer::Initialize()
 	{
 		for (GameObject* gameObj : gameObjs)
 		{
 			if (gameObj == nullptr)
 				continue; 
 
-			gameObj->Init();
+			gameObj->Initialize();
 		}
 	}
 

@@ -27,7 +27,7 @@ namespace Bx
 	PlayScene::~PlayScene()
 	{}
 
-	void PlayScene::Init()
+	void PlayScene::Initialize()
 	{
 		CollisionMgr::LayerCollisionCheck(LayerType::PLAYER, LayerType::ANIMAL, true);
 
@@ -88,10 +88,10 @@ namespace Bx
 		catAnimator->PlayAnimation(L"MushroomIdle", true);  
 
 		cat->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
-		cat->GetComponent<Transform>()->SetPos(Vector2(200.f, 200.f));		
+		cat->GetComponent<Transform>()->SetPos(Vector2(100.f, 100.f));		
 		
-		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Init() 호출  
-		Scene::Init(); 		
+		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Initialize() 호출  
+		Scene::Initialize(); 		
 	}
 
 	void PlayScene::Update()

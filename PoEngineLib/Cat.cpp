@@ -11,9 +11,9 @@ namespace Bx
 	Cat::~Cat()
 	{}
 
-	void Cat::Init()
+	void Cat::Initialize()
 	{
-		GameObject::Init();
+		GameObject::Initialize();
 	}
 
 	void Cat::Update()

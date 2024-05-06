@@ -8,9 +8,9 @@ namespace Bx
 	Player::~Player()
 	{}
 
-	void Player::Init()
+	void Player::Initialize()
 	{
-		GameObject::Init();  
+		GameObject::Initialize();  
 	}
 
 	void Player::Update()

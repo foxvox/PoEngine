@@ -17,7 +17,7 @@ namespace Bx
 	CatScript::~CatScript()
 	{}
 
-	void CatScript::Init()
+	void CatScript::Initialize()
 	{}
 
 	void CatScript::Update()
@@ -171,4 +171,16 @@ namespace Bx
 
 	void CatScript::LayDown()
 	{}
+
+	void CatScript::OnCollisionEnter(Collider * rc)
+	{
+	}
+
+	void CatScript::OnCollisionStay(Collider* rc)
+	{
+	}
+
+	void CatScript::OnCollisionExit(Collider* rc)
+	{
+	}
 }

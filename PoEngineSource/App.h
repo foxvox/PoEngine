@@ -10,7 +10,7 @@ namespace Bx
 	public:
 		App(); 
 		~App(); 
-		void Init(HWND _hwnd);
+		void Initialize(HWND _hwnd);
 		void Run();
 		void Update();
 		void LateUpdate();

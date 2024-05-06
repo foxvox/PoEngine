@@ -6,10 +6,13 @@ namespace Bx
 	{		 
 		TRANS, 
 		COLLIDER, 
+		RIGIDBODY, 
 		SCRIPT,
 		SR,
 		ANIMATOR,
 		CAMERA,	
+		AUDIOLISTENER, 
+		AUDIOSRC, 
 		END, 
 	};
 
@@ -17,8 +20,10 @@ namespace Bx
 	{
 		NONE, 
 		BG,	
+		TILE,
 		ANIMAL, 
-		PLAYER, 
+		PLAYER,
+		FLOOR,  
 		PARTICLE, 
 		MAX = 16, 
 	};
@@ -26,9 +31,28 @@ namespace Bx
 	enum class ResrcType 
 	{
 		TEXTURE,
+		MESH, 
 		AUDIOCLIP,
 		ANI, 
+		SHADER, 
 		PREFAB, 
 		END, 
 	};
+
+	enum class ColliderType
+	{
+		CIRCLE2D,
+		RECT2D,
+		END,
+	};
+
+	enum class UIType
+	{
+		HPBAR,
+		BUTTON,
+		END,
+	};
 }
+
+
+

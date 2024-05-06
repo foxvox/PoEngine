@@ -33,51 +33,39 @@ namespace Bx
 			: x(_x), y(_y)
 		{} 
 
-		Vector2 operator+(Vector2& _rv)
-		{
-			return Vector2(x + _rv.x, y + _rv.y);
-		}
-
-		void operator+=(Vector2& _rv)
+		void operator+= (Vector2 _rv)
 		{
 			x += _rv.x; 
 			y += _rv.y;
 		}
 
-		void operator-=(Vector2& _rv)
+		void operator-= (Vector2 _rv)
 		{
 			x -= _rv.x;
 			y -= _rv.y;
 		}
 
-		void operator+=(Vector2 _rv)
+		Vector2 operator+ (Vector2 _rv)
 		{
-			x += _rv.x;
-			y += _rv.y;
+			return Vector2(x + _rv.x, y + _rv.y);
 		}
 
-		void operator-=(Vector2 _rv)
-		{
-			x -= _rv.x;
-			y -= _rv.y;
-		}
-
-		Vector2 operator-(Vector2& _rv)
+		Vector2 operator- (Vector2 _rv)
 		{
 			return Vector2(x - _rv.x, y - _rv.y);
 		}
 
-		Vector2 operator*(Vector2& _rv)
+		Vector2 operator* (Vector2 _rv)
 		{
 			return Vector2(x * _rv.x, y * _rv.y); 
 		}
 
-		Vector2 operator*(float _value)
+		Vector2 operator* (float _value)
 		{
 			return Vector2(x * _value, y * _value);
 		}
 
-		Vector2 operator/(float _value)
+		Vector2 operator/ (float _value)
 		{
 			return Vector2(x / _value, y / _value);
 		}

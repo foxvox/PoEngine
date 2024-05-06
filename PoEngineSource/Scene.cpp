@@ -20,14 +20,14 @@ namespace Bx
 		}
 	}
 
-	void Scene::Init()
+	void Scene::Initialize()
 	{
 		for (Layer* layer : layers)
 		{
 			if (layer == nullptr)
 				continue;
 
-			layer->Init();
+			layer->Initialize();
 		}
 	}
 

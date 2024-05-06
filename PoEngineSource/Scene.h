@@ -12,7 +12,7 @@ namespace Bx
 		~Scene();
 
 		//void SetName(const std::wstring& _name) »ó¼Ó
-		virtual void Init();
+		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC _hdc);	

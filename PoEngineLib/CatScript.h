@@ -30,7 +30,7 @@ namespace Bx
 
 		Vector2 dest;
 
-		void Init() override;
+		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
@@ -40,7 +40,11 @@ namespace Bx
 		void AniByMovingDir(Dir _dir); 
 		void CatMoving(Transform* _tr); 
 		void LayDown(); 
-		void SetPlayer(GameObject* _player) { player = _player; } 		
+		void SetPlayer(GameObject* _player) { player = _player; } 
+
+		void OnCollisionEnter(Collider* rc) override;
+		void OnCollisionStay(Collider* rc) override;
+		void OnCollisionExit(Collider* rc) override;
 
 	private:
 		State state;

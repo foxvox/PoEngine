@@ -6,7 +6,7 @@ namespace Bx
 	class BxTime
 	{
 	public:
-		static void Init();
+		static void Initialize();
 		static void Update();
 		static void Render(HDC hDC);
 		

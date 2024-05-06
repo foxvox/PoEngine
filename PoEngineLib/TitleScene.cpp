@@ -10,9 +10,9 @@ namespace Bx
 	TitleScene::~TitleScene()
 	{}
 
-	void TitleScene::Init()
+	void TitleScene::Initialize()
 	{
-		Scene::Init();
+		Scene::Initialize();
 	}
 
 	void TitleScene::Update()

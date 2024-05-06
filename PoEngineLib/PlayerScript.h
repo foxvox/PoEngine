@@ -18,7 +18,7 @@ namespace Bx
 		PlayerScript();
 		~PlayerScript();
 
-		void Init() override;
+		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
@@ -27,7 +27,11 @@ namespace Bx
 		void Move(); 
 		void GiveWater(); 
 
-		void AttackEffect(); 
+		void AttackEffect();
+
+		void OnCollisionEnter(Collider* rc) override;
+		void OnCollisionStay(Collider* rc) override;
+		void OnCollisionExit(Collider* rc) override;
 
 	private:
 		State state; 

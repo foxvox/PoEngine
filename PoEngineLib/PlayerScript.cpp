@@ -20,7 +20,7 @@ namespace Bx
 	{
 	}
 
-	void PlayerScript::Init()
+	void PlayerScript::Initialize()
 	{		
 	}
 
@@ -200,5 +200,20 @@ namespace Bx
 
 		Vector2 mousePos = Input::GetMousePos();
 		cs->dest = mousePos; 
+	}
+
+	void PlayerScript::OnCollisionEnter(Collider* rc)
+	{
+		rc->GetOwner()->GetComponent<Transform>()->SetPos(Vector2(400.f, 500.f)); 
+	}
+
+	void PlayerScript::OnCollisionStay(Collider* rc)
+	{
+		int a = 0; 
+	}
+
+	void PlayerScript::OnCollisionExit(Collider* rc)
+	{
+		int a = 0; 
 	}
 }

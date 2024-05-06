@@ -11,7 +11,19 @@ namespace Bx
 	{
 	}
 
-	void Script::Init()
+	void Script::OnCollisionEnter(Collider* rc)
+	{
+	}
+
+	void Script::OnCollisionStay(Collider* rc)
+	{
+	}
+
+	void Script::OnCollisionExit(Collider* rc)
+	{
+	}
+
+	void Script::Initialize()
 	{
 	}
 

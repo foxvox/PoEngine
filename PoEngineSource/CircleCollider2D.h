@@ -9,7 +9,7 @@ namespace Bx
 		CircleCollider2D();
 		~CircleCollider2D();
 
-		virtual void Init();
+		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC _hdc);

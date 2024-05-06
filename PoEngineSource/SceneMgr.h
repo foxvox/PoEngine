@@ -12,7 +12,7 @@ namespace Bx
 			T* scene = new T(); 
 			scene->SetName(_name); 
 			activeScene = scene; 
-			scene->Init(); 
+			scene->Initialize(); 
 
 			scenes.insert(std::make_pair(_name, scene)); 
 
@@ -22,7 +22,7 @@ namespace Bx
 		static Scene* LoadScene(const std::wstring& _name);	
 		static Scene* GetActiveScene() { return activeScene; } 
 
-		static void Init();		
+		static void Initialize();		
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC _hdc); 

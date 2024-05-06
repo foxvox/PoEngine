@@ -28,14 +28,14 @@ namespace Bx
 		AddComponent<Transform>();
 	}
 
-	void GameObject::Init()
+	void GameObject::Initialize()
 	{
 		for (Component* comp : components)
 		{
 			if (comp == nullptr)
 				continue; 
 
-			comp->Init(); 
+			comp->Initialize(); 
 		}
 	}
 

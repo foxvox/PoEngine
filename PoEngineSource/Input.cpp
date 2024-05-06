@@ -21,7 +21,7 @@ namespace Bx
 		VK_LBUTTON, VK_MBUTTON, VK_RBUTTON,  
 	};
 
-	void Input::Init()
+	void Input::Initialize()
 	{		
 		Input::CreateKeys();	
 	}

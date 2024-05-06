@@ -11,16 +11,16 @@ namespace Bx
 		: hwnd(nullptr), hdc(nullptr), width(672), height(846), 
 		backhdc(nullptr), backBuf(nullptr) 
 	{
-		BxTime::Init();
-		Input::Init();
-		CollisionMgr::Init();
-		SceneMgr::Init();
+		BxTime::Initialize();
+		Input::Initialize();
+		CollisionMgr::Initialize();
+		SceneMgr::Initialize();
 	}
 
 	App::~App()
 	{}
 
-	void App::Init(HWND _hwnd)
+	void App::Initialize(HWND _hwnd)
 	{
 		GetWindow(_hwnd, width, height); 
 		CreateBackBuf(width, height); 

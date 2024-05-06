@@ -7,7 +7,7 @@ namespace Bx
 	LARGE_INTEGER BxTime::curFreq{};
 	float		  BxTime::deltaTime = 0.f; 
 
-	void BxTime::Init()
+	void BxTime::Initialize()
 	{
 		//cpu 고유진동수 
 		QueryPerformanceFrequency(&cpuFreq); 

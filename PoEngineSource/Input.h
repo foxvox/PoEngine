@@ -34,7 +34,7 @@ namespace Bx
 			bool		isPressed; 
 		}; 
 
-		static void Init();
+		static void Initialize();
 		static void Update(); 
 
 		__forceinline static bool GetKeyDown(KeyCode _keyCode)

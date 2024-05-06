@@ -13,7 +13,7 @@ namespace Bx
 	Camera::~Camera()
 	{}
 
-	void Camera::Init()
+	void Camera::Initialize()
 	{
 		resolution.x = (float)app.GetWidth(); 
 		resolution.y = (float)app.GetHeight(); 

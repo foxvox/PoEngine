@@ -5,13 +5,13 @@
 namespace Bx
 {
 	BoxCollider2D::BoxCollider2D()
-		: Collider() 
+		: Collider(ColliderType::RECT2D)  
 	{
 	}
 	BoxCollider2D::~BoxCollider2D()
 	{
 	}
-	void BoxCollider2D::Init()
+	void BoxCollider2D::Initialize()
 	{
 	}
 	void BoxCollider2D::Update()

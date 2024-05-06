@@ -22,7 +22,7 @@ namespace Bx
 		GameObject();
 		~GameObject();
 
-		virtual void Init(); 
+		virtual void Initialize(); 
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC _hdc);
@@ -31,7 +31,7 @@ namespace Bx
 		T* AddComponent()
 		{
 			T* comp = new T();
-			comp->Init(); 
+			comp->Initialize(); 
 			comp->SetOwner(this); 
 
 			components[(UINT)comp->GetType()] = comp; 	

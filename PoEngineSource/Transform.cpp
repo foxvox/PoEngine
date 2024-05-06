@@ -9,7 +9,7 @@ namespace Bx
 	Transform::~Transform()
 	{}
 
-	void Transform::Init()
+	void Transform::Initialize()
 	{}
 
 	void Transform::Update()

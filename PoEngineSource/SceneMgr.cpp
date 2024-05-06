@@ -21,7 +21,7 @@ namespace Bx
 		return activeScene;
 	}
 
-	void SceneMgr::Init()
+	void SceneMgr::Initialize()
 	{		
 	}
 

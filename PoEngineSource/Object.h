@@ -11,9 +11,10 @@ namespace Bx
 	static T* Instantiate(LayerType _type)   
 	{
 		T* gameObj = new T(); 
+		gameObj->SetLayerType(_type); 
 		Scene* activeScene = SceneMgr::GetActiveScene(); 
 		Layer* layer = activeScene->GetLayer(_type); 
-		layer->AddGameObject(gameObj); 
+		layer->AddGameObj(gameObj); 
 
 		return gameObj; 
 	} 
@@ -22,9 +23,10 @@ namespace Bx
 	static T* Instantiate(LayerType _type, Vector2 _pos)
 	{
 		T* gameObj = new T();
+		gameObj->SetLayerType(_type);
 		Scene* activeScene = SceneMgr::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(_type);
-		layer->AddGameObject(gameObj);
+		layer->AddGameObj(gameObj);
 
 		Transform* tr = gameObj->GetComponent<Transform>(); 
 		tr->SetPos(_pos);  
@@ -35,11 +37,12 @@ namespace Bx
 	static void DontDestroyOnLoad(GameObject* gameObj)
 	{
 		Scene* activeScene = SceneMgr::GetActiveScene();
-		// 현재씬에서 게임오브젝트를 지워준다.
-		activeScene->EraseGameObject(gameObj);
+		//현재씬에서 게임오브젝트를 지워준다.
+		activeScene->EraseGameObj(gameObj);
 
-		// 해당 게임오브젝트를 DontDestroy씬으로 넣어준다.
+		//해당 게임오브젝트를 ddolScene으로 넣어준다.
+		//ddol: DontDestroyOnLoad 
 		Scene* ddolScene = SceneMgr::GetDDOLScene();
-		ddolScene->AddGameObject(gameObj, gameObj->GetLayerType()); 
+		ddolScene->AddGameObj(gameObj, gameObj->GetLayerType()); 
 	}
 }

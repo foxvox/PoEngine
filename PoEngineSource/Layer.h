@@ -19,14 +19,15 @@ namespace Bx
 		virtual void Render(HDC _hdc);
 		virtual void Destroy();
 
-		void AddGameObject(GameObject* _gameObj);
+		void AddGameObj(GameObject* _gameObj);
+		void EraseGameObj(GameObject* _gameObj);
 
-		const std::vector<GameObject*> GetGameObjects() { return gameObjs; }
+		const std::vector<GameObject*> GetGameObjs() { return gameObjs; }
 
 		void FindDeadGameObjs(OUT std::vector<GameObject*>& _gameObjs);
 		void DelGameObjs(std::vector<GameObject*> _gameObjs);
 		void EraseDeadGameObjs();
-		void EraseGameObject(GameObject* obj);		
+				
 
 	private:
 		//LayerType type; 

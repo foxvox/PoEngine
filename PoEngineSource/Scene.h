@@ -21,10 +21,10 @@ namespace Bx
 		virtual void OnEnter();
 		virtual void OnExit(); 
 
-		void	AddGameObject(GameObject* _gameObj, LayerType _type); 
-		void	EraseGameObject(GameObject* gameObj);
-		Layer*  GetLayer(const LayerType _type) { return layers[(UINT)_type]; } 		
+		void	AddGameObj(GameObject* _gameObj, LayerType _type); 
+		void	EraseGameObj(GameObject* _gameObj);				
 		void	CreateLayers(); 
+		Layer*  GetLayer(const LayerType _type) { return layers[(UINT)_type]; }
 
 	private:
 		//std::wstring name; »ó¼Ó 

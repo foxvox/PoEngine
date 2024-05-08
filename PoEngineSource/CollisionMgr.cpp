@@ -58,8 +58,8 @@ namespace Bx
 
 	void CollisionMgr::LayerCollision(Scene* scene, LayerType lhs, LayerType rhs) 
 	{
-		const std::vector<GameObject*>& lObjs = scene->GetLayer(lhs)->GetGameObjects(); 
-		const std::vector<GameObject*>& rObjs = scene->GetLayer(rhs)->GetGameObjects(); 
+		const std::vector<GameObject*>& lObjs = scene->GetLayer(lhs)->GetGameObjs(); 
+		const std::vector<GameObject*>& rObjs = scene->GetLayer(rhs)->GetGameObjs(); 
 
 		for (GameObject* lObj : lObjs) 
 		{

@@ -79,7 +79,7 @@ namespace Bx
 		DelGameObjs(delGameObjs);		
 	}
 
-	void Layer::AddGameObject(GameObject* _gameObj)
+	void Layer::AddGameObj(GameObject* _gameObj)
 	{
 		if (_gameObj == nullptr)
 			return; 
@@ -97,13 +97,13 @@ namespace Bx
 		}
 	}
 
-	void Layer::EraseGameObject(GameObject* _obj)
+	void Layer::EraseGameObj(GameObject* _gameObj)
 	{
 		//¶÷´ÙÆã¼Ç 
 		std::erase_if(gameObjs,
 			[=](GameObject* gameObj)
 			{
-				return gameObj == _obj;
+				return gameObj == _gameObj;
 			});
 	}
 

@@ -40,7 +40,7 @@ namespace Bx
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);
-		//DontDestroyOnLoad(player); 
+		DontDestroyOnLoad(player); 
 
 		PlayerScript* ps = player->AddComponent<PlayerScript>();
 		//BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 

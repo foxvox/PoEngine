@@ -81,15 +81,15 @@ namespace Bx
 	void Scene::OnExit()
 	{}
 
-	void Scene::AddGameObject(GameObject* _gameObj, LayerType _type)
+	void Scene::AddGameObj(GameObject* _gameObj, LayerType _type)
 	{
-		layers[(size_t)_type]->AddGameObject(_gameObj); 
+		layers[(size_t)_type]->AddGameObj(_gameObj); 
 	}
 
-	void Scene::EraseGameObject(GameObject* _gameObj)
+	void Scene::EraseGameObj(GameObject* _gameObj)
 	{
 		LayerType layerType = _gameObj->GetLayerType();
-		layers[(UINT)layerType]->EraseGameObject(_gameObj);
+		layers[(UINT)layerType]->EraseGameObj(_gameObj);
 	}
 
 	void Scene::CreateLayers()

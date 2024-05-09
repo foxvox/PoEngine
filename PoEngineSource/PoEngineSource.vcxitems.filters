@@ -76,6 +76,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TilemapRenderer.cpp">
+      <Filter>TilemapRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Component.h">
@@ -162,6 +165,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h">
+      <Filter>TilemapRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -196,6 +202,9 @@
     </Filter>
     <Filter Include="Collider">
       <UniqueIdentifier>{b1653c96-e834-4975-990a-833233ea821b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TilemapRenderer">
+      <UniqueIdentifier>{35c108f0-4b17-4397-bdcb-4adc7e422827}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

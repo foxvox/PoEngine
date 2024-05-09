@@ -1,7 +1,6 @@
 #include "DontDestroyOnLoad.h"
 
 Bx::DontDestroyOnLoad::DontDestroyOnLoad()
-	: player(nullptr), cat(nullptr)
 {}
 
 Bx::DontDestroyOnLoad::~DontDestroyOnLoad()

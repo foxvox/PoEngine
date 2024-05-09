@@ -2,12 +2,6 @@
 
 namespace Bx
 {
-	Player::Player()
-	{}
-
-	Player::~Player()
-	{}
-
 	void Player::Initialize()
 	{
 		GameObject::Initialize();  

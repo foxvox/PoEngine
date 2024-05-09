@@ -3,9 +3,6 @@
 
 namespace Bx
 {
-	class Player;
-	class Cat;
-
 	class DontDestroyOnLoad : public Scene
 	{
 	public:
@@ -19,9 +16,6 @@ namespace Bx
 
 		void OnEnter() override;
 		void OnExit() override;
-	private:
-		Player* player;
-		Cat* cat;
 	};
 }
 

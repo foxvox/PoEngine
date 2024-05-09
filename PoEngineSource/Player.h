@@ -6,8 +6,6 @@ namespace Bx
 	class Player : public GameObject
 	{
 	public: 
-		Player();
-		virtual ~Player(); 
 
 		void Initialize() override;
 		void Update() override;

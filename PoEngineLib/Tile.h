@@ -3,18 +3,15 @@
 
 namespace Bx
 {
-	class Cat : public GameObject
+	class Tile : public GameObject
 	{
 	public:
-		Cat();
-		~Cat();
-
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-	private:		
+	private:
 	};
-
 }
+

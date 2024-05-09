@@ -4,6 +4,7 @@
 #include "Layer.h" 
 #include "SceneMgr.h" 
 #include "Scene.h" 
+#include "Transform.h" 
 
 namespace Bx  
 {

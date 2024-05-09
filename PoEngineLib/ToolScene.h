@@ -1,20 +1,21 @@
 #pragma once
-#include "GameObject.h" 
+#include "Scene.h" 
 
 namespace Bx
 {
-	class Cat : public GameObject
+	class ToolScene : public Scene
 	{
 	public:
-		Cat();
-		~Cat();
+		ToolScene();
+		~ToolScene();
 
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-	private:		
+		void OnEnter() override;
+		void OnExit() override;
 	};
-
 }
+

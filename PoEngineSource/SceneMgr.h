@@ -33,7 +33,7 @@ namespace Bx
 	private:
 		static std::map<std::wstring, Scene*> scenes; 
 		static Scene* activeScene; 
-		//ddol: DontDestroyOnLoad
+		//ddol: DontDestroyOnLoad 
 		static Scene* ddolScene; 
 	};
 }

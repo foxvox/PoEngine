@@ -5,25 +5,26 @@
 
 namespace Bx
 {
-	class SpriteRenderer : public Component
+	class TilemapRenderer : public Component
 	{
 	public:
-		SpriteRenderer();
-		~SpriteRenderer(); 
+		TilemapRenderer();
+		~TilemapRenderer();
 
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
-		
-		void SetTexture(Texture* _texture) { texture = _texture; } 
-		void SetSpan(Vector2 _span) { span = _span; } 
+
+		void SetTexture(Texture* _texture) { texture = _texture; }
+		void SetSpan(Vector2 _span) { span = _span; }
 
 	private:
-		Texture*	texture; 
+		Texture*	texture;
 		Vector2		span;
+		Vector2		index; 
+		Vector2		tileSpan; 
 	};
 }
-
 
 

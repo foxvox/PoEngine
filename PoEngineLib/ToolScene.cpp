@@ -42,6 +42,19 @@ namespace Bx
 	void ToolScene::Render(HDC _hdc)
 	{
 		Scene::Render(_hdc);
+
+		//그리드 그려주기
+		for (size_t i = 0; i < 100; i++)
+		{
+			MoveToEx(_hdc, 16 * i, 0, NULL); 
+			LineTo(_hdc, 16 * i, 1000); 
+		}
+
+		for (size_t i = 0; i < 100; i++)
+		{
+			MoveToEx(_hdc, 0, 16 * i, NULL);
+			LineTo(_hdc, 1000, 16 * i);
+		}
 	}
 	
 	void ToolScene::OnEnter()

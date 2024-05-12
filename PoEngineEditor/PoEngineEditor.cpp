@@ -1,8 +1,13 @@
 ﻿#include "framework.h"
 #include "PoEngineEditor.h" 
 #include "App.h"  
+
+#include "Resources.h" 
+#include "Texture.h" 
+
 #include "../PoEngineLib/LoadResources.h"  
 #include "../PoEngineLib/LoadScenes.h" 
+#include "../PoEngineLib/ToolScene.h" 
 
 //#define _CRTDBG_MAP_ALLOC
 //#include <stdlib.h>
@@ -23,8 +28,7 @@ Gdiplus::GdiplusStartupInput gpsi;
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
-LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK    TileProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM); 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -130,9 +134,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hwnd, nCmdShow);
    UpdateWindow(hwnd);
 
-   ShowWindow(tile_hwnd, nCmdShow);
-   UpdateWindow(tile_hwnd);
-
    Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
 
    //Load Scenes... 
@@ -140,6 +141,16 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    srand(unsigned int(&a)); 
    LoadResources(); 
    LoadScenes(); 
+
+   //TileWnd 크기 조정 
+   Texture* tx = Resources::Find<Texture>(L"SpringFloor");
+
+   RECT rect = { 0, 0, tx->GetWidth(), tx->GetHeight()};
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+   SetWindowPos(tile_hwnd, nullptr, width, 0, tx->GetWidth(), tx->GetHeight(), 0);
+   ShowWindow(tile_hwnd, true);
+   UpdateWindow(tile_hwnd);
 
    return TRUE;
 }
@@ -182,43 +193,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-LRESULT CALLBACK TileProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    switch (message)
-    {
-    case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        // 메뉴 선택을 구문 분석합니다:
-        switch (wmId)
-        {
-        case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            break;
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
-        }
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-        EndPaint(hWnd, &ps);
-    }
-    break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
+
 
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {

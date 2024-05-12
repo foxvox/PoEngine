@@ -70,26 +70,7 @@ namespace Bx
 		//캠위치를 게임오브젝트 위치에 할당
 		//pos = camPos; 
 
-		if (texture->GetTextureType() == Texture::TextureType::PNG) 
-		{
-			//내가 원하는 픽셀을 투명화 시킬 때 
-			Gdiplus::ImageAttributes imgAttrib{};
-			//투명화 시킬 픽셀의 색 범위
-			imgAttrib.SetColorKey(Gdiplus::Color(240, 240, 240), Gdiplus::Color(255, 255, 255));
-
-			//size.x and size.y means scaling
-			Gdiplus::Graphics graphics(_hdc);
-
-			//회전 
-			graphics.TranslateTransform(pos.x, pos.y);
-			graphics.RotateTransform(rot);
-			graphics.TranslateTransform(-pos.x, -pos.y);
-
-			graphics.DrawImage(texture->GetImage(), Gdiplus::Rect(INT(pos.x), INT(pos.y), 
-				INT(texture->GetWidth() * span.x * scale.x), INT(texture->GetHeight() * span.y * scale.y)), 
-				0, 0, texture->GetWidth(), texture->GetHeight(), Gdiplus::UnitPixel, &imgAttrib); 
-		}
-		else if (texture->GetTextureType() == Texture::TextureType::BMP) 
+		if (texture->GetTextureType() == Texture::TextureType::BMP) 
 		{			
 			if (texture->IsAlpha())
 			{
@@ -111,6 +92,25 @@ namespace Bx
 					int(texture->GetWidth() * span.x * scale.x), int(texture->GetHeight() * span.y * scale.y),
 					texture->GetHDC(), 0, 0, texture->GetWidth(), texture->GetHeight(), RGB(255, 0, 255));
 			}
-		}		
+		}
+		else if (texture->GetTextureType() == Texture::TextureType::PNG)
+		{
+			//내가 원하는 픽셀을 투명화 시킬 때 
+			Gdiplus::ImageAttributes imgAttrib{};
+			//투명화 시킬 픽셀의 색 범위
+			imgAttrib.SetColorKey(Gdiplus::Color(240, 240, 240), Gdiplus::Color(255, 255, 255));
+
+			//size.x and size.y means scaling
+			Gdiplus::Graphics graphics(_hdc);
+
+			//회전 
+			graphics.TranslateTransform(pos.x, pos.y);
+			graphics.RotateTransform(rot);
+			graphics.TranslateTransform(-pos.x, -pos.y);
+
+			graphics.DrawImage(texture->GetImage(), Gdiplus::Rect(INT(pos.x), INT(pos.y),
+				INT(texture->GetWidth() * span.x * scale.x), INT(texture->GetHeight() * span.y * scale.y)),
+				0, 0, texture->GetWidth(), texture->GetHeight(), Gdiplus::UnitPixel, &imgAttrib);
+		}
 	}
 }

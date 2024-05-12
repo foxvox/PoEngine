@@ -37,3 +37,4 @@ namespace Bx
 		TextOutW(_hdc, 100, 100, str, 11);
 	}
 }
+

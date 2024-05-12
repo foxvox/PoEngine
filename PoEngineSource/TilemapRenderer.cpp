@@ -10,10 +10,14 @@
 
 namespace Bx
 {
+	Vector2 TilemapRenderer::tileSpanV = Vector2::one;
+
 	TilemapRenderer::TilemapRenderer()
-		: Component(CompType::SR), texture(nullptr), span(Vector2::one), 
-		index(Vector2::zero), tileSpan(16.f, 16.f) 
-	{}
+		: Component(CompType::SR), texture(nullptr), multiple(3.f, 3.f), 
+		index(0.f, 0.f), tileSpan(16.f, 16.f) 
+	{
+		tileSpanV = tileSpan * multiple; 
+	}
 
 	TilemapRenderer::~TilemapRenderer()
 	{}
@@ -53,7 +57,7 @@ namespace Bx
 
 			AlphaBlend(_hdc, 
 				int(pos.x), int(pos.y),
-				int(tileSpan.x * span.x * scale.x), int(tileSpan.y * span.y * scale.y),
+				int(tileSpan.x * multiple.x * scale.x), int(tileSpan.y * multiple.y * scale.y),
 				texture->GetHDC(),
 				int(index.x * tileSpan.x), int(index.y * tileSpan.y),
 				int((index.x + 1) * tileSpan.x), int((index.x + 1) * tileSpan.x),
@@ -64,7 +68,7 @@ namespace Bx
 			//dest먼저 src나중 순서로 사용됨  
 			TransparentBlt(_hdc, 
 				int(pos.x), int(pos.y),
-				int(tileSpan.x * span.x * scale.x), int(tileSpan.y * span.y * scale.y),
+				int(tileSpan.x * multiple.x * scale.x), int(tileSpan.y * multiple.y * scale.y),
 				texture->GetHDC(), 
 				int(index.x * tileSpan.x), int(index.y * tileSpan.y), 
 				int((index.x + 1) * tileSpan.x), int((index.x + 1) * tileSpan.x), 

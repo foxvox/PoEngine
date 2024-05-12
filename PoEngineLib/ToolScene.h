@@ -19,3 +19,5 @@ namespace Bx
 	};
 }
 
+LRESULT CALLBACK TileProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam); 
+

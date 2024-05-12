@@ -8,6 +8,8 @@ namespace Bx
 	class TilemapRenderer : public Component
 	{
 	public:
+		static Vector2 tileSpanV;
+
 		TilemapRenderer();
 		~TilemapRenderer();
 
@@ -17,11 +19,11 @@ namespace Bx
 		void Render(HDC _hdc) override;
 
 		void SetTexture(Texture* _texture) { texture = _texture; }
-		void SetSpan(Vector2 _span) { span = _span; }
+		void SetMultiple(Vector2 _multiple) { multiple = _multiple; }
 
 	private:
 		Texture*	texture;
-		Vector2		span;
+		Vector2		multiple;
 		Vector2		index; 
 		Vector2		tileSpan; 
 	};

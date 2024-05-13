@@ -66,9 +66,8 @@ namespace Bx
 		float rot = tr->GetRot();
 		Vector2 scale = tr->GetScale();
 		
-		//Vector2 camPos = camera->CalPos(pos); 
-		//캠위치를 게임오브젝트 위치에 할당
-		//pos = camPos; 
+		Vector2 camPos = mainCam->CalPos(pos);
+		pos = camPos; 
 
 		if (texture->GetTextureType() == Texture::TextureType::BMP) 
 		{			

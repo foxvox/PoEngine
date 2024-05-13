@@ -9,6 +9,8 @@ namespace Bx
 	{
 	public:
 		static Vector2 tileSpanV;
+		static Vector2 originTileSpan;
+		static Vector2 selectedIndex;
 
 		TilemapRenderer();
 		~TilemapRenderer();
@@ -20,6 +22,8 @@ namespace Bx
 
 		void SetTexture(Texture* _texture) { texture = _texture; }
 		void SetMultiple(Vector2 _multiple) { multiple = _multiple; }
+		Vector2 GetIndex() { return index; }
+		void SetIndex(Vector2 _index) { index = _index; }
 
 	private:
 		Texture*	texture;

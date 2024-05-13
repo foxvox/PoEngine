@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderer.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp">
       <Filter>Util</Filter>
     </ClCompile>
@@ -46,12 +37,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)BxMath.cpp">
       <Filter>Util</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Script.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Camera.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
@@ -62,34 +47,40 @@
       <Filter>Animation</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Collider.cpp">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)BoxCollider2D.cpp">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)CircleCollider2D.cpp">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)CollisionMgr.cpp">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)TilemapRenderer.cpp">
-      <Filter>TilemapRenderer</Filter>
+      <Filter>Component\TilemapRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Camera.cpp">
+      <Filter>Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Script.cpp">
+      <Filter>Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp">
+      <Filter>Component\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderer.cpp">
+      <Filter>Component\SpriteRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp">
+      <Filter>Component\Transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderer.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)BxMath.h">
       <Filter>Util</Filter>
     </ClInclude>
@@ -135,12 +126,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Resources.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Script.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Camera.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
@@ -151,22 +136,37 @@
       <Filter>Animation</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CircleCollider2D.h">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CollisionMgr.h">
-      <Filter>Collider</Filter>
+      <Filter>Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h">
-      <Filter>TilemapRenderer</Filter>
+      <Filter>Component\TilemapRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Camera.h">
+      <Filter>Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Script.h">
+      <Filter>Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h">
+      <Filter>Component\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderer.h">
+      <Filter>Component\SpriteRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h">
+      <Filter>Component\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,11 +200,26 @@
     <Filter Include="Animation">
       <UniqueIdentifier>{d0869364-35bf-4f48-90bc-6a5951a9c180}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Collider">
+    <Filter Include="Component\TilemapRenderer">
+      <UniqueIdentifier>{35c108f0-4b17-4397-bdcb-4adc7e422827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider">
       <UniqueIdentifier>{b1653c96-e834-4975-990a-833233ea821b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TilemapRenderer">
-      <UniqueIdentifier>{35c108f0-4b17-4397-bdcb-4adc7e422827}</UniqueIdentifier>
+    <Filter Include="Component\Camera">
+      <UniqueIdentifier>{84532aa1-9196-4044-aaf5-6dd83d4376be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Script">
+      <UniqueIdentifier>{368ca1ba-d1cc-48c6-8958-45c263a34a97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Component">
+      <UniqueIdentifier>{4f980e1f-bcf5-4ee4-b6ae-388a4761cb1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\SpriteRenderer">
+      <UniqueIdentifier>{461fa59a-ee72-44a1-8f78-a31fb5f107bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Transform">
+      <UniqueIdentifier>{f3eba7ab-99e9-4e76-a77a-a6c851e7fba9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

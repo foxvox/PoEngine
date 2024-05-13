@@ -49,16 +49,12 @@ namespace Bx
 		//게임 윈도우 이외의 윈도우가 눌린 경우 키처리를 무효화시킨다. 
 		if (GetFocus())
 		{
-			if (IsKeyDown(_key.keyCode))
-			{
-				UpdateKeyDown(_key);
-			}
-			else
-			{
-				UpdateKeyUp(_key);
-			}
+			if (IsKeyDown(_key.keyCode)) 
+				UpdateKeyDown(_key);			
+			else 			
+				UpdateKeyUp(_key); 
 
-			SetFocusWndPos(); 
+			GetMousePosByWnd(); 			
 		} 
 		else
 		{
@@ -117,6 +113,25 @@ namespace Bx
 			}
 			key.isPressed = false;
 		}
+	}
+
+	void Input::GetMousePosByWnd()
+	{
+		POINT clickPos{};
+		GetCursorPos(&clickPos);
+		ScreenToClient(app.GetHWND(), &clickPos);
+
+		UINT width = app.GetWidth();
+		UINT height = app.GetHeight();
+
+		mousePos.x = -1.f;
+		mousePos.y = -1.f;
+
+		if (clickPos.x > 0 && clickPos.x < width)
+			mousePos.x = clickPos.x;
+
+		if (clickPos.y > 0 && clickPos.y < height)
+			mousePos.y = clickPos.y;
 	}
 
 	bool Input::IsKeyDown(KeyCode _keyCode)

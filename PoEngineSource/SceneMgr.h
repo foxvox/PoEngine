@@ -22,6 +22,7 @@ namespace Bx
 		static Scene* LoadScene(const std::wstring& _name);	
 		static Scene* GetActiveScene() { return activeScene; } 
 		static Scene* GetDDOLScene() { return ddolScene; }
+		static std::vector<GameObject*> GetGameObjs(LayerType layer);
 
 		static void Initialize();		
 		static void Update();

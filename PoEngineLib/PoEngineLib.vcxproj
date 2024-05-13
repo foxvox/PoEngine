@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\PoEngineSource\Player.h" />
+    <ClInclude Include="CameraScript.h" />
     <ClInclude Include="Cat.h" />
     <ClInclude Include="CatScript.h" />
     <ClInclude Include="framework.h" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\PoEngineSource\Player.cpp" />
+    <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="Cat.cpp" />
     <ClCompile Include="CatScript.cpp" />
     <ClCompile Include="PlayerScript.cpp" />

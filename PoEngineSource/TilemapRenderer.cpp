@@ -11,12 +11,15 @@
 namespace Bx
 {
 	Vector2 TilemapRenderer::tileSpanV = Vector2::one;
+	Vector2 TilemapRenderer::originTileSpan = Vector2::one;
+	Vector2 TilemapRenderer::selectedIndex = Vector2::one;
 
 	TilemapRenderer::TilemapRenderer()
 		: Component(CompType::SR), texture(nullptr), multiple(3.f, 3.f), 
 		index(0.f, 0.f), tileSpan(16.f, 16.f) 
 	{
 		tileSpanV = tileSpan * multiple; 
+		originTileSpan = tileSpan;
 	}
 
 	TilemapRenderer::~TilemapRenderer()
@@ -42,9 +45,8 @@ namespace Bx
 		float rot = tr->GetRot();
 		Vector2 scale = tr->GetScale();
 
-		//Vector2 camPos = camera->CalPos(pos); 
-		//캠위치를 게임오브젝트 위치에 할당
-		//pos = camPos; 
+		Vector2 camPos = mainCam->CalPos(pos); 
+		pos = camPos;
 
 		if (texture->IsAlpha())
 		{

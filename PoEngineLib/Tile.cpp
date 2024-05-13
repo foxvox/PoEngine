@@ -24,7 +24,7 @@ namespace Bx
 		GameObject::Render(_hdc);
 	}
 
-	void Tile::SetPos(float _x, float _y)
+	void Tile::SetIndexPos(int _x, int _y)
 	{
 		Transform* tr = GetComponent<Transform>(); 
 		Vector2 pos; 

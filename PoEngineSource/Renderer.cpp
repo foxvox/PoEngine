@@ -2,5 +2,5 @@
 
 namespace Bx
 {
-	Camera* camera = nullptr; 
+	Camera* mainCam = nullptr; 
 }

@@ -27,8 +27,8 @@ namespace Bx
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPos();
 
-		if (camera)
-			pos = camera->CalPos(pos);
+		if (mainCam)
+			pos = mainCam->CalPos(pos);
 
 		Vector2 offset = GetOffset();
 

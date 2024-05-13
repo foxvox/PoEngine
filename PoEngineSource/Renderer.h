@@ -3,6 +3,6 @@
 
 namespace Bx
 {
-	extern Camera* camera;
+	extern Camera* mainCam;
 }
 

@@ -11,7 +11,7 @@ namespace Bx
 		void LateUpdate() override;
 		void Render(HDC _hdc) override;
 
-		void SetPos(float _x, float _y); 
+		void SetIndexPos(int _x, int _y); 
 
 	private:
 	};

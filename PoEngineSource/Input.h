@@ -62,9 +62,10 @@ namespace Bx
 		static void	UpdateKeyDown(Input::Key& _key); 
 		static void	UpdateKeyUp(Input::Key& _key);
 		static void ClearKeys(); 
+		static void GetMousePosByWnd(); 
 
 		static vector<Key> keys; 
-		static Vector2   mousePos; 
+		static Vector2	   mousePos; 
 	};
 }
 

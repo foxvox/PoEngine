@@ -55,9 +55,9 @@ namespace Bx
 		
 		Vector2 camPos{}; 		
 		//Renderer.h 안에 선언되어 있음.
-		if (camera)
+		if (mainCam)
 		{
-			camPos = camera->CalPos(pos); 
+			camPos = mainCam->CalPos(pos); 
 			pos = camPos; 
 		}		 
 

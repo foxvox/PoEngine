@@ -18,6 +18,8 @@
 #include "CircleCollider2D.h" 
 #include "CollisionMgr.h" 
 #include "DontDestroyOnLoad.h" 
+#include "Tile.h" 
+#include "TilemapRenderer.h" 
 
 namespace Bx
 {
@@ -36,7 +38,7 @@ namespace Bx
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
 		//camera는 Rederer.h에 선언되어있다. 
-		camera = camComp;
+		mainCam = camComp;
 
 		//Player
 		player = Instantiate<Player>(LayerType::PLAYER);

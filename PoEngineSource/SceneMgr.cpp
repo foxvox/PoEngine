@@ -23,6 +23,16 @@ namespace Bx
 		return activeScene;
 	}
 
+	std::vector<GameObject*> SceneMgr::GetGameObjs(LayerType layer)
+	{		
+		std::vector<GameObject*> gameObjs = activeScene->GetLayer(layer)->GetGameObjs();
+		std::vector<GameObject*> ddolGameObjs = ddolScene->GetLayer(layer)->GetGameObjs();
+
+		gameObjs.insert(gameObjs.end(), ddolGameObjs.begin(), ddolGameObjs.end());
+
+		return gameObjs;
+	}
+
 	void SceneMgr::Initialize()
 	{	
 		ddolScene = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");

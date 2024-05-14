@@ -20,6 +20,7 @@
 #include "DontDestroyOnLoad.h" 
 #include "Tile.h" 
 #include "TilemapRenderer.h" 
+#include "Rigidbody.h" 
 
 namespace Bx
 {
@@ -56,9 +57,10 @@ namespace Bx
 		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.2f);
 		playerAnimator->PlayAnimation(L"Idle", false);
 
+		player->AddComponent<Rigidbody>();
+
 		//멤버함수가 작동하는 원리를 확실히 알 수 있는 코드라인 
-		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, ps); 
-		
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, ps);		
 		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
 
 		//Cat관련

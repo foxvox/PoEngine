@@ -6,35 +6,31 @@
 namespace Bx
 {
 	Rigidbody::Rigidbody()
-		: Component(CompType::RIGIDBODY)
-		, ground(false)
-		, mass(1.f)
-		, friction(10.f)
-		, force(Vector2::zero)
-		, velocity(Vector2::zero)
-		, limVelocity(Vector2(200.f, 1000.f))
-		, gravity(Vector2(0.f, 800.f))
-		, accel(Vector2::zero)
-	{
-
-	}
+		: Component(CompType::RIGIDBODY), ground(false), mass(1.f), friction(10.f), 
+		force(Vector2::zero), velocity(Vector2::zero), limVelocity(Vector2(200.f, 1000.f)), 
+		gravity(Vector2(0.f, 800.f)), accel(Vector2::zero) 
+	{}
 
 	Rigidbody::~Rigidbody()
-	{
-	}
+	{}
 
 	void Rigidbody::Initialize()
-	{
-	}
+	{}
 
 	void Rigidbody::Update()
-	{
+	{		
 		// f(힘) = m(질량) x a(가속도)
 		// a = f / m;
 		accel = force / mass;
 
 		// 속도에 가속도를 더한다.
 		velocity += accel * BxTime::DeltaTime();
+
+		//최대 속도 제한
+		Vector2 tmpGravity = gravity;
+		tmpGravity.Normalize();
+		float dot = velocity.Dot(tmpGravity);
+		tmpGravity = tmpGravity * dot;
 
 		if (ground)
 		{
@@ -51,14 +47,8 @@ namespace Bx
 			velocity += gravity * BxTime::DeltaTime();
 		}
 
-
-		//최대 속도 제한
-		Vector2 tmpGravity = gravity;
-		tmpGravity.Normalize();
-		float dot = velocity.Dot(tmpGravity);
-		tmpGravity = tmpGravity * dot;
-
 		Vector2 sideVelocity = velocity - tmpGravity;
+
 		if (limVelocity.y < tmpGravity.Length())
 		{
 			tmpGravity.Normalize();
@@ -70,6 +60,7 @@ namespace Bx
 			sideVelocity.Normalize();
 			sideVelocity *= limVelocity.x;
 		}
+
 		velocity = tmpGravity + sideVelocity;
 
 
@@ -100,12 +91,10 @@ namespace Bx
 	}
 
 	void Rigidbody::LateUpdate()
-	{
-	}
+	{}
 
-	void Rigidbody::Render(HDC hdc)
-	{
-	}
+	void Rigidbody::Render(HDC _hdc)
+	{}
 
 }
 

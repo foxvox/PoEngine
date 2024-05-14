@@ -8,21 +8,19 @@
 #include "CatScript.h" 
 #include "Object.h" 
 #include "Resources.h"
+#include "Rigidbody.h" 
 
 namespace Bx
 {
 	PlayerScript::PlayerScript() 
 		: state(PlayerScript::State::IDLE), animator(nullptr)
-	{
-	}
+	{}
 
 	PlayerScript::~PlayerScript()
-	{
-	}
+	{}
 
 	void PlayerScript::Initialize()
-	{		
-	}
+	{}
 
 	void PlayerScript::Update()
 	{
@@ -91,33 +89,26 @@ namespace Bx
 		}
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPos();
+		Vector2 pos = tr->GetPos(); 
+		Rigidbody* rb = GetOwner()->GetComponent<Rigidbody>();
 
 		if (Input::GetKey(KeyCode::Right))
 		{
-			state = PlayerScript::State::MOVE; 
-			//animator->PlayAnimation(L"RMove"); 
+			rb->AddForce(Vector2(200.0f, 0.0f));
 		}
 		
 		if (Input::GetKey(KeyCode::Left))
 		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"LMove");
+			rb->AddForce(Vector2(-200.0f, 0.0f));
 		}
 		
 		if (Input::GetKey(KeyCode::Up))
 		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"UMove");
-		}
-		
-		if (Input::GetKey(KeyCode::Down))
-		{
-			state = PlayerScript::State::MOVE;
-			//animator->PlayAnimation(L"DMove");
-		}
-
-		tr->SetPos(pos); 
+			Vector2 vel = rb->GetVelocity();
+			vel.y = -500.0f;
+			rb->SetVelocity(vel);
+			rb->SetGround(false);
+		}	
 	}
 
 	void PlayerScript::Move()
@@ -125,31 +116,36 @@ namespace Bx
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
 
+		Rigidbody* rb = GetOwner()->GetComponent<Rigidbody>(); 
+
 		const float speed = 100.f;
 		const float deltaTime = BxTime::DeltaTime();
 
 		if (Input::GetKey(KeyCode::Right))
 		{
-			pos.x += speed * deltaTime;
+			//pos.x += speed * deltaTime;
+			rb->AddForce(Vector2(200.f, 0.f)); 
 		}		
 		
 		if (Input::GetKey(KeyCode::Left))
 		{
-			pos.x -= speed * deltaTime;
+			//pos.x -= speed * deltaTime;
+			rb->AddForce(Vector2(-200.f, 0.f));
 		}		
 		
 		if (Input::GetKey(KeyCode::Up))
 		{
-			pos.y -= speed * deltaTime;
+			//pos.y -= speed * deltaTime;
+			rb->AddForce(Vector2(0.f, -200.f));
 		}		
 		
 		if (Input::GetKey(KeyCode::Down))
 		{
-			pos.y += speed * deltaTime;
+			//pos.y += speed * deltaTime;
+			rb->AddForce(Vector2(0.f, 200.f));
 		}
 
-		tr->SetPos(pos); 
-
+		//tr->SetPos(pos); 
 
 		if (Input::GetKeyUp(KeyCode::Right) || Input::GetKeyUp(KeyCode::Left) || 
 			Input::GetKeyUp(KeyCode::Up) || Input::GetKeyUp(KeyCode::Down))
@@ -204,7 +200,7 @@ namespace Bx
 
 	void PlayerScript::OnCollisionEnter(Collider* rc)
 	{
-		rc->GetOwner()->GetComponent<Transform>()->SetPos(Vector2(400.f, 500.f)); 
+		//rc->GetOwner()->GetComponent<Transform>()->SetPos(Vector2(400.f, 500.f)); 
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* rc)

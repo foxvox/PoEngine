@@ -83,7 +83,7 @@ namespace Bx
 		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
 		catAnimator->PlayAnimation(L"Sit", false);*/ 
 
-		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/Mushroom", Vector2::zero, 0.1f); 
+		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/Mushroom/", Vector2::zero, 0.1f); 
 		catAnimator->PlayAnimation(L"MushroomIdle", true);  
 
 		cat->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));

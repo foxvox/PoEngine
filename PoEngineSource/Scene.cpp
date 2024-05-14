@@ -1,4 +1,5 @@
 #include "Scene.h" 
+#include "CollisionMgr.h" 
 
 namespace Bx
 {
@@ -79,7 +80,9 @@ namespace Bx
 	{}
 
 	void Scene::OnExit()
-	{}
+	{
+		CollisionMgr::Clear(); 
+	}
 
 	void Scene::AddGameObj(GameObject* _gameObj, LayerType _type)
 	{

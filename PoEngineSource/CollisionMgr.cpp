@@ -37,6 +37,12 @@ namespace Bx
 	void CollisionMgr::Render(HDC _hdc)
 	{}
 
+	void CollisionMgr::Clear()
+	{
+		collMap.clear(); 
+		collMat->reset(); 
+	}
+
 	void CollisionMgr::LayerCollisionCheck(LayerType lhs, LayerType rhs, bool enable)
 	{
 		int row = 0;
@@ -58,8 +64,8 @@ namespace Bx
 
 	void CollisionMgr::LayerCollision(Scene* scene, LayerType lhs, LayerType rhs) 
 	{
-		const std::vector<GameObject*>& lObjs = scene->GetLayer(lhs)->GetGameObjs(); 
-		const std::vector<GameObject*>& rObjs = scene->GetLayer(rhs)->GetGameObjs(); 
+		const std::vector<GameObject*>& lObjs = SceneMgr::GetGameObjs(lhs);  
+		const std::vector<GameObject*>& rObjs = SceneMgr::GetGameObjs(rhs);
 
 		for (GameObject* lObj : lObjs) 
 		{

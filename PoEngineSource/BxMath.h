@@ -25,8 +25,8 @@ namespace Bx
 			: x(0.f), y(0.f) 
 		{} 
 
-		Vector2(const Vector2& _vec)
-			: x(_vec.x), y(_vec.y) 
+		Vector2(const Vector2& _v)
+			: x(_v.x), y(_v.y) 
 		{}
 
 		Vector2(float _x, float _y) 
@@ -43,6 +43,23 @@ namespace Bx
 		{
 			x -= _rv.x;
 			y -= _rv.y;
+		}
+
+		void operator*=(Vector2 _rv)
+		{
+			x *= _rv.x;
+			y *= _rv.y;
+		}
+
+		void operator*=(float _value)
+		{
+			x *= _value;
+			y *= _value;
+		}
+
+		Vector2 operator- ()
+		{
+			return Vector2(-x, -y);
 		}
 
 		Vector2 operator+ (Vector2 _rv)
@@ -70,7 +87,12 @@ namespace Bx
 			return Vector2(x / _value, y / _value);
 		}
 
-		float Clear() { x = 0.f; y = 0.f; } 
+		bool operator==(Vector2 _rv)
+		{
+			return (x == _rv.x) && (y == _rv.y);
+		}
+
+		void Clear() { x = 0.f; y = 0.f; } 
 
 		float Length() { return sqrtf(x * x + y * y); } 
 

@@ -4,6 +4,7 @@
 
 #include "Resources.h" 
 #include "Texture.h" 
+#include "SceneMgr.h" 
 
 #include "../PoEngineLib/LoadResources.h"  
 #include "../PoEngineLib/LoadScenes.h" 
@@ -26,6 +27,7 @@ ULONG_PTR token;
 Gdiplus::GdiplusStartupInput gpsi; 
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
+BOOL                InitToolScene(HINSTANCE hInstance);
 ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM); 
@@ -116,9 +118,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hwnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr); 
 
-   HWND tile_hwnd = CreateWindowW(L"TILEWND", L"TileWnd", WS_OVERLAPPEDWINDOW,
-       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
-
    app.Initialize(hwnd);
 
    if (!hwnd)
@@ -126,15 +125,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       return FALSE;
    }
 
-   if (!tile_hwnd)
-   {
-       return FALSE;
-   }
-
    ShowWindow(hwnd, nCmdShow);
    UpdateWindow(hwnd);
 
    Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
+
+   InitToolScene(hInstance);
 
    //Load Scenes... 
    int a = 0; 
@@ -142,17 +138,31 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    LoadResources(); 
    LoadScenes(); 
 
-   //TileWnd 크기 조정 
-   Texture* tx = Resources::Find<Texture>(L"SpringFloor");
-
-   RECT rect = { 0, 0, tx->GetWidth(), tx->GetHeight()};
-   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
-   SetWindowPos(tile_hwnd, nullptr, width, 0, tx->GetWidth(), tx->GetHeight(), 0);
-   ShowWindow(tile_hwnd, true);
-   UpdateWindow(tile_hwnd);
-
    return TRUE;
+} 
+
+BOOL InitToolScene(HINSTANCE hInstance)
+{
+    Scene* activeScene = SceneMgr::GetActiveScene();
+    std::wstring name = activeScene->GetName();
+
+    if (name == L"ToolScene")
+    {
+        HWND tile_hwnd = CreateWindowW(L"TILEWND", L"TileWnd", WS_OVERLAPPEDWINDOW,
+            0, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+        //TileWnd 크기 조정 
+        Texture* tx = Resources::Find<Texture>(L"SpringFloor");
+
+        RECT rect = { 0, 0, tx->GetWidth(), tx->GetHeight() };
+        AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+        SetWindowPos(tile_hwnd, nullptr, 672, 0, tx->GetWidth(), tx->GetHeight(), 0);
+        ShowWindow(tile_hwnd, true);
+        UpdateWindow(tile_hwnd);
+    }
+
+    return TRUE;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

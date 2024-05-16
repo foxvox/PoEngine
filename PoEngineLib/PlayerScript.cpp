@@ -104,9 +104,9 @@ namespace Bx
 		
 		if (Input::GetKey(KeyCode::Up))
 		{
-			Vector2 vel = rb->GetVelocity();
-			vel.y = -500.0f;
-			rb->SetVelocity(vel);
+			Vector2 velocity = rb->GetVelocity();
+			velocity.y = -500.0f;
+			rb->SetVelocity(velocity);
 			rb->SetGround(false);
 		}	
 	}
@@ -118,8 +118,8 @@ namespace Bx
 
 		Rigidbody* rb = GetOwner()->GetComponent<Rigidbody>(); 
 
-		const float speed = 100.f;
-		const float deltaTime = BxTime::DeltaTime();
+		/*const float speed = 100.f;
+		const float deltaTime = BxTime::DeltaTime();*/
 
 		if (Input::GetKey(KeyCode::Right))
 		{

@@ -1,6 +1,7 @@
 #include "BoxCollider2D.h" 
 #include "GameObject.h" 
 #include "Transform.h" 
+#include "Renderer.h" 
 
 namespace Bx
 {
@@ -25,6 +26,9 @@ namespace Bx
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
 
+		if (mainCam)
+			pos = mainCam->CalPos(pos); 
+
 		Vector2 offset = GetOffset(); 
 
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH); 
@@ -32,7 +36,8 @@ namespace Bx
 
 		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0)); 
 		HPEN oldPen = (HPEN)SelectObject(_hdc, greenPen);
-		Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, pos.x + offset.x + 100, pos.y + offset.y + 100); 
+		Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, 
+			pos.x + offset.x + 100 * GetSpan().x, pos.y + offset.y + 100 * GetSpan().y);
 		SelectObject(_hdc, oldBrush); 
 		SelectObject(_hdc, oldPen);
 

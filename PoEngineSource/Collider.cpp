@@ -9,7 +9,7 @@ namespace Bx
 	//span Vector2::zero로 잡으면 scale을 곱할 때 적용이 안 됨.
 	Collider::Collider(ColliderType _type)
 		: Component(CompType::COLLIDER), cid(CID++), type(_type), 
-		span(Vector2::one), offset(Vector2::one) 
+		span(Vector2::one), offset(Vector2::zero) 
 	{}
 
 	Collider::~Collider()

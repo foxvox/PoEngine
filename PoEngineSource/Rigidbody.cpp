@@ -6,7 +6,7 @@
 namespace Bx
 {
 	Rigidbody::Rigidbody()
-		: Component(CompType::RIGIDBODY), ground(false), mass(1.f), friction(10.f), 
+		: Component(CompType::RIGIDBODY), ground(false), mass(1.f), friction(100.f), 
 		force(Vector2::zero), velocity(Vector2::zero), limVelocity(Vector2(200.f, 1000.f)), 
 		gravity(Vector2(0.f, 800.f)), accel(Vector2::zero) 
 	{}
@@ -26,12 +26,6 @@ namespace Bx
 		// 속도에 가속도를 더한다.
 		velocity += accel * BxTime::DeltaTime();
 
-		//최대 속도 제한
-		Vector2 tmpGravity = gravity;
-		tmpGravity.Normalize();
-		float dot = velocity.Dot(tmpGravity);
-		tmpGravity = tmpGravity * dot;
-
 		if (ground)
 		{
 			// 땅위에 있을때
@@ -45,7 +39,13 @@ namespace Bx
 		{
 			// 공중에 있을떄
 			velocity += gravity * BxTime::DeltaTime();
-		}
+		}		
+
+		//최대 속도 제한
+		Vector2 tmpGravity = gravity;
+		tmpGravity.Normalize();
+		float dot = velocity.Dot(tmpGravity);
+		tmpGravity = tmpGravity * dot;
 
 		Vector2 sideVelocity = velocity - tmpGravity;
 

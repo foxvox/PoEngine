@@ -1,12 +1,12 @@
 #pragma once 
 #include "Component.h" 
-#include "BxMath.h"
+#include "BxMath.h" 
 
 namespace Bx
 {
 	typedef std::vector<Component*>::iterator COMPOITER;
 
-	class GameObject
+	class GameObject : public Entity
 	{
 	public:
 		//friend static void Destroy(GameObject* _gameobj); //필요하면 friend를 맺을 수 있다. 

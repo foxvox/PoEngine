@@ -21,6 +21,8 @@
 #include "Tile.h" 
 #include "TilemapRenderer.h" 
 #include "Rigidbody.h" 
+#include "Floor.h" 
+#include "FloorScript.h" 
 
 namespace Bx
 {
@@ -38,7 +40,7 @@ namespace Bx
 		//Camera 
 		GameObject* cam = Instantiate<GameObject>(LayerType::NONE, Vector2(336.f, 423.f)); 
 		Camera* camComp = cam->AddComponent<Camera>(); 
-		//camera는 Rederer.h에 선언되어있다. 
+		//mainCam은 Rederer.h에 선언되어있다. 
 		mainCam = camComp;
 
 		//Player
@@ -46,10 +48,10 @@ namespace Bx
 		DontDestroyOnLoad(player); 
 
 		PlayerScript* ps = player->AddComponent<PlayerScript>();
-		//BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 
-		//pbc->SetOffset(Vector2(-50.f, -50.f)); 
-		CircleCollider2D* pcc = player->AddComponent<CircleCollider2D>();
-		pcc->SetOffset(Vector2(-50.f, -50.f));
+		BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 
+		pbc->SetOffset(Vector2(-50.f, -50.f)); 
+		//CircleCollider2D* pcc = player->AddComponent<CircleCollider2D>();
+		//pcc->SetOffset(Vector2(-50.f, -50.f));
 
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
@@ -58,38 +60,14 @@ namespace Bx
 		playerAnimator->PlayAnimation(L"Idle", false);
 
 		player->AddComponent<Rigidbody>();
-
-		//멤버함수가 작동하는 원리를 확실히 알 수 있는 코드라인 
-		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, ps);		
-		player->GetComponent<Transform>()->SetPos(Vector2(300.f, 300.f));
-
-		//Cat관련
-		cat = Instantiate<Cat>(LayerType::ANIMAL);		 
-		cat->AddComponent<CatScript>();
-		Texture* catx = Resources::Find<Texture>(L"Cat");
-		Animator* catAnimator = cat->AddComponent<Animator>();
-		//BoxCollider2D* cbc = cat->AddComponent<BoxCollider2D>(); 
-		//cbc->SetOffset(Vector2(-50.f, -50.f)); 
-		CircleCollider2D* ccc = cat->AddComponent<CircleCollider2D>();
-		ccc->SetOffset(Vector2(-50.f, -50.f));
+		Floor* floor = Instantiate<Floor>(LayerType::FLOOR, Vector2(10.f, 600.f)); 
+		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>(); 
+		floorCol->SetSpan(Vector2(4.f, 1.f)); 
+		floor->AddComponent<FloorScript>(); 
 
 		//카메라가 타겟을 쫒아가게 설정
-		//camComp->SetTarget(cat);
-
-		/*catAnimator->CreateAnimation(L"DMove",    catx, Vector2(0.f, 0.f),   Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"RMove",    catx, Vector2(0.f, 32.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"UMove",    catx, Vector2(0.f, 64.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LMove",    catx, Vector2(0.f, 96.f),  Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Sit",      catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LayDown",  catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->PlayAnimation(L"Sit", false);*/ 
-
-		catAnimator->CreateAniByFolder(L"MushroomIdle", L"../Resources/Mushroom/", Vector2::zero, 0.1f); 
-		catAnimator->PlayAnimation(L"MushroomIdle", true);  
-
-		cat->GetComponent<Transform>()->SetScale(Vector2(1.f, 1.f));
-		cat->GetComponent<Transform>()->SetPos(Vector2(100.f, 100.f));		
+		//camComp->SetTarget(player);
+	
 		
 		//게임오브젝트 생성 후에 레이어와 게임오브젝트들의 Initialize() 호출  
 		Scene::Initialize(); 		
@@ -122,6 +100,10 @@ namespace Bx
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter(); 
+
+		CollisionMgr::LayerCollisionCheck(LayerType::PLAYER, LayerType::ANIMAL, true); 
+		CollisionMgr::LayerCollisionCheck(LayerType::PLAYER, LayerType::FLOOR, true);
+
 	}
 
 	void PlayScene::OnExit()

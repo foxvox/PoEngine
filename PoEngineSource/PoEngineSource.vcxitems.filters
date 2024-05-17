@@ -80,6 +80,12 @@
       <Filter>Component\Transform</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Rigidbody.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIMgr.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIBase.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)BxMath.h">
@@ -170,6 +176,12 @@
       <Filter>Component\Transform</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Rigidbody.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIMgr.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -222,6 +234,9 @@
     </Filter>
     <Filter Include="Component\Transform">
       <UniqueIdentifier>{f3eba7ab-99e9-4e76-a77a-a6c851e7fba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{53b14c65-3e43-4da6-9eae-6bbebfff888c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -42,6 +42,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)BxTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TilemapRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Animation.h" />
@@ -74,5 +76,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BxMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIMgr.h" />
   </ItemGroup>
 </Project>

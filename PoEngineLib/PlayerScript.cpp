@@ -88,9 +88,9 @@ namespace Bx
 			cs->dest = mousePos;
 		}
 
-		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Transform* tr = GetOwner()->GetComponent<Transform>(); 
 		Vector2 pos = tr->GetPos(); 
-		Rigidbody* rb = GetOwner()->GetComponent<Rigidbody>();
+		Rigidbody* rb = GetOwner()->GetComponent<Rigidbody>(); 
 
 		if (Input::GetKey(KeyCode::Right))
 		{

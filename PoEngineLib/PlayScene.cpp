@@ -47,6 +47,7 @@ namespace Bx
 		player = Instantiate<Player>(LayerType::PLAYER);
 		DontDestroyOnLoad(player); 
 
+
 		PlayerScript* ps = player->AddComponent<PlayerScript>();
 		BoxCollider2D* pbc = player->AddComponent<BoxCollider2D>(); 
 		pbc->SetOffset(Vector2(-50.f, -50.f)); 
@@ -56,13 +57,16 @@ namespace Bx
 		Texture* pltx = Resources::Find<Texture>(L"Player");
 		Animator* playerAnimator = player->AddComponent<Animator>(); 
 		playerAnimator->CreateAnimation(L"Idle", pltx, Vector2(2000.f, 250.f), Vector2(250.f, 250.f), Vector2::zero, 1, 0.1f);
-		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.2f);
+		playerAnimator->CreateAnimation(L"FrontGiveWater", pltx, Vector2(0.f, 2000.f), Vector2(250.f, 250.f), Vector2::zero, 12, 0.1f);
 		playerAnimator->PlayAnimation(L"Idle", false);
 
+		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, ps);
+		player->GetComponent<Transform>()->SetPos(Vector2(300.0f, 250.0f));
+
 		player->AddComponent<Rigidbody>();
-		Floor* floor = Instantiate<Floor>(LayerType::FLOOR, Vector2(10.f, 600.f)); 
+		Floor* floor = Instantiate<Floor>(LayerType::FLOOR, Vector2(100.f, 600.f)); 
 		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>(); 
-		floorCol->SetSpan(Vector2(4.f, 1.f)); 
+		floorCol->SetSpan(Vector2(3.f, 1.f)); 
 		floor->AddComponent<FloorScript>(); 
 
 		//카메라가 타겟을 쫒아가게 설정

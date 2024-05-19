@@ -64,7 +64,7 @@ namespace Bx
 		player->GetComponent<Transform>()->SetPos(Vector2(300.0f, 250.0f));
 
 		player->AddComponent<Rigidbody>();
-		Floor* floor = Instantiate<Floor>(LayerType::FLOOR, Vector2(100.f, 600.f)); 
+		Floor* floor = Instantiate<Floor>(LayerType::FLOOR, Vector2(150.f, 600.f)); 
 		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>(); 
 		floorCol->SetSpan(Vector2(3.f, 1.f)); 
 		floor->AddComponent<FloorScript>(); 

@@ -79,12 +79,26 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp">
       <Filter>Component\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Rigidbody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)UIMgr.cpp">
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)UIBase.cpp">
       <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)BxFMod.cpp">
+      <Filter>FMode</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioClip.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioListener.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioSource.cpp">
+      <Filter>Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Rigidbody.cpp">
+      <Filter>Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,12 +189,26 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h">
       <Filter>Component\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Rigidbody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UIMgr.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)UIBase.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)BxFMod.h">
+      <Filter>FMode</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioClip.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioListener.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioSource.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Rigidbody.h">
+      <Filter>Component\Rigidbody</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +265,15 @@
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{53b14c65-3e43-4da6-9eae-6bbebfff888c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FMode">
+      <UniqueIdentifier>{a1669298-57b3-4e02-9d4d-f616d02992b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{4835f9cf-ded2-433f-b84d-cd8c0cc026d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Rigidbody">
+      <UniqueIdentifier>{f06f855b-c52e-4318-86e9-d738d8098d74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

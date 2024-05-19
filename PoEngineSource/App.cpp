@@ -3,7 +3,9 @@
 #include "BxTime.h"  
 #include "CollisionMgr.h" 
 #include "SceneMgr.h" 
-#include "Resources.h" 
+#include "Resources.h"
+#include "UIMgr.h"
+#include "BxFMod.h" 
 
 namespace Bx
 {
@@ -12,9 +14,7 @@ namespace Bx
 		backhdc(nullptr), backBuf(nullptr) 
 	{
 		BxTime::Initialize();
-		Input::Initialize();
-		CollisionMgr::Initialize();
-		SceneMgr::Initialize();
+		Input::Initialize();		
 	}
 
 	App::~App()
@@ -24,6 +24,11 @@ namespace Bx
 	{
 		GetWindow(_hwnd, width, height); 
 		CreateBackBuf(width, height); 
+
+		BxFMod::Initialize(); 
+		CollisionMgr::Initialize(); 
+		SceneMgr::Initialize();
+		UIMgr::Initialize(); 
 	} 
 
 	void App::GetWindow(HWND _hwnd, UINT _width, UINT _height)

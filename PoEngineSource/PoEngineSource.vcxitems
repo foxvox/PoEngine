@@ -18,7 +18,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Animator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)App.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)AudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)BoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)BxFMod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)BxMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Camera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)CircleCollider2D.cpp" />
@@ -49,7 +53,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Animator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)App.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)BxFMod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CircleCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h" />

@@ -22,7 +22,7 @@ namespace Bx
 		FMOD_RESULT      result;
 		FMOD::Channel* channel1 = nullptr;
 		//mSystem->load(Common_MediaPath("Master.bank"), FMOD_STUDIO_LOAD_BANK_NORMAL, &masterBank);
-		coreSystem->createSound("..\\Resources\\Sound\\smw_bonus_game_end.wav", FMOD_3D, 0, &sound1);
+		coreSystem->createSound("../Resources/Sound/smw_bonus_game_end.wav", FMOD_3D, 0, &sound1);
 		const float DISTANCEFACTOR = 1.0f;
 		result = sound1->set3DMinMaxDistance(0.5f * DISTANCEFACTOR, 5000.0f * DISTANCEFACTOR);
 		result = sound1->setMode(FMOD_LOOP_OFF);

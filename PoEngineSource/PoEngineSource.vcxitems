@@ -32,6 +32,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)GraphicDeviceDx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Layer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)AudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BxFMod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)BxMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CircleCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h" />
@@ -67,6 +69,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)GraphicDeviceDx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Layer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Object.h" />
@@ -83,7 +86,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)BxTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)BxMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UIBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UIMgr.h" />
   </ItemGroup>

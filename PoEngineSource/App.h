@@ -1,5 +1,6 @@
 #pragma once 
 #include "GameObject.h" 
+#include "GraphicDeviceDx11.h" 
 
 using namespace std; 
 
@@ -29,6 +30,8 @@ namespace Bx
 		void GetWindow(HWND _hwnd, UINT _width, UINT _height); 
 
 	private:
+		std::unique_ptr<GraphicDeviceDx11> graphicDevice; 
+
 		HWND		hwnd;
 		HDC			hdc;
 		HDC			backhdc; 

@@ -11,7 +11,7 @@ namespace Bx
 	CatScript::CatScript()
 		: state(CatScript::State::SIT), animator(nullptr), 
 		catTime(0.f), direction(CatScript::Dir::DOWN), activeTime(0.f), 
-		player(nullptr), dest(Vector2::zero), radian(0.f)
+		player(nullptr), dest(Vector2::Zero), radian(0.f)
 	{}
 
 	CatScript::~CatScript()

@@ -17,8 +17,8 @@ namespace Bx
 			float	tTimeLag; 
 
 			Sprite()
-			: tLeftTop(Vector2::zero), tSpan(Vector2::zero), 
-				tOffSet(Vector2::zero), tTimeLag(0.f) 
+			: tLeftTop(Vector2::Zero), tSpan(Vector2::Zero), 
+				tOffSet(Vector2::Zero), tTimeLag(0.f) 
 			{}
 		};
 

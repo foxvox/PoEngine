@@ -6,10 +6,10 @@ namespace Bx
 {
 	UINT32 Collider::CID = 1;
 
-	//span Vector2::zero로 잡으면 scale을 곱할 때 적용이 안 됨.
+	//span Vector2::Zero로 잡으면 scale을 곱할 때 적용이 안 됨.
 	Collider::Collider(ColliderType _type)
 		: Component(CompType::COLLIDER), cid(CID++), type(_type), 
-		span(Vector2::one), offset(Vector2::zero) 
+		span(Vector2::One), offset(Vector2::Zero) 
 	{}
 
 	Collider::~Collider()

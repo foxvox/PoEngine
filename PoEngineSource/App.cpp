@@ -10,7 +10,7 @@
 namespace Bx
 {
 	App::App()
-		: hwnd(nullptr), hdc(nullptr), width(672), height(846), 
+		: hwnd(nullptr), hdc(nullptr), width(1600), height(900), 
 		backhdc(nullptr), backBuf(nullptr) 
 	{
 		BxTime::Initialize();
@@ -24,6 +24,8 @@ namespace Bx
 	{
 		GetWindow(_hwnd, width, height); 
 		CreateBackBuf(width, height); 
+
+		graphicDevice = std::make_unique<GraphicDeviceDx11>(); 
 
 		BxFMod::Initialize(); 
 		CollisionMgr::Initialize(); 
@@ -83,7 +85,7 @@ namespace Bx
 	{
 		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(backhdc, grayBrush); 
-		Rectangle(backhdc, -1, -1, width + 1, height + 1);
+		::Rectangle(backhdc, -1, -1, width + 1, height + 1);
 		(HBRUSH)SelectObject(backhdc, oldBrush);
 		DeleteObject(grayBrush);
 	}

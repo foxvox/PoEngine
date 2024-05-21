@@ -6,6 +6,7 @@ namespace Bx
 {
 	class AudioSource : public Component 
 	{
+	public:
 		AudioSource();
 		~AudioSource();
 

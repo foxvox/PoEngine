@@ -36,7 +36,7 @@ namespace Bx
 
 		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0)); 
 		HPEN oldPen = (HPEN)SelectObject(_hdc, greenPen);
-		Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, 
+		::Rectangle(_hdc, pos.x + offset.x, pos.y + offset.y, 
 			pos.x + offset.x + 100 * GetSpan().x, pos.y + offset.y + 100 * GetSpan().y);
 		SelectObject(_hdc, oldBrush); 
 		SelectObject(_hdc, oldPen);

@@ -10,7 +10,7 @@
 namespace Bx
 {
 	SpriteRenderer::SpriteRenderer()
-		: Component(CompType::SR), texture(nullptr), span(Vector2::one)
+		: Component(CompType::SR), texture(nullptr), span(Vector2::One)
 	{}
 
 	SpriteRenderer::~SpriteRenderer()

@@ -10,9 +10,9 @@
 
 namespace Bx
 {
-	Vector2 TilemapRenderer::tileSpanV = Vector2::one;
-	Vector2 TilemapRenderer::originTileSpan = Vector2::one;
-	Vector2 TilemapRenderer::selectedIndex = Vector2::one;
+	Vector2 TilemapRenderer::tileSpanV = Vector2::One;
+	Vector2 TilemapRenderer::originTileSpan = Vector2::One;
+	Vector2 TilemapRenderer::selectedIndex = Vector2::One;
 
 	TilemapRenderer::TilemapRenderer()
 		: Component(CompType::SR), texture(nullptr), multiple(3.f, 3.f), 

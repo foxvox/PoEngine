@@ -7,7 +7,7 @@ extern Bx::App app;  // 외부 파일에 있는 전역변수를 사용하겠다고 전방선언
 namespace Bx
 {	
 	vector<Input::Key> Input::keys{};
-	Vector2 Input::mousePos = Vector2::zero; 
+	Vector2 Input::mousePos = Vector2::Zero; 
 
 	Input::Input() {}	
 	Input::~Input() {}

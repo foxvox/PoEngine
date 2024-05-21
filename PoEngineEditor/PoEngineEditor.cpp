@@ -112,8 +112,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다. 
 
-   const UINT width = 672; 
-   const UINT height = 846; 
+   const UINT width = 1600; 
+   const UINT height = 900; 
 
    HWND hwnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr); 
@@ -130,7 +130,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&token, &gpsi, NULL); 
 
-   InitToolScene(hInstance);
+   //InitToolScene(hInstance);
 
    //Load Scenes... 
    int a = 0; 

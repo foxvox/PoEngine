@@ -70,13 +70,13 @@ namespace Bx
 			//카메라가 타겟을 쫒아가게 설정
 			//camComp->SetTarget(cat);
 
-			catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);			
+			catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+			catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);			
 			catAnimator->PlayAnimation(L"Sit", false);
 
 			Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -180,13 +180,13 @@ namespace Bx
 		//카메라가 타겟을 쫒아가게 설정
 		//camComp->SetTarget(cat);
 
-		catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"DMove", catx, Vector2(0.f, 0.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"RMove", catx, Vector2(0.f, 32.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"UMove", catx, Vector2(0.f, 64.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LMove", catx, Vector2(0.f, 96.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Sit", catx, Vector2(0.f, 128.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Grooming", catx, Vector2(0.f, 160.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LayDown", catx, Vector2(0.f, 192.f), Vector2(32.f, 32.f), Vector2::Zero, 4, 0.2f);
 		catAnimator->PlayAnimation(L"Sit", false);
 
 		Transform* tr = GetOwner()->GetComponent<Transform>(); 

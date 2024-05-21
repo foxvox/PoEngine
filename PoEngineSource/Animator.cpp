@@ -116,7 +116,7 @@ namespace Bx
 			BitBlt(spriteSheet->GetHDC(), i * imgWidth, 0, imgWidth, imgHeight, imgs[i]->GetHDC(), 0, 0, SRCCOPY); 			
 		}	
 
-		CreateAnimation(_name, spriteSheet, Vector2::zero, Vector2(imgWidth, imgHeight), _offset, fileCnt, _timeLag);
+		CreateAnimation(_name, spriteSheet, Vector2::Zero, Vector2(imgWidth, imgHeight), _offset, fileCnt, _timeLag);
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& _name)

@@ -15,14 +15,13 @@ namespace Bx
 	{
 		D3D_FEATURE_LEVEL featureLevels[] = { D3D_FEATURE_LEVEL_11_0 }; 
 		UINT creationFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT; 
-
 #if defined(DEBUG) || defined(_DEBUG) 
 		creationFlags |= D3D11_CREATE_DEVICE_DEBUG; 
 #endif 
+
 		HRESULT hr = D3D11CreateDevice(0, D3D_DRIVER_TYPE_HARDWARE, 0, creationFlags, featureLevels, ARRAYSIZE(featureLevels), 
 			D3D11_SDK_VERSION, device.GetAddressOf(), 0, context.GetAddressOf()); 
 
-		swapChain; 
 		DXGI_SWAP_CHAIN_DESC swapChainDesc{}; 
 		swapChainDesc.OutputWindow = app.GetHWND();
 		//창모드로 실행할지 선택
@@ -48,6 +47,21 @@ namespace Bx
 		UINT quality = 0; 
 		device->CheckMultisampleQualityLevels(DXGI_FORMAT_R8G8B8A8_UNORM, 4, &quality); 
 
+		/*if (quality > 0)
+		{
+			swapChainDesc.SampleDesc.Count = 4; 
+			swapChainDesc.SampleDesc.Quality = quality - 1; 
+		}
+		else
+		{
+			swapChainDesc.SampleDesc.Count = 1;
+			swapChainDesc.SampleDesc.Quality = 0;
+		}*/ 
+
+		//임시로 else part 사용 
+		swapChainDesc.SampleDesc.Count = 1;
+		swapChainDesc.SampleDesc.Quality = 0;
+
 		Microsoft::WRL::ComPtr<IDXGIDevice>		dxgidevice = nullptr;
 		Microsoft::WRL::ComPtr<IDXGIAdapter>	adapter = nullptr;
 		Microsoft::WRL::ComPtr<IDXGIFactory>	factory = nullptr; 
@@ -58,11 +72,11 @@ namespace Bx
 		if (FAILED(dxgidevice->GetParent(__uuidof(IDXGIAdapter), (void**)adapter.GetAddressOf())))
 			return; 
 
-		if (FAILED(adapter->GetParent(__uuidof(IDXGIAdapter), (void**)factory.GetAddressOf()))) 
+		if (FAILED(adapter->GetParent(__uuidof(IDXGIFactory), (void**)factory.GetAddressOf()))) 
 			return; 
 
 		if (FAILED(factory->CreateSwapChain(device.Get(), &swapChainDesc, swapChain.GetAddressOf())))
-			return; 
+			return; 	
 
 	}
 

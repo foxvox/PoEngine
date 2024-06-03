@@ -26,9 +26,10 @@ namespace Bx
 		CreateBackBuf(width, height); 
 
 		graphicDevice = std::make_unique<GraphicDeviceDx11>(); 
+		graphicDevice->Initialize(); 
 
-		BxFMod::Initialize(); 
-		CollisionMgr::Initialize(); 
+		BxFMod::Initialize(); 		
+		CollisionMgr::Initialize();
 		SceneMgr::Initialize();
 		UIMgr::Initialize(); 
 	} 

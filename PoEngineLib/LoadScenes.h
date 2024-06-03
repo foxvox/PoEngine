@@ -8,10 +8,10 @@ namespace Bx
 {
 	void LoadScenes()
 	{
-		SceneMgr::CreateScene<TitleScene>(L"TitleScene"); 
-		SceneMgr::CreateScene<PlayScene>(L"PlayScene"); 
+		//SceneMgr::CreateScene<TitleScene>(L"TitleScene"); 
+		//SceneMgr::CreateScene<PlayScene>(L"PlayScene"); 
 		//SceneMgr::CreateScene<ToolScene>(L"ToolScene"); 
-		SceneMgr::LoadScene(L"PlayScene");
+		//SceneMgr::LoadScene(L"PlayScene");
 	}
 }
 

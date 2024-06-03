@@ -17,6 +17,7 @@ namespace Bx
 		GraphicDeviceDx11();
 		~GraphicDeviceDx11(); 
 
+		void Initialize(); 
 		void Draw(); 
 
 	private:

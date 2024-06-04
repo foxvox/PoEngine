@@ -25,7 +25,7 @@ namespace Bx
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext>		context;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D>			renderTarget;
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView>	renderTargetView;
-		Microsoft::WRL::ComPtr<ID3D11Texture2D>			depthStencilBuffer; 
+		Microsoft::WRL::ComPtr<ID3D11Texture2D>			depthStencil; 
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilView>	depthStencilView; 
 
 		Microsoft::WRL::ComPtr<IDXGISwapChain>			swapChain;

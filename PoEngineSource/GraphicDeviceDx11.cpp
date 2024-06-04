@@ -62,22 +62,37 @@ namespace Bx
 		swapChainDesc.SampleDesc.Count = 1;
 		swapChainDesc.SampleDesc.Quality = 0;
 
-		Microsoft::WRL::ComPtr<IDXGIDevice>		dxgidevice = nullptr;
+		Microsoft::WRL::ComPtr<IDXGIDevice>		dxgiDevice = nullptr;
 		Microsoft::WRL::ComPtr<IDXGIAdapter>	adapter = nullptr;
 		Microsoft::WRL::ComPtr<IDXGIFactory>	factory = nullptr; 
 
-		if (FAILED(device->QueryInterface(__uuidof(IDXGIDevice), (void**)dxgidevice.GetAddressOf())))  
+		if (FAILED(device->QueryInterface(__uuidof(IDXGIDevice), (void**)dxgiDevice.GetAddressOf())))  
 			return; 
 
-		if (FAILED(dxgidevice->GetParent(__uuidof(IDXGIAdapter), (void**)adapter.GetAddressOf())))
+		if (FAILED(dxgiDevice->GetParent(__uuidof(IDXGIAdapter), (void**)adapter.GetAddressOf())))
 			return; 
 
 		if (FAILED(adapter->GetParent(__uuidof(IDXGIFactory), (void**)factory.GetAddressOf()))) 
 			return; 
 
 		if (FAILED(factory->CreateSwapChain(device.Get(), &swapChainDesc, swapChain.GetAddressOf())))
-			return; 	
+			return;
 
+		swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)renderTarget.GetAddressOf()); 
+		device->CreateRenderTargetView(renderTarget.Get(), nullptr, renderTargetView.GetAddressOf()); 
+
+		D3D11_TEXTURE2D_DESC depthStencilDesc{}; 
+		depthStencilDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL; 
+		depthStencilDesc.Format = DXGI_FORMAT::DXGI_FORMAT_D24_UNORM_S8_UINT;
+		depthStencilDesc.Usage = D3D11_USAGE::D3D11_USAGE_DEFAULT;
+		depthStencilDesc.Width = app.GetWidth(); 
+		depthStencilDesc.Height = app.GetHeight(); 
+		depthStencilDesc.ArraySize = 1; 
+		depthStencilDesc.SampleDesc.Count = 1; 
+		depthStencilDesc.SampleDesc.Quality = 0; 
+
+
+		device->CreateTexture2D(&depthStencilDesc, nullptr, depthStencil.GetAddressOf());
 	}
 
 	void GraphicDeviceDx11::Draw()

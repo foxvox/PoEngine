@@ -99,14 +99,15 @@ namespace Bx
 
 	void App::Render()
 	{
-		ClearBackBuf(); 
+		//ClearBackBuf(); 기존에 사용하던 ClearBackBuf, SwapChain을 사용 안 함 Dx11로 변경 
+		graphicDevice->Draw(); 
 		 
 		BxTime::Render(backhdc);
 		CollisionMgr::Render(backhdc); 
 		SceneMgr::Render(backhdc);
 		
 		//백버퍼와 원본버퍼를 Swap
-		SwapChain(hdc, backhdc); 
+		//SwapChain(hdc, backhdc); 
 	}
 
 	void App::Release()

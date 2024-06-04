@@ -78,6 +78,7 @@ namespace Bx
 		if (FAILED(factory->CreateSwapChain(device.Get(), &swapChainDesc, swapChain.GetAddressOf())))
 			return;
 
+		//½º¿ÒÃ¼ÀÎ¿¡ ÀÖ´Â ·»´õÅ¸°Ù °¡Á®¿Í¼­ ·»´õÅ¸°Ùºä »ı¼º
 		swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)renderTarget.GetAddressOf()); 
 		device->CreateRenderTargetView(renderTarget.Get(), nullptr, renderTargetView.GetAddressOf()); 
 
@@ -91,12 +92,21 @@ namespace Bx
 		depthStencilDesc.SampleDesc.Count = 1; 
 		depthStencilDesc.SampleDesc.Quality = 0; 
 
+		//±íÀÌ¹öÆÛ, ±íÀÌ¹öÆÛºä »ı¼º
+		if (FAILED(device->CreateTexture2D(&depthStencilDesc, nullptr, depthStencil.GetAddressOf()))) 
+			return; 
 
-		device->CreateTexture2D(&depthStencilDesc, nullptr, depthStencil.GetAddressOf());
+		if (FAILED(device->CreateDepthStencilView(depthStencil.Get(), nullptr, depthStencilView.GetAddressOf())))
+			return;
 	}
 
 	void GraphicDeviceDx11::Draw()
 	{
+		//·»´õÅ¸°Ù ÃÊ±âÈ­ 
+		FLOAT backgroundColor[4] = { 0.2f, 0.2f, 0.2f, 1.f }; 
+		context->ClearRenderTargetView(renderTargetView.Get(), backgroundColor); 
 
+		//½º¿ÒÃ¼ÀÎ¿¡°Ô ±×·Á´Ş¶ó°í ÇÔ
+		swapChain->Present(1, 0);  
 	}
 }

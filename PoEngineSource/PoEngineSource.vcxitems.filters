@@ -101,7 +101,7 @@
       <Filter>Util</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)GraphicDeviceDx11.cpp">
-      <Filter>GraphicDevice</Filter>
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,7 +214,10 @@
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)GraphicDeviceDx11.h">
-      <Filter>GraphicDevice</Filter>
+      <Filter>Graphics\GraphicDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -284,7 +287,10 @@
     <Filter Include="FMod">
       <UniqueIdentifier>{a1669298-57b3-4e02-9d4d-f616d02992b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GraphicDevice">
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{26bde17f-7d34-4577-a421-f479aef6cfc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GraphicDevice">
       <UniqueIdentifier>{1939c5e1-b52c-46ba-ad9c-e5a94135ba21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

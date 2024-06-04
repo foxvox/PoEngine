@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PoEngineLib", "PoEngineLib\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PoEngineSource", "PoEngineSource\PoEngineSource.vcxitems", "{749A16D5-104F-48FB-9990-BD87D66ABCB1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShaderSrc", "ShaderSrc\ShaderSrc.vcxitems", "{2C75E516-8A89-4541-980A-D409100522A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -42,6 +44,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PoEngineSource\PoEngineSource.vcxitems*{24b87a66-d96e-4c59-b228-94c864aa6c1e}*SharedItemsImports = 4
+		ShaderSrc\ShaderSrc.vcxitems*{2c75e516-8a89-4541-980a-d409100522a2}*SharedItemsImports = 9
 		PoEngineSource\PoEngineSource.vcxitems*{6cdf712a-d1d1-40ae-a1c4-350c0defdb74}*SharedItemsImports = 4
 		PoEngineSource\PoEngineSource.vcxitems*{749a16d5-104f-48fb-9990-bd87d66abcb1}*SharedItemsImports = 9
 	EndGlobalSection

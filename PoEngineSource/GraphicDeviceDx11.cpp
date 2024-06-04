@@ -1,5 +1,6 @@
 #include "GraphicDeviceDx11.h" 
 #include "App.h" 
+#include "Renderer.h" 
 
 extern Bx::App app; 
 
@@ -97,7 +98,29 @@ namespace Bx
 			return; 
 
 		if (FAILED(device->CreateDepthStencilView(depthStencil.Get(), nullptr, depthStencilView.GetAddressOf())))
-			return;
+			return; 
+
+		DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS; 
+		shaderFlags		 |= D3DCOMPILE_DEBUG; 
+		shaderFlags		 |= D3DCOMPILE_SKIP_OPTIMIZATION; 
+
+		//vertex shader 
+		{
+			ID3DBlob* errorBlob = nullptr;
+			D3DCompileFromFile(L"../ShaderSrc/TriangleVS.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, 
+				"main", "vs_5_0", shaderFlags, 0, &vsBlob, &errorBlob);
+
+			device->CreateVertexShader(vsBlob->GetBufferPointer(), vsBlob->GetBufferSize(), nullptr, &vsShader); 
+		}
+
+		//pixel shader 
+		{			
+			ID3DBlob* errorBlob = nullptr; 
+			D3DCompileFromFile(L"../ShaderSrc/TrianglePS.hlsl", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,
+				"main", "ps_5_0", shaderFlags, 0, &psBlob, &errorBlob); 
+
+			device->CreatePixelShader(psBlob->GetBufferPointer(), psBlob->GetBufferSize(), nullptr, &psShader); 
+		}
 	}
 
 	void GraphicDeviceDx11::Draw()
